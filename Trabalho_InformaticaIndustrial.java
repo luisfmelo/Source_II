@@ -34,6 +34,8 @@ public class Trabalho_InformaticaIndustrial {
         
         InputRegister[] res = null;
         
+        (new Thread(new UDP())).start();
+        
         while(true){
             try {
                 Register fuku = new SimpleRegister(609);
