@@ -6,38 +6,65 @@
 package trabalho_informaticaindustrial;
 import java.net.*;
 import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 ///         ///
-public class UDP {
-    public static void main(String args[]) throws Exception
+public class UDP implements Runnable
+{
+    DatagramSocket serverSocket = null;
+    public void run()
     {
-        DatagramSocket serverSocket = new DatagramSocket(54321);
-        
+        try
+        {
+           serverSocket = new DatagramSocket(54321);
+        }
+        catch(IOException e) 
+        {
+           System.out.println(e);
+        }
+
         byte[] receiveData = new byte[8];
         byte[] sendData = new byte[8];
-        
+
         while(true)
         {
             DatagramPacket receivePacket = 
                     new DatagramPacket(receiveData, receiveData.length);
-            serverSocket.receive(receivePacket);
             
+            try 
+            {
+                serverSocket.receive(receivePacket);
+            }
+            catch(IOException e) 
+            {
+               System.out.println(e);
+            }
+
             String sentence = new String(receivePacket.getData());
-            
+
             InetAddress IPAddress= receivePacket.getAddress();
-            
+
             int port = receivePacket.getPort();
-            
+
             String capitalizedSentence = sentence.toUpperCase();
-            
+
             System.out.println(capitalizedSentence);
-            
+
             sendData = capitalizedSentence.getBytes();   
-            
+
             DatagramPacket sendPacket =
                     new DatagramPacket(sendData, sendData.length, IPAddress, port);
-            
-            serverSocket.send(sendPacket);
+
+            try 
+            {
+                serverSocket.send(sendPacket);
+            }
+            catch(IOException e) 
+            {
+               System.out.println(e);
+            }
         }
+        
     }
 }
