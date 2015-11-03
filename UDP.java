@@ -6,13 +6,13 @@
 package trabalho_informaticaindustrial;
 import java.net.*;
 import java.io.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.*;
 
-///         ///
 public class UDP implements Runnable
 {
-    DatagramSocket serverSocket = null;
+    private DatagramSocket serverSocket = null;
+    Queue<String> orders = new LinkedList<String>();
+    
     public void run()
     {
         try
@@ -24,8 +24,8 @@ public class UDP implements Runnable
            System.out.println(e);
         }
 
-        byte[] receiveData = new byte[8];
-        byte[] sendData = new byte[8];
+        byte[] receiveData = new byte[9];
+        byte[] sendData = new byte[9];      // Debug (tirar!)
 
         while(true)
         {
@@ -41,7 +41,7 @@ public class UDP implements Runnable
                System.out.println(e);
             }
 
-            String sentence = new String(receivePacket.getData());
+            String sentence = new String(receivePacket.getData(), receivePacket.getOffset(), receivePacket.getLength());
 
             InetAddress IPAddress= receivePacket.getAddress();
 
@@ -49,22 +49,35 @@ public class UDP implements Runnable
 
             String capitalizedSentence = sentence.toUpperCase();
 
-            System.out.println(capitalizedSentence);
+            // Exemplo de uma ordem: :T6669788
+            
+            // Ver se a mensagem recebida corresponde a uma ordem
+            if(capitalizedSentence.charAt(0) == ':' && capitalizedSentence.length() == 9) {
+            
+                orders.add(capitalizedSentence.substring(1));
+                
+                System.out.println(orders.element());    // Debug (tirar!)
 
-            sendData = capitalizedSentence.getBytes();   
+                sendData = capitalizedSentence.getBytes();      // Debug (tirar!)
 
-            DatagramPacket sendPacket =
-                    new DatagramPacket(sendData, sendData.length, IPAddress, port);
+                DatagramPacket sendPacket =           // Debug (tirar!)
+                        new DatagramPacket(sendData, sendData.length, IPAddress, port);
 
-            try 
-            {
-                serverSocket.send(sendPacket);
+                try     // Debug (tirar!)
+                {
+                    serverSocket.send(sendPacket);
+                }
+                catch(IOException e) 
+                {
+                   System.out.println(e);
+                }
             }
-            catch(IOException e) 
-            {
-               System.out.println(e);
-            }
-        }
-        
+            else
+                System.out.println("Rebeceu um frame que não era uma ordem");   // Debug (tirar!)
+        } 
+    }
+    
+    public String getUdpOrder() {
+        return orders.poll();
     }
 }

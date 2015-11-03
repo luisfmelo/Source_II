@@ -36,6 +36,7 @@ public class Trabalho_InformaticaIndustrial {
         
         (new Thread(new UDP())).start();
         
+/*        
         while(true){
             try {
                 Register fuku = new SimpleRegister(609);
@@ -57,7 +58,7 @@ public class Trabalho_InformaticaIndustrial {
                 } catch(Exception picas) {
                     System.out.println("Error writeMultipleRegisters");
                 }
-     /*           
+                
                 for (int i=0; i < 10; i++)  {
                     try {
                         modbusTCPMaster.writeSingleRegister(i, fuku);
@@ -65,7 +66,7 @@ public class Trabalho_InformaticaIndustrial {
                         System.out.println("Error writing to:" + i);
                     }
                 }
-  */              
+                
                 //valores[0].setValue(69);
                 
                 //modbusTCPMaster.writeMultipleRegisters(0, valores);
@@ -80,6 +81,7 @@ public class Trabalho_InformaticaIndustrial {
                      System.out.print(res[i].getValue() + " ");
                 }
             } catch(Exception seila) {System.out.println("Error updating");}
+           
             
             try {
                 Thread.sleep(3000);
@@ -87,5 +89,6 @@ public class Trabalho_InformaticaIndustrial {
                 // Handle the exception
             }
         }
+        */
     }
 }
