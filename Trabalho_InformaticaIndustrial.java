@@ -17,7 +17,7 @@ import net.wimpi.modbus.util.*;
  * @author David
  */
 public class Trabalho_InformaticaIndustrial {
-
+    
     /**
      * @param args the command line arguments
      */

@@ -56,6 +56,12 @@ public class UDP implements Runnable
             
                 orders.add(capitalizedSentence.substring(1));
                 
+                try {
+                    checkOrders();
+                } catch(Exception e) {
+                    System.out.println("\nError!!!:  " + e);
+                }
+                
                 System.out.println(orders.element());    // Debug (tirar!)
 
                 sendData = capitalizedSentence.getBytes();      // Debug (tirar!)
@@ -78,6 +84,26 @@ public class UDP implements Runnable
     }
     
     public String getUdpOrder() {
-        return orders.poll();
+       String order = orders.peek();
+       
+       if(order != null)
+           return order;
+       
+       return null;
+    }
+    
+    public void checkOrders()
+    {
+        String order = orders.peek();
+        
+        if(order != null) {
+            String ordertype   = order.substring(0, 1);
+            String ordernumber = order.substring(1, 4);
+            String originpkg   = order.substring(4, 5);
+            String finalpkg    = order.substring(5, 6);
+            String qty         = order.substring(6, 8);
+
+            System.out.println("tipo:" + ordertype + "  numb:" + ordernumber + "  inicial:" + originpkg + "  final:" + finalpkg + " quant:" + qty);
+        }
     }
 }
