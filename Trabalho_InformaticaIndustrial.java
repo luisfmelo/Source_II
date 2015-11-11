@@ -5,6 +5,8 @@
  */
 package trabalho_informaticaindustrial;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import net.wimpi.modbus.facade.ModbusTCPMaster;
 import net.wimpi.modbus.procimg.*;
 import net.wimpi.modbus.msg.*;
@@ -35,6 +37,10 @@ public class Trabalho_InformaticaIndustrial {
         InputRegister[] res = null;
         
         (new Thread(new UDP())).start();
+        
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat horadechegada = new SimpleDateFormat("HH:mm:ss|dd.MM.yyyy");
+        System.out.println(horadechegada.format(cal.getTime()));
         
 /*        
         while(true){
