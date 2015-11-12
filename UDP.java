@@ -12,6 +12,7 @@ public class UDP implements Runnable
 {
     private DatagramSocket serverSocket = null;
     Queue<String> orders = new LinkedList<String>();
+    //criar linkedlis para as nossas classes   
     
     public void run()
     {
@@ -48,7 +49,7 @@ public class UDP implements Runnable
             int port = receivePacket.getPort();
 
             String capitalizedSentence = sentence.toUpperCase();
-
+           
             // Exemplo de uma ordem: :T6669788
             
             // Ver se a mensagem recebida corresponde a uma ordem
@@ -95,14 +96,27 @@ public class UDP implements Runnable
     public void checkOrders()
     {
         String order = orders.peek();
-        
+        //String order="T6669788";             //(Debug) Tirar!
         if(order != null) {
             String ordertype   = order.substring(0, 1);
             String ordernumber = order.substring(1, 4);
             String originpkg   = order.substring(4, 5);
             String finalpkg    = order.substring(5, 6);
             String qty         = order.substring(6, 8);
+            
+            
+            switch(ordertype)
+            {
+                case("T"): System.out.println("Transformation");
+                           break;
+                case("U"): System.out.println("Unload");
+                           break;
+                case("M"): System.out.println("Assembling");
+                           break;
+                default: System.out.println("Error!");
 
+            }
+            
             System.out.println("tipo:" + ordertype + "  numb:" + ordernumber + "  inicial:" + originpkg + "  final:" + finalpkg + " quant:" + qty);
         }
     }
