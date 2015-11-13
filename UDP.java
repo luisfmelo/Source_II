@@ -13,9 +13,10 @@ public class UDP implements Runnable
     private DatagramSocket serverSocket = null;
     Queue<String> orders = new LinkedList<String>();
     //criar linkedlis para as nossas classes   
-    
+    Queue<Operation> listaOps = new LinkedList<Operation>();
+            
     public void run()
-    {
+    {        
         try
         {
            serverSocket = new DatagramSocket(54321);
@@ -104,12 +105,17 @@ public class UDP implements Runnable
             String finalpkg    = order.substring(5, 6);
             String qty         = order.substring(6, 8);
             
+            Calendar cal = Calendar.getInstance();
+    
+            Unload op1 = new Unload(69, 666, 6, 9, cal);
             
             switch(ordertype)
             {
-                case("T"): System.out.println("Transformation");
-                           break;
-                case("U"): System.out.println("Unload");
+                case("T"):  System.out.println("Transformation");
+                            break;
+                case("U"):  System.out.println("Unload");
+                            Unload unloadOp = new Unload(69, 666, 6, 9, cal);
+                            listaOps.add(unloadOp);
                            break;
                 case("M"): System.out.println("Assembling");
                            break;
@@ -118,6 +124,10 @@ public class UDP implements Runnable
             }
             
             System.out.println("tipo:" + ordertype + "  numb:" + ordernumber + "  inicial:" + originpkg + "  final:" + finalpkg + " quant:" + qty);
+            
+            Operation popOp = listaOps.peek();
+            
+            System.out.println("id: " + popOp.getId());
         }
     }
 }
