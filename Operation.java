@@ -22,6 +22,38 @@ public class Operation {
     private Calendar intialTime;
     private Calendar finalTime;
     
+    /*************************************************/
+    /* Alteração temporária: Não estão a ser usadas  */
+    /* as subclasses por dificuldades técnicas.      */
+    /*************************************************/
+    
+    private char type;
+    private int startPkg;
+    private int endPkg;
+    
+    public Operation(char orderType, int orderId, int orderStartPkg, int orderEndPkg, int orderQty) {
+        type = orderType;
+        id = orderId;
+        startPkg = orderStartPkg;
+        endPkg = orderEndPkg;
+    }
+    
+    public char getType() {
+        return type;
+    }
+    
+    public int getStartPkg() {
+        return startPkg;
+    }
+
+    public int getEndPkg() {
+        return endPkg;
+    }
+    
+    /***********************************************/
+    /******************    End    ******************/
+    /***********************************************/
+    
     public int getId() {
         return id;
     }

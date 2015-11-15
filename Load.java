@@ -12,6 +12,8 @@ import static trabalho_informaticaindustrial.OpState.*;
  *
  * @author David
  */
+
+/*
 public class Load extends Operation {
 
     public Load(Calendar checkInTime) 
@@ -22,3 +24,4 @@ public class Load extends Operation {
        setState(INIT);
     }
 }
+*/

@@ -14,7 +14,6 @@ public class UDP implements Runnable
     private DatagramSocket serverSocket = null;
     LinkedBlockingQueue<String> orders = new LinkedBlockingQueue<String>();
     //criar linkedlis para as nossas classes   
-    Queue<Operation> listaOps = new LinkedList<Operation>();
             
     public void run()
     {        
@@ -69,7 +68,7 @@ public class UDP implements Runnable
                     System.out.println("\nError!!!:  " + e);
                 }
                 
-                System.out.println(orders.element());    // Debug (tirar!)
+//                System.out.println(orders.element());    // Debug (tirar!)
 
                 sendData = capitalizedSentence.getBytes();      // Debug (tirar!)
 
@@ -96,10 +95,6 @@ public class UDP implements Runnable
         } catch(Exception someexception) {
             return "NOP";
         }
-    }
-    
-    public Operation getOrder() {
-        return listaOps.peek();
     }
     
     public int ordersSize() {

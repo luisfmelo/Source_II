@@ -12,6 +12,8 @@ import static trabalho_informaticaindustrial.OpState.*;
  *
  * @author David
  */
+
+/*
 public class Assembling extends Operation {
     private int bottomPackage;
     private int topPackage;
@@ -28,3 +30,4 @@ public class Assembling extends Operation {
        setState(INIT);
     }
 }
+*/

@@ -12,6 +12,8 @@ import static trabalho_informaticaindustrial.OpState.*;
  *
  * @author David
  */
+
+/*
 public class Unload extends Operation {
     private int destination;
     private int pkg;
@@ -28,5 +30,13 @@ public class Unload extends Operation {
        
        setState(INIT);
     }
-}
+    
+    public int getStartPkg() {
+        return pkg;
+    }
 
+    public int getEndPkg() {
+        return destination;
+    }
+}
+*/

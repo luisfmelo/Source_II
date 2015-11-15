@@ -12,6 +12,8 @@ import static trabalho_informaticaindustrial.OpState.*;
  *
  * @author David
  */
+
+/*
 public class Transformation extends Operation {
     private int startPackage;
     private int endPackage;
@@ -28,3 +30,4 @@ public class Transformation extends Operation {
        setState(INIT);
     }
 }
+*/
