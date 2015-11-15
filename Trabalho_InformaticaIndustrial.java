@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *      by DdS
  */
 package trabalho_informaticaindustrial;
 
@@ -36,11 +34,25 @@ public class Trabalho_InformaticaIndustrial {
         
         InputRegister[] res = null;
         
-        (new Thread(new UDP())).start();
+        UDP UdpThread = new UDP();
+        
+        (new Thread(UdpThread)).start();
         
         Calendar cal = Calendar.getInstance();
         SimpleDateFormat horadechegada = new SimpleDateFormat("HH:mm:ss|dd.MM.yyyy");
         System.out.println(horadechegada.format(cal.getTime()));
+        
+        //System.out.println("id: " + HeadOp.getId());
+        
+        while(true) {
+            if(UdpThread.ordersSize() > 0) {
+                String received = UdpThread.getUdpOrder();
+                
+                Operation op = stringToOperation(received);
+                
+                System.out.println("Ordem lida no MES:" + op.getId());
+            }
+        }
         
 /*        
         while(true){
@@ -96,5 +108,39 @@ public class Trabalho_InformaticaIndustrial {
             }
         }
         */
+    }
+    
+    public static Operation stringToOperation(String order) {
+        
+        //if(order != null) {
+            String ordertype   = order.substring(0, 1);
+            int ordernumber = Integer.parseInt(order.substring(1, 4));
+            int originpkg   = Integer.parseInt(order.substring(4, 5));
+            int finalpkg    = Integer.parseInt(order.substring(5, 6));
+            int qty         = Integer.parseInt(order.substring(6, 8));
+            
+            System.out.println("tipo:" + ordertype + "  numb:" + ordernumber + "  inicial:" + originpkg + "  final:" + finalpkg + " quant:" + qty);
+            
+            Calendar cal = Calendar.getInstance();
+    
+            Unload op1 = new Unload(69, 666, 6, 9, cal);
+            
+            switch(ordertype)
+            {
+                case("T"):  System.out.println("Transformation");
+                            break;
+                    
+                case("U"):  System.out.println("Unload");
+                            return new Unload(ordernumber, originpkg, finalpkg, qty, cal);
+
+                case("M"):  System.out.println("Assembling");
+                            break;
+                    
+                default:    System.out.println("Error!");
+
+            }
+        //}
+        
+        return null;
     }
 }

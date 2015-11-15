@@ -7,11 +7,12 @@ package trabalho_informaticaindustrial;
 import java.net.*;
 import java.io.*;
 import java.util.*;
+import java.util.concurrent.*;
 
 public class UDP implements Runnable
 {
     private DatagramSocket serverSocket = null;
-    Queue<String> orders = new LinkedList<String>();
+    LinkedBlockingQueue<String> orders = new LinkedBlockingQueue<String>();
     //criar linkedlis para as nossas classes   
     Queue<Operation> listaOps = new LinkedList<Operation>();
             
@@ -56,10 +57,14 @@ public class UDP implements Runnable
             // Ver se a mensagem recebida corresponde a uma ordem
             if(capitalizedSentence.charAt(0) == ':' && capitalizedSentence.length() == 9) {
             
-                orders.add(capitalizedSentence.substring(1));
+                try {
+                    orders.put(capitalizedSentence.substring(1));
+                } catch(Exception e) {
+                    System.out.println("Explosion!!! Everybody at the factory is dead: (LOL)" + e);
+                }
                 
                 try {
-                    checkOrders();
+                //    checkOrders();
                 } catch(Exception e) {
                     System.out.println("\nError!!!:  " + e);
                 }
@@ -81,53 +86,23 @@ public class UDP implements Runnable
                 }
             }
             else
-                System.out.println("Rebeceu um frame que não era uma ordem");   // Debug (tirar!)
+                System.out.println("Rebeceu um frame que não era uma ordem. Petardo és tu!");   // Debug (tirar!)
         } 
     }
     
     public String getUdpOrder() {
-       String order = orders.peek();
-       
-       if(order != null)
-           return order;
-       
-       return null;
+        try {
+            return orders.take();
+        } catch(Exception someexception) {
+            return "NOP";
+        }
     }
     
-    public void checkOrders()
-    {
-        String order = orders.peek();
-        //String order="T6669788";             //(Debug) Tirar!
-        if(order != null) {
-            String ordertype   = order.substring(0, 1);
-            String ordernumber = order.substring(1, 4);
-            String originpkg   = order.substring(4, 5);
-            String finalpkg    = order.substring(5, 6);
-            String qty         = order.substring(6, 8);
-            
-            Calendar cal = Calendar.getInstance();
+    public Operation getOrder() {
+        return listaOps.peek();
+    }
     
-            Unload op1 = new Unload(69, 666, 6, 9, cal);
-            
-            switch(ordertype)
-            {
-                case("T"):  System.out.println("Transformation");
-                            break;
-                case("U"):  System.out.println("Unload");
-                            Unload unloadOp = new Unload(69, 666, 6, 9, cal);
-                            listaOps.add(unloadOp);
-                           break;
-                case("M"): System.out.println("Assembling");
-                           break;
-                default: System.out.println("Error!");
-
-            }
-            
-            System.out.println("tipo:" + ordertype + "  numb:" + ordernumber + "  inicial:" + originpkg + "  final:" + finalpkg + " quant:" + qty);
-            
-            Operation popOp = listaOps.peek();
-            
-            System.out.println("id: " + popOp.getId());
-        }
+    public int ordersSize() {
+        return orders.size();
     }
 }
