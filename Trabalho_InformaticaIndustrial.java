@@ -14,12 +14,14 @@ import java.util.Queue;
  */
 public class Trabalho_InformaticaIndustrial {
     public static Queue<Operation> listOps = new LinkedList<Operation>();
+    public static int[] cellState = new int[8];
     
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
+        for(int i=0; i<7;i++)
+            cellState[i]=0;
         Modbus modbusCom = new Modbus();
         
         modbusCom.start("127.0.0.1", 6009);
@@ -27,6 +29,8 @@ public class Trabalho_InformaticaIndustrial {
         UDP UdpThread = new UDP();
                 
         (new Thread(UdpThread)).start();
+        
+        Manager SuperManager = new Manager();
         
         Calendar cal = Calendar.getInstance();
         SimpleDateFormat horadechegada = new SimpleDateFormat("HH:mm:ss|dd.MM.yyyy");
@@ -37,15 +41,21 @@ public class Trabalho_InformaticaIndustrial {
         //modbusCom.test();
         
         modbusCom.sendOp(5, 6, 1);
-        
-        while(true) {
-            
-            if(UdpThread.ordersSize() > 0) {
+
+        while(true) 
+        {
+            if(UdpThread.ordersSize() > 0) 
+            {
                 String received = UdpThread.getUdpOrder();
                 
                 Operation op = stringToOperation(received);
-                
+
                 listOps.add(op);
+                //se o 1º tapete está livre
+                if(true)
+                {
+                    Operation op2 = SuperManager.getNextOperation(listOps);
+                }
                 
                 System.out.println("Ordem lida no MES:" + (listOps.peek()).getId());
                 
