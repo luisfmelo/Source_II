@@ -14,14 +14,27 @@ import java.util.Queue;
  */
 public class Trabalho_InformaticaIndustrial {
     public static Queue<Operation> listOps = new LinkedList<Operation>();
+    public static Queue<Operation> waitingOps = new LinkedList<Operation>();
     public static int[] cellState = new int[8];
-    
+    public static char[][] transformationMatrix = new char[][]
+        {
+            {'-','P','P','P','A','S','S','S','S'},
+            {'X','-','A','P','X','X','X','X','X'},
+            {'X','X','-','P','X','X','X','X','X'},
+            {'X','X','X','-','X','X','X','X','X'},
+            {'X','X','X','X','-','S','S','S','S'},
+            {'X','X','X','X','X','-','2','X','X'},
+            {'X','X','X','X','X','X','-','X','X'},
+            {'X','X','X','X','X','X','P','-','S'},
+            {'X','X','X','X','X','X','X','X','-'}
+        };
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        for(int i=0; i<7;i++)
+        for(int i = 0; i < 7; i++)
             cellState[i]=0;
+        
         Modbus modbusCom = new Modbus();
         
         modbusCom.start("127.0.0.1", 6009);
@@ -51,11 +64,7 @@ public class Trabalho_InformaticaIndustrial {
                 Operation op = stringToOperation(received);
 
                 listOps.add(op);
-                //se o 1º tapete está livre
-                if(true)
-                {
-                    Operation op2 = SuperManager.getNextOperation(listOps);
-                }
+                waitingOps.add(op);
                 
                 System.out.println("Ordem lida no MES:" + (listOps.peek()).getId());
                 
@@ -63,6 +72,10 @@ public class Trabalho_InformaticaIndustrial {
                                   (listOps.peek()).getEndPkg(), 
                                   operationToCell((listOps.peek()).getType()));
 */
+            }
+            if(true)//se o 1º tapete está livre (registo do codesys)            MUDAR!!!!!!
+            {
+                SuperManager.doNextOperation(waitingOps); //recebe operação que é para enviar
             }
         }
     }
