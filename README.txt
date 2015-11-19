@@ -1,4 +1,5 @@
 PROBLEMAS:
-- aquilo é do tipo operação... para unload e assembling... os "dados" sao diferentes... falta, por exemplo o pusher que queremos
-
+- aquilo ï¿½ do tipo operaï¿½ï¿½o... para unload e assembling... os "dados" sao diferentes... falta, por exemplo o pusher que queremos
+-falta a condiÃ§Ã£o do if (para saber se pode enviar nova ordem)
+-falta o PLC dizer que ja terminou algo para eu desocupar posiÃ§ao do array das celulas : cellState
 Ainda nao esta completo

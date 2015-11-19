@@ -13,10 +13,6 @@ import net.wimpi.modbus.io.*;
 import net.wimpi.modbus.net.*;
 import net.wimpi.modbus.util.*;
 
-/**
- *
- * @author David
- */
 public class Modbus {
     private ModbusTCPMaster modbusTCPMaster;
     
@@ -32,11 +28,11 @@ public class Modbus {
         System.out.println("Connected to PLC!");
     }
     
-    public void sendOp(int startPkg, int endPkg, int cellDestination) {
+    public void sendOp(int arg1, int arg2, int cellDestination) {
         Register[] valores = new Register[3];
         
-        valores[0] = new SimpleRegister(startPkg);
-        valores[1] = new SimpleRegister(endPkg);
+        valores[0] = new SimpleRegister(arg1);
+        valores[1] = new SimpleRegister(arg2);
         valores[2] = new SimpleRegister(cellDestination);
         
         try {
@@ -45,7 +41,7 @@ public class Modbus {
             System.out.println("Error writeMultipleRegisters");
         }
         
-        System.out.println("Writed:" + startPkg + ":" + endPkg + ":" + cellDestination);
+        System.out.println("Writed:" + arg1 + ":" + arg2 + ":" + cellDestination);
     }
     
     public void test() {

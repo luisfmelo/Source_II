@@ -28,30 +28,31 @@ public class Operation {
     /*************************************************/
     
     private char type;
-    private int startPkg;
-    private int endPkg;
+    private int arg1;
+    private int arg2;
     
     public Operation(char orderType, int orderId, int orderStartPkg, int orderEndPkg, int orderQty) {
         type = orderType;
         id = orderId;
-        startPkg = orderStartPkg;
-        endPkg = orderEndPkg;
+        arg1 = orderStartPkg;
+        arg2 = orderEndPkg;
     }
     
     public char getType() {
         return type;
     }
     
-    public int getStartPkg() {
-        return startPkg;
+    public int getArg1() {
+        return arg1;
     }
 
-    public int getEndPkg() {
-        return endPkg;
+    public int getArg2() {
+        return arg2;
     }
     
     /***********************************************/
     /******************    End    ******************/
+    /**********@return get*************/
     /***********************************************/
     
     public int getId() {

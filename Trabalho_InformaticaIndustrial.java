@@ -27,7 +27,7 @@ public class Trabalho_InformaticaIndustrial {
             {'X','X','X','X','X','X','-','X','X'},
             {'X','X','X','X','X','X','P','-','S'},
             {'X','X','X','X','X','X','X','X','-'}
-        };
+        }; // -: same Pkg; X: NotPossible; A: Any Cell; P:Parallel cell; S: Serie Cell 
     /**
      * @param args the command line arguments
      */
@@ -36,6 +36,7 @@ public class Trabalho_InformaticaIndustrial {
             cellState[i]=0;
         
         Modbus modbusCom = new Modbus();
+        Statistics SuperStatistics = new Statistics();
         
         modbusCom.start("127.0.0.1", 6009);
         
