@@ -28,8 +28,21 @@ public class Modbus {
         System.out.println("Connected to PLC!");
     }
     
-    public void sendOp(int arg1, int arg2, int cellDestination) {
+    /**
+     * Envia uma ordem para o PLC.
+     * 
+     * @param arg1 Peça inicial
+     * @param arg2 Peça final/destino
+     * @param cellDestination Célula destino
+     * @return 0 se foi enviada com successo
+     *         1 se ocorreu um erro
+     */
+    public int sendOp(int arg1, int arg2, int cellDestination) {
         Register[] valores = new Register[3];
+        
+        // Verifica se o primeiro tapete está livre
+        if(isWarehouseFree() == 0)
+            return 1;
         
         valores[0] = new SimpleRegister(arg1);
         valores[1] = new SimpleRegister(arg2);
@@ -39,9 +52,11 @@ public class Modbus {
             modbusTCPMaster.writeMultipleRegisters(0, valores);
         } catch(Exception multiplewriteerror) {
             System.out.println("Error writeMultipleRegisters");
+            return 1;
         }
         
         System.out.println("Writed:" + arg1 + ":" + arg2 + ":" + cellDestination);
+        return 0;
     }
     
     public int[] readPLCState() {
@@ -58,6 +73,18 @@ public class Modbus {
             intvalues[i] = readvalues[i].getValue();
         
         return intvalues;
+    }
+    
+    public int isWarehouseFree() {
+        InputRegister[] readvalue = null;
+        
+        try {
+            readvalue = modbusTCPMaster.readInputRegisters(10, 1);
+        } catch(Exception multiplereaderror) {
+            System.out.println("Error readMultipleRegisters");
+        }
+        
+        return readvalue[0].getValue();
     }
     
     public void test() {

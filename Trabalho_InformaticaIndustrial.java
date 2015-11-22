@@ -36,6 +36,9 @@ public class Trabalho_InformaticaIndustrial {
      */
     public static void main(String[] args) {
         
+        MachineStatistics lol = new MachineStatistics();
+        
+        lol.addTransformation(1-1, 7-1, 2);
         
         for(int i = 0; i < 7; i++)
             cellState[i]=0;

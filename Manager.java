@@ -5,9 +5,7 @@
  */
 package trabalho_informaticaindustrial;
 
-import java.util.Iterator;
-import java.util.ListIterator;
-import java.util.Queue;
+import java.util.*;
 import static trabalho_informaticaindustrial.Trabalho_InformaticaIndustrial.cellState;
 import static trabalho_informaticaindustrial.Trabalho_InformaticaIndustrial.modbusCom;
 
