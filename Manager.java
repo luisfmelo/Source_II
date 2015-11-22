@@ -9,6 +9,17 @@ import java.util.Iterator;
 import java.util.ListIterator;
 import java.util.Queue;
 import static trabalho_informaticaindustrial.Trabalho_InformaticaIndustrial.cellState;
+import static trabalho_informaticaindustrial.Trabalho_InformaticaIndustrial.modbusCom;
+
+interface Cells {
+    public static final int Parallel = 1;
+    public static final int Series1  = 2;
+    public static final int Series2  = 3;
+    public static final int Series3  = 4;
+    public static final int Assembly = 5;
+    public static final int Unload1  = 6;
+    public static final int Unload2  = 7;
+}
 
 /**
  * @author LMelo
@@ -24,11 +35,9 @@ public class Manager {
     {
         int cell = -1 ;
         
-        Modbus modbusCom = new Modbus();
-        
-        // Percorrer a lista de determinar a próxima operacao a ser executada
-        System.out.println("ListIterator Approach: ");
-        
+        // Lê os estados das células no PLC
+        cellState = modbusCom.readPLCState();
+    
         for(Iterator<Operation> i = waitingOps.iterator(); i.hasNext() ; ) 
         {
             Operation item = i.next();
@@ -55,17 +64,17 @@ public class Manager {
             
             else if ( item.getType() == 'U' ) //se for descarga
             {
-                if ( cellState[5] == 0 && item.getArg2() == 1) //pusher 1 livre e eu quero enviar para o pusher 1
+                if ( cellState[Cells.Unload1] == 0 && item.getArg2() == 1) //pusher 1 livre e eu quero enviar para o pusher 1
                 {
-                    cell = 5;
+                    cell = Cells.Unload1;
                     modbusCom.sendOp(item.getArg1(), item.getArg2(), cell); //envia operação
-                    cellState[5] = 0;
+                    cellState[Cells.Unload1] = 0;
                 }
-                else if ( cellState[6] == 0 && item.getArg2() == 2) //pusher 1 livre e eu quero enviar para o pusher 1
+                else if ( cellState[Cells.Unload2] == 0 && item.getArg2() == 2) //pusher 1 livre e eu quero enviar para o pusher 1
                 {
-                    cell = 6;
+                    cell = Cells.Unload1;
                     modbusCom.sendOp(item.getArg1(), item.getArg2(), cell); //envia operação
-                    cellState[6] = 0;
+                    cellState[Cells.Unload2] = 0;
                 }
             }
             
@@ -79,10 +88,13 @@ public class Manager {
     }
     
     /**
-     *
+     * Determina onde a TRANSFORMAÇÃO pode ser executada
+     * 
      * @param startPkg
      * @param endPkg
-     * @return
+     * @return 0 .. 3 Célula de destino
+     *         -1     Células ocupadas
+     *         -2     Transformação para a própria peça
      */
     public int cellDestination(int startPkg, int endPkg)
     {
@@ -134,8 +146,7 @@ public class Manager {
             else
                 return -1;
         }
-        
-        
+
         return -1;
     }
    

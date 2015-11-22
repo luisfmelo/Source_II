@@ -37,11 +37,27 @@ public class Modbus {
         
         try {
             modbusTCPMaster.writeMultipleRegisters(0, valores);
-        } catch(Exception multipleregerror) {
+        } catch(Exception multiplewriteerror) {
             System.out.println("Error writeMultipleRegisters");
         }
         
         System.out.println("Writed:" + arg1 + ":" + arg2 + ":" + cellDestination);
+    }
+    
+    public int[] readPLCState() {
+        InputRegister[] readvalues = null;
+        int[] intvalues = new int[10];
+                
+        try {
+            readvalues = modbusTCPMaster.readInputRegisters(10, 5);
+        } catch(Exception multiplereaderror) {
+            System.out.println("Error readMultipleRegisters");
+        }
+      
+        for(int i = 0; i < 10; i++)
+            intvalues[i] = readvalues[i].getValue();
+        
+        return intvalues;
     }
     
     public void test() {

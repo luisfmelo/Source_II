@@ -15,7 +15,7 @@ import java.util.Queue;
 public class Trabalho_InformaticaIndustrial {
     public static Queue<Operation> listOps = new LinkedList<Operation>();
     public static Queue<Operation> waitingOps = new LinkedList<Operation>();
-    public static int[] cellState = new int[8];
+    public static int[] cellState = new int[10];     //!< Estado das células
     public static char[][] transformationMatrix = new char[][]
         {
             {'-','P','P','P','A','S','S','S','S'},
@@ -28,15 +28,17 @@ public class Trabalho_InformaticaIndustrial {
             {'X','X','X','X','X','X','P','-','S'},
             {'X','X','X','X','X','X','X','X','-'}
         }; // -: same Pkg; X: NotPossible; A: Any Cell; P:Parallel cell; S: Serie Cell 
+    
+    public static Modbus modbusCom = new Modbus();
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        
         for(int i = 0; i < 7; i++)
             cellState[i]=0;
-        
-        Modbus modbusCom = new Modbus();
-        Statistics SuperStatistics = new Statistics();
         
         modbusCom.start("127.0.0.1", 6009);
         
@@ -55,7 +57,7 @@ public class Trabalho_InformaticaIndustrial {
         //modbusCom.test();
         
         modbusCom.sendOp(5, 6, 1);
-
+        
         while(true) 
         {
             if(UdpThread.ordersSize() > 0) 
