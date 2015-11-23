@@ -38,7 +38,7 @@ public class Modbus {
      *         1 se ocorreu um erro
      */
     public int sendOp(int arg1, int arg2, int cellDestination) {
-        Register[] valores = new Register[3];
+        Register[] valores = new Register[4];
         
         // Verifica se o primeiro tapete está livre
         if(isWarehouseFree() == 0)
@@ -47,6 +47,23 @@ public class Modbus {
         valores[0] = new SimpleRegister(arg1);
         valores[1] = new SimpleRegister(arg2);
         valores[2] = new SimpleRegister(cellDestination);
+        valores[3] = new SimpleRegister(1);
+        
+        try {
+            modbusTCPMaster.writeMultipleRegisters(0, valores);
+        } catch(Exception multiplewriteerror) {
+            System.out.println("Error writeMultipleRegisters");
+            return 1;
+        }
+        
+        // Espera que o warehouse inicie o processo
+        while(isWarehouseFree() != 0);
+        
+        // Faz reset aos dados
+        valores[0] = new SimpleRegister(0);
+        valores[1] = new SimpleRegister(0);
+        valores[2] = new SimpleRegister(0);
+        valores[3] = new SimpleRegister(0);
         
         try {
             modbusTCPMaster.writeMultipleRegisters(0, valores);

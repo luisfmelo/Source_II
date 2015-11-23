@@ -114,7 +114,7 @@ public class MachineStatistics {
             //!!! Transformação Impossível
             //return Error;
             System.out.println("Impossível");
-        }        
+        }    
     }
     
     /**
