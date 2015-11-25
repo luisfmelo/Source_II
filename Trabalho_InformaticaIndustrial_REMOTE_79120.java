@@ -43,19 +43,6 @@ public class Trabalho_InformaticaIndustrial {
         for(int i = 0; i < 7; i++)
             cellState[i]=0;
         
-<<<<<<< HEAD
-        gui SuperGui = new gui(); 
-        SuperGui.setVisible(true);
-                
-        //SuperGui.addNewTransformation(1, 5, 3, 5, Calendar.getInstance(), Calendar.getInstance(), Calendar.getInstance(), 3);
-        //SuperGui.addNewTransformation(2, 10, 1, 2, Calendar.getInstance(), Calendar.getInstance(), Calendar.getInstance(), 3);
-        
-
-        Modbus modbusCom = new Modbus();
-        Statistics SuperStatistics = new Statistics();
-        
-=======
->>>>>>> origin/master
         modbusCom.start("127.0.0.1", 6009);
         
         UDP UdpThread = new UDP();

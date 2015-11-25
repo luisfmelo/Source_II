@@ -33,17 +33,9 @@ public class Manager {
     {
         int cell = -1 ;
         
-<<<<<<< HEAD
-        Modbus modbusCom = new Modbus();
-        
-        // Percorrer a lista de determinar a próxima operacao a ser executada
-        //System.out.println("ListIterator Approach: ");
-        
-=======
         // Lê os estados das células no PLC
         cellState = modbusCom.readPLCState();
     
->>>>>>> origin/master
         for(Iterator<Operation> i = waitingOps.iterator(); i.hasNext() ; ) 
         {
             Operation item = i.next();
@@ -89,7 +81,7 @@ public class Manager {
                 modbusCom.sendOp(item.getArg1(), item.getArg2(), 4); //envia operação para o robot 3D (4)
                 cellState[4] = 0;
             }
-            //System.out.println(item.getId());
+            System.out.println(item.getId());
         }
     }
     
