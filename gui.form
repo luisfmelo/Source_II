@@ -83,9 +83,11 @@
                   <Font name="Consolas" size="11" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="8" rowCount="0">
+                  <Table columnCount="10" rowCount="0">
                     <Column editable="true" title="ID" type="java.lang.Integer"/>
-                    <Column editable="true" title="Quantity" type="java.lang.Integer"/>
+                    <Column editable="true" title="Produced Packages" type="java.lang.Integer"/>
+                    <Column editable="true" title="On Going Packages" type="java.lang.Integer"/>
+                    <Column editable="true" title="Pending Packages" type="java.lang.Integer"/>
                     <Column editable="true" title="Initial Package" type="java.lang.String"/>
                     <Column editable="true" title="Final Package" type="java.lang.String"/>
                     <Column editable="true" title="Check In Time" type="java.lang.Object"/>
@@ -96,6 +98,16 @@
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>
@@ -172,9 +184,11 @@
                   <Font name="Consolas" size="11" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="8" rowCount="0">
+                  <Table columnCount="10" rowCount="0">
                     <Column editable="true" title="ID" type="java.lang.Integer"/>
-                    <Column editable="true" title="Quantity" type="java.lang.Integer"/>
+                    <Column editable="true" title="Produced Packages" type="java.lang.Object"/>
+                    <Column editable="true" title="On Going Packages" type="java.lang.Object"/>
+                    <Column editable="true" title="Pending Packages" type="java.lang.Integer"/>
                     <Column editable="true" title="Bottom Package" type="java.lang.String"/>
                     <Column editable="true" title="Top Package" type="java.lang.String"/>
                     <Column editable="true" title="Check In Time" type="java.lang.Object"/>
@@ -185,6 +199,16 @@
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>
@@ -255,9 +279,11 @@
                   <Font name="Consolas" size="11" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="8" rowCount="0">
+                  <Table columnCount="10" rowCount="0">
                     <Column editable="true" title="ID" type="java.lang.Integer"/>
-                    <Column editable="true" title="Quantity" type="java.lang.Integer"/>
+                    <Column editable="true" title="Produced Packages" type="java.lang.Integer"/>
+                    <Column editable="true" title="On Going Packages" type="java.lang.Object"/>
+                    <Column editable="true" title="Pending Packages" type="java.lang.Object"/>
                     <Column editable="true" title="Package" type="java.lang.String"/>
                     <Column editable="true" title="Pusher Number" type="java.lang.String"/>
                     <Column editable="true" title="Check In Time" type="java.lang.Object"/>
@@ -268,6 +294,16 @@
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>

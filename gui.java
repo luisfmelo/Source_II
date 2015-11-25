@@ -54,11 +54,11 @@ public class gui extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Quantity", "Initial Package", "Final Package", "Check In Time", "Start Time", "Finish Time", "State"
+                "ID", "Produced Packages", "On Going Packages", "Pending Packages", "Initial Package", "Final Package", "Check In Time", "Start Time", "Finish Time", "State"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -78,11 +78,11 @@ public class gui extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Quantity", "Bottom Package", "Top Package", "Check In Time", "Start Time", "Finish Time", "State"
+                "ID", "Produced Packages", "On Going Packages", "Pending Packages", "Bottom Package", "Top Package", "Check In Time", "Start Time", "Finish Time", "State"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -100,11 +100,11 @@ public class gui extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Quantity", "Package", "Pusher Number", "Check In Time", "Start Time", "Finish Time", "State"
+                "ID", "Produced Packages", "On Going Packages", "Pending Packages", "Package", "Pusher Number", "Check In Time", "Start Time", "Finish Time", "State"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -209,21 +209,42 @@ public class gui extends javax.swing.JFrame {
      * @param state
      * @param FinishTime
  */
-    public void addNewTransformation(int id, int qt, int initPkg, int finalPkg, Calendar checkIn, Calendar StartTime, Calendar FinishTime, int state) 
+    public void addNewTransformation(int id, int qt_produ, int qt_ongoing, int qt_pending, int initPkg, int finalPkg, Calendar checkIn, Calendar StartTime, Calendar FinishTime, int state) 
     {
         DefaultTableModel model = (DefaultTableModel) TransformTable.getModel();
-        model.addRow(new Object[]{id, qt, "P" + initPkg, "P" + finalPkg, checkIn, StartTime, FinishTime, state});
+        model.addRow(new Object[]{id, qt_produ, qt_ongoing, qt_pending, "P" + initPkg, "P" + finalPkg, checkIn, StartTime, FinishTime, state});
     }
     
-    public void addNewAssemble(int id, int qt, int bottomPkg, int topPkg, Calendar checkIn, Calendar StartTime, Calendar FinishTime, int state)
+    public void addNewAssemble(int id, int qt_produ, int qt_ongoing, int qt_pending, int bottomPkg, int topPkg, Calendar checkIn, Calendar StartTime, Calendar FinishTime, int state)
     {
         DefaultTableModel model = (DefaultTableModel) AssembleTable.getModel();
-        model.addRow(new Object[]{id, qt, "P" + bottomPkg, "P" + topPkg, checkIn, StartTime, FinishTime, state});
+        model.addRow(new Object[]{id, qt_produ, qt_ongoing, qt_pending, "P" + bottomPkg, "P" + topPkg, checkIn, StartTime, FinishTime, state});
     }
     
-    public void addNewUnload(int id, int qt, int Pkg, int numPusher, Calendar checkIn, Calendar StartTime, Calendar FinishTime, int state)
+    public void addNewUnload(int id, int qt_produ, int qt_ongoing, int qt_pending, int Pkg, int numPusher, Calendar checkIn, Calendar StartTime, Calendar FinishTime, int state)
     {
         DefaultTableModel model = (DefaultTableModel) UnloadTable.getModel();
-        model.addRow(new Object[]{id, qt, "P" + Pkg, numPusher, checkIn, StartTime, FinishTime, state});
+        model.addRow(new Object[]{id, qt_produ, qt_ongoing, qt_pending, "P" + Pkg, numPusher, checkIn, StartTime, FinishTime, state});
     }
+    
+    public void oneTransformationGoing(int id) 
+    {
+        
+        DefaultTableModel model = (DefaultTableModel) TransformTable.getModel();
+        //int row = model.getValueAt(id, id);
+        //row = TransformTable.
+        //model.setValueAt("Moo", row, 1); 
+    }
+    /*
+    Minha estrategia (para cada tipo):
+    -> oneTransformationGoing:
+        se state = pending.... passar para: ongoing
+        pending packages: -1
+        on going packages: +1
+    -> oneTransformationArrived:
+        se state = ongoing && ongoing packages = 1.... passar para: finished
+        ongoing packages: -1
+        produced packages: +1
+    */
+    
 }
