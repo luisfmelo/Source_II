@@ -27,7 +27,7 @@ public class Manager {
         Modbus modbusCom = new Modbus();
         
         // Percorrer a lista de determinar a próxima operacao a ser executada
-        System.out.println("ListIterator Approach: ");
+        //System.out.println("ListIterator Approach: ");
         
         for(Iterator<Operation> i = waitingOps.iterator(); i.hasNext() ; ) 
         {
@@ -74,7 +74,7 @@ public class Manager {
                 modbusCom.sendOp(item.getArg1(), item.getArg2(), 4); //envia operação para o robot 3D (4)
                 cellState[4] = 0;
             }
-            System.out.println(item.getId());
+            //System.out.println(item.getId());
         }
     }
     
