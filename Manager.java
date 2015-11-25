@@ -33,17 +33,14 @@ public class Manager {
     {
         int cell = -1 ;
         
-<<<<<<< HEAD
         Modbus modbusCom = new Modbus();
         
         // Percorrer a lista de determinar a próxima operacao a ser executada
         //System.out.println("ListIterator Approach: ");
         
-=======
         // Lê os estados das células no PLC
         cellState = modbusCom.readPLCState();
     
->>>>>>> origin/master
         for(Iterator<Operation> i = waitingOps.iterator(); i.hasNext() ; ) 
         {
             Operation item = i.next();

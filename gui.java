@@ -78,7 +78,7 @@ public class gui extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Quantity", "Initial Package", "Final Package", "Check In Time", "Start Time", "Finish Time", "State"
+                "ID", "Quantity", "Bottom Package", "Top Package", "Check In Time", "Start Time", "Finish Time", "State"
             }
         ) {
             Class[] types = new Class [] {
@@ -100,7 +100,7 @@ public class gui extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Quantity", "Initial Package", "Final Package", "Check In Time", "Start Time", "Finish Time", "State"
+                "ID", "Quantity", "Package", "Pusher Number", "Check In Time", "Start Time", "Finish Time", "State"
             }
         ) {
             Class[] types = new Class [] {

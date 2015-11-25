@@ -175,8 +175,8 @@
                   <Table columnCount="8" rowCount="0">
                     <Column editable="true" title="ID" type="java.lang.Integer"/>
                     <Column editable="true" title="Quantity" type="java.lang.Integer"/>
-                    <Column editable="true" title="Initial Package" type="java.lang.String"/>
-                    <Column editable="true" title="Final Package" type="java.lang.String"/>
+                    <Column editable="true" title="Bottom Package" type="java.lang.String"/>
+                    <Column editable="true" title="Top Package" type="java.lang.String"/>
                     <Column editable="true" title="Check In Time" type="java.lang.Object"/>
                     <Column editable="true" title="Start Time" type="java.lang.Object"/>
                     <Column editable="true" title="Finish Time" type="java.lang.Object"/>
@@ -258,8 +258,8 @@
                   <Table columnCount="8" rowCount="0">
                     <Column editable="true" title="ID" type="java.lang.Integer"/>
                     <Column editable="true" title="Quantity" type="java.lang.Integer"/>
-                    <Column editable="true" title="Initial Package" type="java.lang.String"/>
-                    <Column editable="true" title="Final Package" type="java.lang.String"/>
+                    <Column editable="true" title="Package" type="java.lang.String"/>
+                    <Column editable="true" title="Pusher Number" type="java.lang.String"/>
                     <Column editable="true" title="Check In Time" type="java.lang.Object"/>
                     <Column editable="true" title="Start Time" type="java.lang.Object"/>
                     <Column editable="true" title="Finish Time" type="java.lang.Object"/>
