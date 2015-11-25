@@ -76,6 +76,50 @@ public class Modbus {
         return 0;
     }
     
+    public int updateCellState() {
+        InputRegister[] readvalue = null;
+        Register ack = new SimpleRegister(1);
+        
+        try {
+            readvalue = modbusTCPMaster.readInputRegisters(10, 3);
+        } catch(Exception multiplereaderror) {
+            System.out.println("Error readMultipleRegisters updateCellState");
+        }
+        
+        // A célula acabou processamneto
+        if(readvalue[0].getValue() > 0) {
+            
+            System.out.println("Processamento terminado");
+            
+            // Dar o ack do acontecimento
+            try {
+                modbusTCPMaster.writeSingleRegister(5, ack);
+            } catch(Exception multiplereaderror) {
+                System.out.println("Error readMultipleRegisters updateCellState");
+            }
+        }
+        
+        // verificar que o ack foi recebido
+        try {
+            readvalue = modbusTCPMaster.readInputRegisters(10, 3);
+        } catch(Exception multiplereaderror) {
+            System.out.println("Error readMultipleRegisters updateCellState");
+        }
+        
+        // O ack fo lido
+        if(readvalue[0].getValue() == 0) {
+            
+            // Limpar o ack
+            try {
+                modbusTCPMaster.writeSingleRegister(5, ack);
+            } catch(Exception multiplereaderror) {
+                System.out.println("Error readMultipleRegisters updateCellState");
+            }
+        }
+        
+        return 0;
+    }
+    
     public int[] readPLCState() {
         InputRegister[] readvalues = null;
         int[] intvalues = new int[10];

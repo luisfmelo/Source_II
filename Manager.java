@@ -131,7 +131,7 @@ public class Manager {
             else
                 return -1;
         }
-        else if(c == 'A') // Ambos... dou prioridade a fazer se nas série
+        else if(c == 'A') // Ambos... dou prioridade a transformar nas série
         {
             if(cellState[1] == 0)
                 return 1;

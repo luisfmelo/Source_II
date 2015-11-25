@@ -59,14 +59,13 @@ public class Trabalho_InformaticaIndustrial {
         
         //modbusCom.test();
         
-        int result = modbusCom.sendOp(6, 7, 2);
+        int result = modbusCom.sendOp(1, 5, 2);
         System.out.println("Resultado do envio da Op:" + result);
-        
-        
         
         while(true) 
         {
-            if(UdpThread.ordersSize() > 0) 
+            modbusCom.updateCellState();
+/*            if(UdpThread.ordersSize() > 0) 
             {
                 String received = UdpThread.getUdpOrder();
                 
@@ -77,15 +76,16 @@ public class Trabalho_InformaticaIndustrial {
                 
                 System.out.println("Ordem lida no MES:" + (listOps.peek()).getId());
                 
-/*                modbusCom.sendOp( (listOps.peek()).getStartPkg(), 
+                modbusCom.sendOp( (listOps.peek()).getStartPkg(), 
                                   (listOps.peek()).getEndPkg(), 
                                   operationToCell((listOps.peek()).getType()));
-*/
+
             }
-            if(true)//se o 1º tapete está livre (registo do codesys)            MUDAR!!!!!!
+            if(modbusCom.isWarehouseFree() == 1)  //se o 1º tapete está livre (registo do codesys)            MUDAR!!!!!!
             {
                 SuperManager.doNextOperation(waitingOps); //recebe operação que é para enviar
             }
+*/
         }
     }
     
