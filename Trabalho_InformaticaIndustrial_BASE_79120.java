@@ -15,7 +15,7 @@ import java.util.Queue;
 public class Trabalho_InformaticaIndustrial {
     public static Queue<Operation> listOps = new LinkedList<Operation>();
     public static Queue<Operation> waitingOps = new LinkedList<Operation>();
-    public static int[] cellState = new int[10];     //!< Estado das células
+    public static int[] cellState = new int[8];
     public static char[][] transformationMatrix = new char[][]
         {
             {'-','P','P','P','A','S','S','S','S'},
@@ -28,34 +28,16 @@ public class Trabalho_InformaticaIndustrial {
             {'X','X','X','X','X','X','P','-','S'},
             {'X','X','X','X','X','X','X','X','-'}
         }; // -: same Pkg; X: NotPossible; A: Any Cell; P:Parallel cell; S: Serie Cell 
-    
-    public static Modbus modbusCom = new Modbus();
-
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-        //MachineStatistics lol = new MachineStatistics();
-        
-        //lol.addTransformation(1-1, 4-1, 1);
-        
         for(int i = 0; i < 7; i++)
             cellState[i]=0;
         
-<<<<<<< HEAD
-        gui SuperGui = new gui(); 
-        SuperGui.setVisible(true);
-                
-        //SuperGui.addNewTransformation(1, 5, 3, 5, Calendar.getInstance(), Calendar.getInstance(), Calendar.getInstance(), 3);
-        //SuperGui.addNewTransformation(2, 10, 1, 2, Calendar.getInstance(), Calendar.getInstance(), Calendar.getInstance(), 3);
-        
-
         Modbus modbusCom = new Modbus();
         Statistics SuperStatistics = new Statistics();
         
-=======
->>>>>>> origin/master
         modbusCom.start("127.0.0.1", 6009);
         
         UDP UdpThread = new UDP();
@@ -72,13 +54,11 @@ public class Trabalho_InformaticaIndustrial {
         
         //modbusCom.test();
         
-        int result = modbusCom.sendOp(1, 5, 2);
-        System.out.println("Resultado do envio da Op:" + result);
-        
+        modbusCom.sendOp(5, 6, 1);
+
         while(true) 
         {
-            modbusCom.updateCellState();
-/*            if(UdpThread.ordersSize() > 0) 
+            if(UdpThread.ordersSize() > 0) 
             {
                 String received = UdpThread.getUdpOrder();
                 
@@ -89,16 +69,15 @@ public class Trabalho_InformaticaIndustrial {
                 
                 System.out.println("Ordem lida no MES:" + (listOps.peek()).getId());
                 
-                modbusCom.sendOp( (listOps.peek()).getStartPkg(), 
+/*                modbusCom.sendOp( (listOps.peek()).getStartPkg(), 
                                   (listOps.peek()).getEndPkg(), 
                                   operationToCell((listOps.peek()).getType()));
-
+*/
             }
-            if(modbusCom.isWarehouseFree() == 1)  //se o 1º tapete está livre (registo do codesys)            MUDAR!!!!!!
+            if(true)//se o 1º tapete está livre (registo do codesys)            MUDAR!!!!!!
             {
                 SuperManager.doNextOperation(waitingOps); //recebe operação que é para enviar
             }
-*/
         }
     }
     
