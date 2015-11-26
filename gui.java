@@ -7,6 +7,8 @@ package trabalho_informaticaindustrial;
 
 import java.util.Calendar;
 import javax.swing.table.DefaultTableModel;
+import static trabalho_informaticaindustrial.OpState.ONGOING;
+import static trabalho_informaticaindustrial.OpState.PENDING;
 
 /**
  *
@@ -58,7 +60,7 @@ public class gui extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -67,7 +69,6 @@ public class gui extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(TransformTable);
         TransformTable.getAccessibleContext().setAccessibleName("TransformTable");
-        TransformTable.getAccessibleContext().setAccessibleParent(null);
 
         jTabbedPane1.addTab("Transformation List", jScrollPane1);
 
@@ -229,22 +230,43 @@ public class gui extends javax.swing.JFrame {
     
     public void oneTransformationGoing(int id) 
     {
+        DefaultTableModel model = (DefaultTableModel) TransformTable.getModel();    
+        int row = 0, col = 0;
         
-        DefaultTableModel model = (DefaultTableModel) TransformTable.getModel();
-        //int row = model.getValueAt(id, id);
-        //row = TransformTable.
+        for(int i = 0; i < model.getRowCount(); i++)
+        {
+            if ( id == (int)model.getValueAt(i, 0))
+            {
+                row = i;
+                break;
+            }
+        }
+        
+        if (model.getValueAt(row, model.getColumnCount()-1) == PENDING)
+        {
+            model.setValueAt(ONGOING, row, model.getColumnCount()-1);
+            model.setValueAt(Calendar.getInstance(), row, 5); //se estava a espera... diz q começou e mete tempo
+            
+        }
+        
+        model.setValueAt((int)model.getValueAt(row, 3)-1, row, 3);  //F5 nos pending packages (-1)
+        model.setValueAt((int)model.getValueAt(row, 2)-1, row, 2);  //F5 nos ongoing packages (+1)
+            
+                //row = TransformTable.
         //model.setValueAt("Moo", row, 1); 
     }
     /*
     Minha estrategia (para cada tipo):
     -> oneTransformationGoing:
-        se state = pending.... passar para: ongoing
+        se state = pending.... passar para: ongoing                             OK
         pending packages: -1
         on going packages: +1
     -> oneTransformationArrived:
         se state = ongoing && ongoing packages = 1.... passar para: finished
         ongoing packages: -1
         produced packages: +1
+    -> cuidado com ID's repetivos
+    -> atenção... meter os tempos calendar
     */
     
 }

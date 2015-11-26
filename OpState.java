@@ -12,5 +12,8 @@ package trabalho_informaticaindustrial;
 public enum OpState {
     INIT,
     STATE2,
+    PENDING,
+    FINISHED,
+    ONGOING
     // ...
 }
