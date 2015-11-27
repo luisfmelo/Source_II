@@ -7,6 +7,7 @@ package trabalho_informaticaindustrial;
 
 import java.util.Calendar;
 import javax.swing.table.DefaultTableModel;
+import static trabalho_informaticaindustrial.OpState.FINISHED;
 import static trabalho_informaticaindustrial.OpState.ONGOING;
 import static trabalho_informaticaindustrial.OpState.PENDING;
 
@@ -210,24 +211,33 @@ public class gui extends javax.swing.JFrame {
      * @param state
      * @param FinishTime
  */
-    public void addNewTransformation(int id, int qt_produ, int qt_ongoing, int qt_pending, int initPkg, int finalPkg, Calendar checkIn, Calendar StartTime, Calendar FinishTime, int state) 
+    public void addNewTransformation(int id, int qt_produ, int initPkg, int finalPkg) 
     {
         DefaultTableModel model = (DefaultTableModel) TransformTable.getModel();
-        model.addRow(new Object[]{id, qt_produ, qt_ongoing, qt_pending, "P" + initPkg, "P" + finalPkg, checkIn, StartTime, FinishTime, state});
+        model.addRow(new Object[]{id, qt_produ, 0, qt_produ, "P" + initPkg, "P" + finalPkg, Calendar.getInstance(), null, null, PENDING});
     }
     
-    public void addNewAssemble(int id, int qt_produ, int qt_ongoing, int qt_pending, int bottomPkg, int topPkg, Calendar checkIn, Calendar StartTime, Calendar FinishTime, int state)
+    public void addNewAssemble(int id, int qt_produ, int bottomPkg, int topPkg)
     {
         DefaultTableModel model = (DefaultTableModel) AssembleTable.getModel();
-        model.addRow(new Object[]{id, qt_produ, qt_ongoing, qt_pending, "P" + bottomPkg, "P" + topPkg, checkIn, StartTime, FinishTime, state});
+        model.addRow(new Object[]{id, qt_produ, 0, qt_produ, "P" + bottomPkg, "P" + topPkg, Calendar.getInstance(), null, null, PENDING});
     }
     
-    public void addNewUnload(int id, int qt_produ, int qt_ongoing, int qt_pending, int Pkg, int numPusher, Calendar checkIn, Calendar StartTime, Calendar FinishTime, int state)
+    public void addNewUnload(int id, int qt_produ, int Pkg, int numPusher)
     {
         DefaultTableModel model = (DefaultTableModel) UnloadTable.getModel();
-        model.addRow(new Object[]{id, qt_produ, qt_ongoing, qt_pending, "P" + Pkg, numPusher, checkIn, StartTime, FinishTime, state});
+        model.addRow(new Object[]{id, qt_produ, 0, qt_produ, "P" + Pkg, numPusher, Calendar.getInstance(), null, null, PENDING});
     }
     
+    /*
+                    UPDATE TRANSFORMATION TABLE
+        rows:
+            *0: id                  *1: produced pkg
+            *2: ongoing pkg         *3: pending pkg
+            *4: Pkg init            *5: Pkg final
+            *6: check in time       *7: start time
+            *8: finish time         *9: state
+        */
     public void oneTransformationGoing(int id) 
     {
         DefaultTableModel model = (DefaultTableModel) TransformTable.getModel();    
@@ -242,18 +252,38 @@ public class gui extends javax.swing.JFrame {
             }
         }
         
-        if (model.getValueAt(row, model.getColumnCount()-1) == PENDING)
+        if (model.getValueAt(row, model.getColumnCount()-1) == PENDING) // é a 1ª peça de todas
         {
             model.setValueAt(ONGOING, row, model.getColumnCount()-1);
-            model.setValueAt(Calendar.getInstance(), row, 5); //se estava a espera... diz q começou e mete tempo
-            
+            model.setValueAt(Calendar.getInstance(), row, 7); //atualiza start time
         }
         
         model.setValueAt((int)model.getValueAt(row, 3)-1, row, 3);  //F5 nos pending packages (-1)
-        model.setValueAt((int)model.getValueAt(row, 2)-1, row, 2);  //F5 nos ongoing packages (+1)
-            
-                //row = TransformTable.
-        //model.setValueAt("Moo", row, 1); 
+        model.setValueAt((int)model.getValueAt(row, 2)+1, row, 2);  //F5 nos ongoing packages (+1)
+    }
+    
+    public void oneTransformationArrived(int id) 
+    {
+        DefaultTableModel model = (DefaultTableModel) TransformTable.getModel();    
+        int row = 0, col = 0;
+        
+        for(int i = 0; i < model.getRowCount(); i++)
+        {
+            if ( id == (int)model.getValueAt(i, 0))
+            {
+                row = i;
+                break;
+            }
+        }
+        
+        if (model.getValueAt(row, model.getColumnCount()-1) == ONGOING) // é a ultima peça de todas
+        {
+            model.setValueAt(FINISHED, row, model.getColumnCount()-1); //diz que acabou
+            model.setValueAt(Calendar.getInstance(), row, 7); //atualiza finish time time
+        }
+        
+        model.setValueAt((int)model.getValueAt(row, 3)+1, row, 3);  //F5 nos pending packages (+1)
+        model.setValueAt((int)model.getValueAt(row, 2)-1, row, 2);  //F5 nos ongoing packages (-1)
     }
     /*
     Minha estrategia (para cada tipo):
@@ -267,6 +297,7 @@ public class gui extends javax.swing.JFrame {
         produced packages: +1
     -> cuidado com ID's repetivos
     -> atenção... meter os tempos calendar
+    -> atençao... talvez seja melhor atualizar estes tempos tambem nos arrays do tipo Operation
     */
     
 }
