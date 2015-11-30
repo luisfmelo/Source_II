@@ -3,10 +3,19 @@
  */
 package trabalho_informaticaindustrial;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -28,9 +37,9 @@ public class Trabalho_InformaticaIndustrial {
             {'X','X','X','X','X','X','P','-','S'},
             {'X','X','X','X','X','X','X','X','-'}
         }; // -: same Pkg; X: NotPossible; A: Any Cell; P:Parallel cell; S: Serie Cell 
-    
+    public static Calendar theBeginningOfTimes;
     public static Modbus modbusCom = new Modbus();
-
+    public static gui SuperGui = new gui();
     /**
      * @param args the command line arguments
      */
@@ -40,11 +49,26 @@ public class Trabalho_InformaticaIndustrial {
         
         //lol.addTransformation(1-1, 4-1, 1);
         
+        theBeginningOfTimes = Calendar.getInstance();
+        
         for(int i = 0; i < 7; i++)
             cellState[i]=0;
-        
-        gui SuperGui = new gui(); 
+         
         SuperGui.setVisible(true);
+        
+        SuperGui.addWindowListener(new WindowAdapter() 
+        {
+            @Override
+            public void windowClosing(WindowEvent e) 
+            {
+                try {
+                    getReadyToQuit();
+                } catch (IOException ex) {
+                    Logger.getLogger(Trabalho_InformaticaIndustrial.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                System.exit(0);
+            }
+        });
                 
         //SuperGui.addNewTransformation(1, 5, 3, 5, Calendar.getInstance(), Calendar.getInstance(), Calendar.getInstance(), 3);
         //SuperGui.addNewTransformation(2, 10, 1, 2, Calendar.getInstance(), Calendar.getInstance(), Calendar.getInstance(), 3);
@@ -145,5 +169,55 @@ public class Trabalho_InformaticaIndustrial {
         //}
         
         return null;
+    }
+    
+    /**
+     *  Create new file to Operator
+     */
+    public static void getReadyToQuit() throws IOException
+    {
+        try 
+        {
+            
+            Calendar theEndOfTimes = Calendar.getInstance();
+            String content = "Factory Working since " + theBeginningOfTimes.getTime() + ".\r\n";
+            content += "Transformations: GET DATA\r\n";
+            content += "Factory close at " + theEndOfTimes.getTime() + ".\r\n\r\n";
+            double totalTime = theEndOfTimes.getTimeInMillis() - theBeginningOfTimes.getTimeInMillis();
+            content += "Total Time Working: " + totalTime + " milisegundos.\r\n\r\n";
+            content += "® David Sousa & Luís Melo";// e-mail: <" + SuperGui.getEmail() + ">\r\n\r\n";
+            
+            File file = new File("LogFile.txt");
+
+            // if file doesnt exists, then create it
+            if (!file.exists()) {
+                    file.createNewFile();
+            }
+
+            FileWriter fw = new FileWriter(file.getAbsoluteFile());
+            try (BufferedWriter bw = new BufferedWriter(fw)) {
+                bw.write(content);
+                bw.close();
+            }
+
+            System.out.println("Finally!!!!!");
+
+        } 
+        catch (IOException e) 
+        {
+                e.printStackTrace();
+        }
+       
+      /*  File myFile = new File("Statistics.txt");
+        if(!myFile.exists()) 
+        {
+            myFile.createNewFile();
+        } 
+
+        FileOutputStream oFile = new FileOutputStream(myFile, false); 
+        oFile.write("dataToWrite");
+        System.out.println("Done!");
+    }*/
+    
     }
 }

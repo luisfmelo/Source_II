@@ -5,6 +5,7 @@
  */
 package trabalho_informaticaindustrial;
 
+import java.awt.event.WindowEvent;
 import java.util.Calendar;
 import javax.swing.table.DefaultTableModel;
 import static trabalho_informaticaindustrial.OpState.FINISHED;
@@ -40,9 +41,15 @@ public class gui extends javax.swing.JFrame {
         AssembleTable = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
         UnloadTable = new javax.swing.JTable();
-        jTabbedPane2 = new javax.swing.JTabbedPane();
-        jLabel2 = new javax.swing.JLabel();
+        jTabbedPane3 = new javax.swing.JTabbedPane();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        jTable6 = new javax.swing.JTable();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        jTable7 = new javax.swing.JTable();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        jTable8 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MES");
@@ -116,33 +123,106 @@ public class gui extends javax.swing.JFrame {
         jScrollPane3.setViewportView(UnloadTable);
 
         jTabbedPane1.addTab("Unload List", jScrollPane3);
-        jTabbedPane1.addTab("Statistics", jTabbedPane2);
 
-        jLabel2.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("MES");
+        jTable6.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Machine", "# P1", "# P2", "# P6", "Time"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane9.setViewportView(jTable6);
+
+        jTabbedPane3.addTab("Celula Paralela", jScrollPane9);
+
+        jTable7.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Machine", "# P1", "# P2", "# P6", "Time"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane10.setViewportView(jTable7);
+
+        jTabbedPane3.addTab("Celulas Série", jScrollPane10);
+
+        jTable8.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Machine", "# P1", "# P2", "# P6", "Time"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane11.setViewportView(jTable8);
+
+        jTabbedPane3.addTab("Pushers", jScrollPane11);
+
+        jTabbedPane1.addTab("Statistics", jTabbedPane3);
 
         jLabel1.setText("® David Sousa & Luís Melo");
+
+        jLabel3.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("MES");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(jLabel1)
+                    .addGap(0, 0, Short.MAX_VALUE)))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING))
-                .addGap(0, 0, 0))
+                .addContainerGap()
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
+                .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                .addGap(16, 16, 16)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -190,12 +270,18 @@ public class gui extends javax.swing.JFrame {
     private javax.swing.JTable TransformTable;
     private javax.swing.JTable UnloadTable;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JTabbedPane jTabbedPane3;
+    private javax.swing.JTable jTable6;
+    private javax.swing.JTable jTable7;
+    private javax.swing.JTable jTable8;
     // End of variables declaration//GEN-END:variables
     
     
@@ -211,11 +297,6 @@ public class gui extends javax.swing.JFrame {
      * @param state
      * @param FinishTime
  */
-    public void addNewTransformation(int id, int qt_produ, int initPkg, int finalPkg) 
-    {
-        DefaultTableModel model = (DefaultTableModel) TransformTable.getModel();
-        model.addRow(new Object[]{id, qt_produ, 0, qt_produ, "P" + initPkg, "P" + finalPkg, Calendar.getInstance(), null, null, PENDING});
-    }
     
     public void addNewAssemble(int id, int qt_produ, int bottomPkg, int topPkg)
     {
@@ -238,6 +319,13 @@ public class gui extends javax.swing.JFrame {
             *6: check in time       *7: start time
             *8: finish time         *9: state
         */
+    
+    public void addNewTransformation(int id, int qt_produ, int initPkg, int finalPkg) 
+    {
+        DefaultTableModel model = (DefaultTableModel) TransformTable.getModel();
+        model.addRow(new Object[]{id, qt_produ, 0, qt_produ, "P" + initPkg, "P" + finalPkg, Calendar.getInstance(), null, null, PENDING});
+    }
+    
     public void oneTransformationGoing(int id) 
     {
         DefaultTableModel model = (DefaultTableModel) TransformTable.getModel();    
@@ -298,6 +386,8 @@ public class gui extends javax.swing.JFrame {
     -> cuidado com ID's repetivos
     -> atenção... meter os tempos calendar
     -> atençao... talvez seja melhor atualizar estes tempos tambem nos arrays do tipo Operation
-    */
     
+    
+     */
 }
+
