@@ -35,8 +35,6 @@ public class gui extends javax.swing.JFrame {
     private void initComponents() {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        TransformTable = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         AssembleTable = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -105,6 +103,8 @@ public class gui extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TransformTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
@@ -113,29 +113,6 @@ public class gui extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jTabbedPane1.setFont(new java.awt.Font("Consolas", 0, 11)); // NOI18N
-
-        TransformTable.setAutoCreateRowSorter(true);
-        TransformTable.setFont(new java.awt.Font("Consolas", 0, 11)); // NOI18N
-        TransformTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "ID", "Produced Packages", "On Going Packages", "Pending Packages", "Initial Package", "Final Package", "Check In Time", "Start Time", "Finish Time", "State"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(TransformTable);
-        TransformTable.getAccessibleContext().setAccessibleName("TransformTable");
-
-        jTabbedPane1.addTab("Transformation List", jScrollPane1);
 
         AssembleTable.setAutoCreateRowSorter(true);
         AssembleTable.setFont(new java.awt.Font("Consolas", 0, 11)); // NOI18N
@@ -879,7 +856,7 @@ public class gui extends javax.swing.JFrame {
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(239, Short.MAX_VALUE))
+                .addContainerGap(742, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -907,6 +884,29 @@ public class gui extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Statistics", jTabbedPane3);
 
+        TransformTable.setAutoCreateRowSorter(true);
+        TransformTable.setFont(new java.awt.Font("Consolas", 0, 11)); // NOI18N
+        TransformTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Produced Packages", "On Going Packages", "Pending Packages", "Initial Package", "Final Package", "Check In Time", "Start Time", "Finish Time", "State"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(TransformTable);
+        TransformTable.getAccessibleContext().setAccessibleName("TransformTable");
+
+        jTabbedPane1.addTab("Transformation List", jScrollPane1);
+
         jLabel1.setText("® David Sousa & Luís Melo");
 
         jLabel3.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
@@ -917,14 +917,14 @@ public class gui extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1053, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jLabel1)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -937,7 +937,7 @@ public class gui extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        setSize(new java.awt.Dimension(416, 338));
+        setSize(new java.awt.Dimension(1069, 338));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1214,17 +1214,9 @@ public class gui extends javax.swing.JFrame {
      * @param FinishTime
  */
     
-    public void addNewAssemble(int id, int qt_produ, int bottomPkg, int topPkg)
-    {
-        DefaultTableModel model = (DefaultTableModel) AssembleTable.getModel();
-        model.addRow(new Object[]{id, qt_produ, 0, qt_produ, "P" + bottomPkg, "P" + topPkg, Calendar.getInstance(), null, null, PENDING});
-    }
     
-    public void addNewUnload(int id, int qt_produ, int Pkg, int numPusher)
-    {
-        DefaultTableModel model = (DefaultTableModel) UnloadTable.getModel();
-        model.addRow(new Object[]{id, qt_produ, 0, qt_produ, "P" + Pkg, numPusher, Calendar.getInstance(), null, null, PENDING});
-    }
+    
+    
     
     /*
                     UPDATE TRANSFORMATION TABLE
@@ -1269,6 +1261,135 @@ public class gui extends javax.swing.JFrame {
     public void oneTransformationArrived(int id) 
     {
         DefaultTableModel model = (DefaultTableModel) TransformTable.getModel();    
+        int row = 0, col = 0;
+        
+        for(int i = 0; i < model.getRowCount(); i++)
+        {
+            if ( id == (int)model.getValueAt(i, 0))
+            {
+                row = i;
+                break;
+            }
+        }
+        
+        if (model.getValueAt(row, model.getColumnCount()-1) == ONGOING) // é a ultima peça de todas
+        {
+            model.setValueAt(FINISHED, row, model.getColumnCount()-1); //diz que acabou
+            model.setValueAt(Calendar.getInstance(), row, 7); //atualiza finish time time
+        }
+        
+        model.setValueAt((int)model.getValueAt(row, 3)+1, row, 3);  //F5 nos pending packages (+1)
+        model.setValueAt((int)model.getValueAt(row, 2)-1, row, 2);  //F5 nos ongoing packages (-1)
+    }
+    
+    
+    /*
+                    UPDATE ASSEMBLE TABLE
+        rows:
+            *0: id                  *1: produced pkg
+            *2: ongoing pkg         *3: pending pkg
+            *4: Bottom Package      *5: Top Package
+            *6: check in time       *7: start time
+            *8: finish time         *9: state
+        */
+    
+    public void addNewAssemble(int id, int qt_produ, int bottomPkg, int topPkg)
+    {
+        DefaultTableModel model = (DefaultTableModel) AssembleTable.getModel();
+        model.addRow(new Object[]{id, qt_produ, 0, qt_produ, "P" + bottomPkg, "P" + topPkg, Calendar.getInstance(), null, null, PENDING});
+    }
+    
+    public void oneAssembleGoing(int id) 
+    {
+        DefaultTableModel model = (DefaultTableModel) AssembleTable.getModel();    
+        int row = 0, col = 0;
+        
+        for(int i = 0; i < model.getRowCount(); i++)
+        {
+            if ( id == (int)model.getValueAt(i, 0))
+            {
+                row = i;
+                break;
+            }
+        }
+        
+        if (model.getValueAt(row, model.getColumnCount()-1) == PENDING) // é a 1ª peça de todas
+        {
+            model.setValueAt(ONGOING, row, model.getColumnCount()-1);
+            model.setValueAt(Calendar.getInstance(), row, 7); //atualiza start time
+        }
+        
+        model.setValueAt((int)model.getValueAt(row, 3)-1, row, 3);  //F5 nos pending packages (-1)
+        model.setValueAt((int)model.getValueAt(row, 2)+1, row, 2);  //F5 nos ongoing packages (+1)
+    }
+    
+    public void oneAssembleArrived(int id) 
+    {
+        DefaultTableModel model = (DefaultTableModel) AssembleTable.getModel();    
+        int row = 0, col = 0;
+        
+        for(int i = 0; i < model.getRowCount(); i++)
+        {
+            if ( id == (int)model.getValueAt(i, 0))
+            {
+                row = i;
+                break;
+            }
+        }
+        
+        if (model.getValueAt(row, model.getColumnCount()-1) == ONGOING) // é a ultima peça de todas
+        {
+            model.setValueAt(FINISHED, row, model.getColumnCount()-1); //diz que acabou
+            model.setValueAt(Calendar.getInstance(), row, 7); //atualiza finish time time
+        }
+        
+        model.setValueAt((int)model.getValueAt(row, 3)+1, row, 3);  //F5 nos pending packages (+1)
+        model.setValueAt((int)model.getValueAt(row, 2)-1, row, 2);  //F5 nos ongoing packages (-1)
+    }
+    
+    /*
+                    UPDATE UNLOAD TABLE
+        rows:
+            *0: id                  *1: produced pkg
+            *2: ongoing pkg         *3: pending pkg
+            *4: Pakage              *5: Pusher Number
+            *6: check in time       *7: start time
+            *8: finish time         *9: state
+        */
+    
+    public void addNewUnload(int id, int qt_produ, int Pkg, int numPusher)
+    {
+        DefaultTableModel model = (DefaultTableModel) UnloadTable.getModel();
+        model.addRow(new Object[]{id, qt_produ, 0, qt_produ, "P" + Pkg, numPusher, Calendar.getInstance(), null, null, PENDING});
+    }
+    
+    public void oneUnloadGoing(int id) 
+    {
+        DefaultTableModel model = (DefaultTableModel) UnloadTable.getModel();    
+        int row = 0, col = 0;
+        
+        for(int i = 0; i < model.getRowCount(); i++)
+        {
+            if ( id == (int)model.getValueAt(i, 0))
+            {
+                row = i;
+                break;
+            }
+        }
+        
+        if (model.getValueAt(row, model.getColumnCount()-1) == PENDING) // é a 1ª peça de todas
+        {
+            model.setValueAt(ONGOING, row, model.getColumnCount()-1);
+            model.setValueAt(Calendar.getInstance(), row, 7); //atualiza start time
+        }
+        
+        model.setValueAt((int)model.getValueAt(row, 3)-1, row, 3);  //F5 nos pending packages (-1)
+        model.setValueAt((int)model.getValueAt(row, 2)+1, row, 2);  //F5 nos ongoing packages (+1)
+    }
+    
+    public void oneUnloadArrived(int id) 
+    {
+        DefaultTableModel model = (DefaultTableModel) UnloadTable.getModel();    
         int row = 0, col = 0;
         
         for(int i = 0; i < model.getRowCount(); i++)

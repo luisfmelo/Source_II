@@ -83,9 +83,8 @@ public class Trabalho_InformaticaIndustrial {
         
         Manager SuperManager = new Manager();
         
-        Calendar cal = Calendar.getInstance();
         SimpleDateFormat horadechegada = new SimpleDateFormat("HH:mm:ss|dd.MM.yyyy");
-        System.out.println(horadechegada.format(cal.getTime()));
+        System.out.println(horadechegada.format(theBeginningOfTimes.getTime()));
         
         //System.out.println("id: " + HeadOp.getId());
         
