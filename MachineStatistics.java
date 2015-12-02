@@ -158,5 +158,5 @@ public class MachineStatistics {
     
     public void printStats() {
         //...
-    }
+    } 
 }
