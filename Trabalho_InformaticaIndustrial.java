@@ -91,12 +91,22 @@ public class Trabalho_InformaticaIndustrial {
         
         //modbusCom.test();
         
-        int result = modbusCom.sendOp(1, 5, 2);
+        int result = modbusCom.sendOp(3, 1, 6);
+        cellState[5] = 1;
+        
+        System.out.print("cellState:");
+        for(int x=0; x<7; x++) {
+                System.out.print(cellState[x] + " ");
+        }
+         System.out.println(";");
+        
         System.out.println("Resultado do envio da Op:" + result);
+        
+        
         
         while(true) 
         {
-            modbusCom.updateCellState();
+            modbusCom.updateCellState(cellState);
 /*            if(UdpThread.ordersSize() > 0) 
             {
                 String received = UdpThread.getUdpOrder();

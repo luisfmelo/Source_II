@@ -7,11 +7,7 @@ package trabalho_informaticaindustrial;
 
 import net.wimpi.modbus.procimg.*;
 import net.wimpi.modbus.facade.ModbusTCPMaster;
-import net.wimpi.modbus.procimg.*;
-import net.wimpi.modbus.msg.*;
-import net.wimpi.modbus.io.*;
-import net.wimpi.modbus.net.*;
-import net.wimpi.modbus.util.*;
+import net.wimpi.modbus.*;
 
 public class Modbus {
     private ModbusTCPMaster modbusTCPMaster;
@@ -76,44 +72,53 @@ public class Modbus {
         return 0;
     }
     
-    public int updateCellState() {
+    public int updateCellState(int[] cellState) {
         InputRegister[] readvalue = null;
         Register ack = new SimpleRegister(1);
         
         try {
-            readvalue = modbusTCPMaster.readInputRegisters(10, 3);
+            readvalue = modbusTCPMaster.readInputRegisters(20, 10);
         } catch(Exception multiplereaderror) {
             System.out.println("Error readMultipleRegisters updateCellState");
         }
         
-        // A célula acabou processamneto
-        if(readvalue[0].getValue() > 0) {
-            
-            System.out.println("Processamento terminado");
-            
-            // Dar o ack do acontecimento
-            try {
-                modbusTCPMaster.writeSingleRegister(5, ack);
-            } catch(Exception multiplereaderror) {
-                System.out.println("Error readMultipleRegisters updateCellState");
-            }
-        }
-        
-        // verificar que o ack foi recebido
-        try {
-            readvalue = modbusTCPMaster.readInputRegisters(10, 3);
-        } catch(Exception multiplereaderror) {
-            System.out.println("Error readMultipleRegisters updateCellState");
-        }
-        
-        // O ack fo lido
-        if(readvalue[0].getValue() == 0) {
-            
-            // Limpar o ack
-            try {
-                modbusTCPMaster.writeSingleRegister(5, ack);
-            } catch(Exception multiplereaderror) {
-                System.out.println("Error readMultipleRegisters updateCellState");
+        for(int i=0; i < 7; i++) {
+            if(cellState[i] > 0) {
+                             
+                // Ver se célula acabou processamneto
+                if(readvalue[i+1].getValue() > 0) {
+                                     
+                    System.out.println("Processamento terminado");
+
+                    // Dar o ack do acontecimento
+                    try {
+                        modbusTCPMaster.writeSingleRegister(4+i, ack);
+                    } catch(Exception multiplereaderror) {
+                        System.out.println("Error readMultipleRegisters updateCellState");
+                    }
+                
+
+                    // verificar que o ack foi recebido
+                    try {
+                        readvalue = modbusTCPMaster.readInputRegisters(20, 10);
+                    } catch(Exception multiplereaderror) {
+                        System.out.println("Error readMultipleRegisters updateCellState");
+                    }
+
+                    // O ack foi lido
+                    if(readvalue[i+1].getValue() == 0) {
+
+                        // Limpar o ack
+                        try {
+                            ack.setValue(0);
+                            modbusTCPMaster.writeSingleRegister(4+i, ack);
+                        } catch(Exception multiplereaderror) {
+                            System.out.println("Error readMultipleRegisters updateCellState");
+                        }
+
+                        cellState[i] = 0; // A celula já está livre
+                    }
+                }
             }
         }
         
@@ -125,7 +130,7 @@ public class Modbus {
         int[] intvalues = new int[10];
                 
         try {
-            readvalues = modbusTCPMaster.readInputRegisters(10, 5);
+            readvalues = modbusTCPMaster.readInputRegisters(20, 10);
         } catch(Exception multiplereaderror) {
             System.out.println("Error readMultipleRegisters");
         }
@@ -140,7 +145,7 @@ public class Modbus {
         InputRegister[] readvalue = null;
         
         try {
-            readvalue = modbusTCPMaster.readInputRegisters(10, 1);
+            readvalue = modbusTCPMaster.readInputRegisters(20, 1);
         } catch(Exception multiplereaderror) {
             System.out.println("Error readMultipleRegisters");
         }
