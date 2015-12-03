@@ -63,6 +63,7 @@ public class Manager {
                     
                 item.setQuantity(item.getQuantity()-1);
                 modbusCom.sendOp(item.getArg1(), item.getArg2(), cell); //envia operação
+                cellState[cell] = 1; // A célula passa a estar ocupada
             }
             
             else if ( item.getType() == 'U' ) //se for descarga
