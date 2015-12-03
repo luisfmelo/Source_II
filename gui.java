@@ -35,6 +35,8 @@ public class gui extends javax.swing.JFrame {
     private void initComponents() {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TransformTable = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         AssembleTable = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -103,8 +105,6 @@ public class gui extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        TransformTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
@@ -113,6 +113,29 @@ public class gui extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jTabbedPane1.setFont(new java.awt.Font("Consolas", 0, 11)); // NOI18N
+
+        TransformTable.setAutoCreateRowSorter(true);
+        TransformTable.setFont(new java.awt.Font("Consolas", 0, 11)); // NOI18N
+        TransformTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Produced Packages", "On Going Packages", "Pending Packages", "Initial Package", "Final Package", "Check In Time", "Start Time", "Finish Time", "State"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(TransformTable);
+        TransformTable.getAccessibleContext().setAccessibleName("TransformTable");
+
+        jTabbedPane1.addTab("Transformation List", jScrollPane1);
 
         AssembleTable.setAutoCreateRowSorter(true);
         AssembleTable.setFont(new java.awt.Font("Consolas", 0, 11)); // NOI18N
@@ -884,29 +907,6 @@ public class gui extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Statistics", jTabbedPane3);
 
-        TransformTable.setAutoCreateRowSorter(true);
-        TransformTable.setFont(new java.awt.Font("Consolas", 0, 11)); // NOI18N
-        TransformTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "ID", "Produced Packages", "On Going Packages", "Pending Packages", "Initial Package", "Final Package", "Check In Time", "Start Time", "Finish Time", "State"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(TransformTable);
-        TransformTable.getAccessibleContext().setAccessibleName("TransformTable");
-
-        jTabbedPane1.addTab("Transformation List", jScrollPane1);
-
         jLabel1.setText("® David Sousa & Luís Melo");
 
         jLabel3.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
@@ -917,7 +917,7 @@ public class gui extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1053, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jLabel1)
                 .addGap(0, 0, Short.MAX_VALUE))
