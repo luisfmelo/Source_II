@@ -12,6 +12,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.logging.Level;
@@ -90,8 +91,8 @@ public class Trabalho_InformaticaIndustrial {
         
         //modbusCom.test();
         
-        int result = modbusCom.sendOp(3, 1, 6);
-        cellState[5] = 1;
+        //int result = modbusCom.sendOp(3, 1, 6);
+        //cellState[5] = 1;
         
         System.out.print("cellState:");
         for(int x=0; x<7; x++) {
@@ -99,34 +100,44 @@ public class Trabalho_InformaticaIndustrial {
         }
          System.out.println(";");
         
-        System.out.println("Resultado do envio da Op:" + result);
-        
-        
+        //System.out.println("Resultado do envio da Op:" + result);
         
         while(true) 
         {
-            modbusCom.updateCellState(cellState);
-/*            if(UdpThread.ordersSize() > 0) 
+            //modbusCom.updateCellState(cellState);
+            
+            if(UdpThread.ordersSize() > 0) 
             {
                 String received = UdpThread.getUdpOrder();
                 
                 Operation op = stringToOperation(received);
 
-                listOps.add(op);
-                waitingOps.add(op);
+                if(!listOps.add(op))
+                    System.out.println("Não foi possível adicionar operação!");
+                if(!waitingOps.add(op))
+                    System.out.println("Não foi possível adicionar operação!");
+                    
+                System.out.println("Adicionada nova operação! Lista das operações:");
                 
-                System.out.println("Ordem lida no MES:" + (listOps.peek()).getId());
+                Iterator<Operation> i = waitingOps.iterator();
+                while(i.hasNext()) {
+                    Operation item = i.next();
+                    System.out.println(item.getType()+ "(" + item.getId() + "): " + item.getArg1() + " -> " + item.getArg2());
+                }                
                 
-                modbusCom.sendOp( (listOps.peek()).getStartPkg(), 
+                System.out.println("Ordem lida no MES:" + (listOps.element()).getId());
+                
+                /*modbusCom.sendOp( (listOps.peek()).getStartPkg(), 
                                   (listOps.peek()).getEndPkg(), 
                                   operationToCell((listOps.peek()).getType()));
+                */
+            }
 
-            }
-            if(modbusCom.isWarehouseFree() == 1)  //se o 1º tapete está livre (registo do codesys)            MUDAR!!!!!!
-            {
-                SuperManager.doNextOperation(waitingOps); //recebe operação que é para enviar
-            }
-*/
+//            if(modbusCom.isWarehouseFree() == 1)  //se o 1º tapete está livre (registo do codesys)            MUDAR!!!!!!
+//            {
+                SuperManager.doNextOperation(waitingOps, cellState); //recebe operação que é para enviar
+//            }
+
         }
     }
     
@@ -163,21 +174,19 @@ public class Trabalho_InformaticaIndustrial {
             switch(ordertype)
             {
                 case('T'):  System.out.println("Transformation");
-                            break;
+                            return new Operation(ordertype, ordernumber, originpkg, finalpkg, qty);
                     
                 case('U'):  System.out.println("Unload");
                             //return new Unload(ordernumber, originpkg, finalpkg, qty, cal);
                             return new Operation(ordertype, ordernumber, originpkg, finalpkg, qty);
 
                 case('M'):  System.out.println("Assembling");
-                            break;
+                            return new Operation(ordertype, ordernumber, originpkg, finalpkg, qty);
                     
                 default:    System.out.println("Error!");
-
+                            return null;
             }
         //}
-        
-        return null;
     }
     
     /**

@@ -58,8 +58,8 @@ public class UDP implements Runnable
             
                 try {
                     orders.put(capitalizedSentence.substring(1));
-                } catch(Exception e) {
-                    System.out.println("Explosion!!! Everybody at the factory is dead: (LOL)" + e);
+                } catch(Exception cap) {
+                    System.out.println("Ocorreu um erro no processamento do frame recebido por UDP:" + cap);
                 }
                 
                 try {
@@ -85,7 +85,7 @@ public class UDP implements Runnable
                 }
             }
             else
-                System.out.println("Rebeceu um frame que não era uma ordem. Petardo és tu!");   // Debug (tirar!)
+                System.out.println("Rebeceu um frame que não era uma ordem!");   // Debug (tirar!)
         } 
     }
     
