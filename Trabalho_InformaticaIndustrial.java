@@ -95,7 +95,7 @@ public class Trabalho_InformaticaIndustrial {
         
         //modbusCom.test();
         
-        int result = modbusCom.sendOp(3, 1, 6);
+        //int result = modbusCom.sendOp(3, 1, 6);
         //cellState[5] = 1;
         
         System.out.print("cellState:");
@@ -145,6 +145,7 @@ public class Trabalho_InformaticaIndustrial {
 //            {
             SuperManager.doNextOperation(waitingOps, cellState, modbusCom); //recebe operação que é para enviar
 //            }
+            SuperManager.updateCellState(waitingOps, cellState, modbusCom);
 
         }
     }
