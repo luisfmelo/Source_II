@@ -6,6 +6,7 @@
 package trabalho_informaticaindustrial;
 
 import java.util.*;
+import static trabalho_informaticaindustrial.Trabalho_InformaticaIndustrial.ANSI_RED;
 import static trabalho_informaticaindustrial.Trabalho_InformaticaIndustrial.cellState;
 import static trabalho_informaticaindustrial.Trabalho_InformaticaIndustrial.modbusCom;
 
@@ -29,7 +30,7 @@ public class Manager {
      *
      * @param waitingOps
      */
-    public void doNextOperation(Queue<Operation> waitingOps, int[][] cellState, Modbus modbusCom) 
+    public void doNextOperation(LinkedList<Operation> waitingOps, int[][] cellState, Modbus modbusCom) 
     {
         int cell = -1 ;
         
@@ -67,6 +68,10 @@ public class Manager {
                 
                 // Enviar a operação para o PLC
                 modbusCom.sendOp(item.getArg1(), item.getArg2(), cell);
+                item.incrementOngoingPackages();
+                
+                // Incrementar o nº de peças em processamento
+                item.incrementFinishedPackages();
                 
                 // A célula passa a estar ocupada
                 cellState[cell][0] = 1;
@@ -83,6 +88,8 @@ public class Manager {
                     modbusCom.sendOp(item.getArg1(), item.getArg2(), cell); //envia operação
                     cellState[Cells.Unload1][0] = 1;
                     cellState[Cells.Unload1][1] = item.getId();
+                    item.incrementOngoingPackages();
+                    
                     System.out.println("Enviada peça para o Pusher 1");
                 }
                 else if ( cellState[Cells.Unload2][0] == 0 && item.getArg2() == 2) //pusher 1 livre e eu quero enviar para o pusher 1
@@ -91,6 +98,8 @@ public class Manager {
                     modbusCom.sendOp(item.getArg1(), item.getArg2(), cell); //envia operação
                     cellState[Cells.Unload2][0] = 1;
                     cellState[Cells.Unload2][1] = item.getId();
+                    item.incrementOngoingPackages();
+                    
                     System.out.println("Enviada peça para o Pusher 2");
                 }
             }
@@ -100,8 +109,41 @@ public class Manager {
                 modbusCom.sendOp(item.getArg1(), item.getArg2(), 4); //envia operação para o robot 3D (4)
                 cellState[4][0] = 1;
                 cellState[4][1] = item.getId();
+                item.incrementOngoingPackages();
             }
-            //System.out.println(item.getId());
+        }
+    }
+    
+    public void updateCellState(LinkedList<Operation> waitingOps, int[][] cellState, Modbus modbusCom)
+    {
+        int[] cellStatePLC;
+        char cellType = 'N';
+        
+        // Vê se alguma célula terminou o processamento
+        cellStatePLC = modbusCom.getCellState();
+        
+        for(int i=0; i < 8; i++) {
+            
+            // Se a célula terminou o processamento
+            if(cellStatePLC[i] > 0) {
+                
+                if(i > 0 && i < 4)
+                    cellType = 'T';
+                else if(i == 5)
+                    cellType = 'M';
+                else if(i > 5 && i <8)
+                    cellType = 'U';
+                    
+                
+                // Atualizar operação
+                int idx = waitingOps.indexOf(findOp(cellType, cellState[i][1], waitingOps));
+                waitingOps.get(idx).incrementFinishedPackages();
+                waitingOps.get(idx).decrementOngoingPackages();
+                        
+                // Atualizar estado interno das células
+                cellState[i][0] = 0;
+                cellState[i][1] = 0;
+            }
         }
     }
     
@@ -168,5 +210,21 @@ public class Manager {
 
         return -1;
     }
-   
+    
+    public Operation findOp(char type, int id, Queue<Operation> waitingOps)
+    {
+        Iterator<Operation> i = waitingOps.iterator();
+        
+        while(i.hasNext()) {
+            Operation item = i.next();
+            
+            if(item.getType() == type && item.getId() == id) {
+                return item;
+            }
+        }
+        
+        System.out.println(ANSI_RED + "Erro Manager: não foi possível localizar a operção desejada.");
+        
+        return null;
+    }
 }

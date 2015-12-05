@@ -15,7 +15,6 @@ public class Operation {
     private int id;
     private OpState state;
     private int quantity;
-    //private char type;
     private int ongoingPackages;
     private int finishedPackages;
     private Calendar checkInTime;
@@ -83,18 +82,23 @@ public class Operation {
         return ongoingPackages;
     }
 
-    public void setOngoingPackages(int ongoingPackages) {
-        this.ongoingPackages = ongoingPackages;
+    public void incrementOngoingPackages() {
+        this.ongoingPackages++;
+    }
+    
+    public void decrementOngoingPackages() {
+        if(this.ongoingPackages > 0)
+            this.ongoingPackages--;
     }
 
     public int getFinishedPackages() {
         return finishedPackages;
     }
 
-    public void setFinishedPackages(int finishedPackages) {
-        this.finishedPackages = finishedPackages;
+    public void incrementFinishedPackages() {
+        this.finishedPackages++;
     }
-
+    
     public Calendar getCheckInTime() {
         return checkInTime;
     }
@@ -117,6 +121,5 @@ public class Operation {
 
     public void setFinalTime(Calendar finalTime) {
         this.finalTime = finalTime;
-    }
-    
+    }    
 }

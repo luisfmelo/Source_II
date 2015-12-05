@@ -25,8 +25,8 @@ import java.util.logging.Logger;
 public class Trabalho_InformaticaIndustrial {
     public static final String ANSI_RED = "\u001B[31m";
     
-    public static Queue<Operation> listOps = new LinkedList<Operation>();
-    public static Queue<Operation> waitingOps = new LinkedList<Operation>();
+    public static LinkedList<Operation> listOps = new LinkedList<Operation>();
+    public static LinkedList<Operation> waitingOps = new LinkedList<Operation>();
     public static int[][] cellState = new int[10][2];     //!< Estado das células (a segunda dimensão indica o id da operação em execução)
     public static char[][] transformationMatrix = new char[][]
         {
