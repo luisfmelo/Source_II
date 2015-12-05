@@ -8,6 +8,7 @@ package trabalho_informaticaindustrial;
 import net.wimpi.modbus.procimg.*;
 import net.wimpi.modbus.facade.ModbusTCPMaster;
 import net.wimpi.modbus.*;
+import static trabalho_informaticaindustrial.Trabalho_InformaticaIndustrial.ANSI_RED;
 
 public class Modbus {
     private ModbusTCPMaster modbusTCPMaster;
@@ -72,7 +73,7 @@ public class Modbus {
         return 0;
     }
     
-    public int updateCellState(int[] cellState) {
+    public int updateCellState(int[][] cellState) {
         InputRegister[] readvalue = null;
         Register ack = new SimpleRegister(1);
         
@@ -83,7 +84,7 @@ public class Modbus {
         }
         
         for(int i=0; i < 7; i++) {
-            if(cellState[i] > 0) {
+            if(cellState[i][0] > 0) {
                              
                 // Ver se célula acabou processamneto
                 if(readvalue[i+1].getValue() > 0) {
@@ -96,7 +97,6 @@ public class Modbus {
                     } catch(Exception multiplereaderror) {
                         System.out.println("Error readMultipleRegisters updateCellState");
                     }
-                
 
                     // verificar que o ack foi recebido
                     try {
@@ -116,7 +116,10 @@ public class Modbus {
                             System.out.println("Error readMultipleRegisters updateCellState");
                         }
 
-                        cellState[i] = 0; // A celula já está livre
+                        System.out.println("A célula " + i + "terminou o processamento da operação " + cellState[i][1] + ".");
+                        
+                        cellState[i][0] = 0; // A celula já está livre
+                        cellState[i][1] = 0; // A operação terminou
                     }
                 }
             }
@@ -146,11 +149,13 @@ public class Modbus {
         
         try {
             readvalue = modbusTCPMaster.readInputRegisters(20, 1);
-        } catch(Exception multiplereaderror) {
-            System.out.println("Error readMultipleRegisters");
+            
+            return readvalue[0].getValue();
+        } catch(Exception warehousefree) {
+            System.out.println(ANSI_RED + "Erro modbus: não foi possível ler o estado do armazém.");
         }
         
-        return readvalue[0].getValue();
+        return -1;
     }
     
     public void test() {
@@ -189,9 +194,11 @@ public class Modbus {
             //valores[0].setValue(69);
 
             //modbusTCPMaster.writeMultipleRegisters(0, valores);
-
-            res = modbusTCPMaster.readInputRegisters(0, 5);
-
+            try {
+            res = modbusTCPMaster.readInputRegisters(20, 5);
+            } catch(Exception seila) {
+                System.out.println("Error reading: " + seila);
+            }
             System.out.println("Update");                
 
             System.out.print("Data:");

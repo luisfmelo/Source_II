@@ -29,11 +29,9 @@ public class Manager {
      *
      * @param waitingOps
      */
-    public void doNextOperation(Queue<Operation> waitingOps, int[] cellState) 
+    public void doNextOperation(Queue<Operation> waitingOps, int[][] cellState, Modbus modbusCom) 
     {
         int cell = -1 ;
-        
-        Modbus modbusCom = new Modbus();
         
         // Percorrer a lista de determinar a próxima operacao a ser executada
         //System.out.println("ListIterator Approach: ");
@@ -71,33 +69,37 @@ public class Manager {
                 modbusCom.sendOp(item.getArg1(), item.getArg2(), cell);
                 
                 // A célula passa a estar ocupada
-                cellState[cell] = 1;
+                cellState[cell][0] = 1;
+                cellState[cell][1] = item.getId();
                 
                 System.out.println("Enviada operação Transformação para a célula: " + cell);
             }
             
             else if ( item.getType() == 'U' ) //se for descarga
             {
-                if ( cellState[Cells.Unload1] == 0 && item.getArg2() == 1) //pusher 1 livre e eu quero enviar para o pusher 1
+                if ( cellState[Cells.Unload1][0] == 0 && item.getArg2() == 1) //pusher 1 livre e eu quero enviar para o pusher 1
                 {
                     cell = Cells.Unload1;
                     modbusCom.sendOp(item.getArg1(), item.getArg2(), cell); //envia operação
-                    cellState[Cells.Unload1] = 1;
+                    cellState[Cells.Unload1][0] = 1;
+                    cellState[Cells.Unload1][1] = item.getId();
                     System.out.println("Enviada peça para o Pusher 1");
                 }
-                else if ( cellState[Cells.Unload2] == 0 && item.getArg2() == 2) //pusher 1 livre e eu quero enviar para o pusher 1
+                else if ( cellState[Cells.Unload2][0] == 0 && item.getArg2() == 2) //pusher 1 livre e eu quero enviar para o pusher 1
                 {
                     cell = Cells.Unload1;
                     modbusCom.sendOp(item.getArg1(), item.getArg2(), cell); //envia operação
-                    cellState[Cells.Unload2] = 1;
+                    cellState[Cells.Unload2][0] = 1;
+                    cellState[Cells.Unload2][1] = item.getId();
                     System.out.println("Enviada peça para o Pusher 2");
                 }
             }
             
-            else if ( item.getType() == 'M' && cellState[4] == 0 ) //se for montagem e se o robot 3D estiver livre
+            else if ( item.getType() == 'M' && cellState[4][0] == 0 ) //se for montagem e se o robot 3D estiver livre
             {
                 modbusCom.sendOp(item.getArg1(), item.getArg2(), 4); //envia operação para o robot 3D (4)
-                cellState[4] = 0;
+                cellState[4][0] = 1;
+                cellState[4][1] = item.getId();
             }
             //System.out.println(item.getId());
         }
@@ -113,17 +115,17 @@ public class Manager {
      *         -1     Células ocupadas
      *         -2     Transformação para a própria peça
      */
-    public int cellDestination(int startPkg, int endPkg, int[] cellState)
+    public int cellDestination(int startPkg, int endPkg, int[][] cellState)
     {
         char c = Trabalho_InformaticaIndustrial.transformationMatrix[startPkg-1][endPkg-1];
         
         if(c == '-') // nao e preciso transformação vai direto para o armazem pela 1ª celula serie livre
         {
-            if(cellState[1] == 0)
+            if(cellState[1][0] == 0)
                 return 1;
-            else if(cellState[2] == 0)
+            else if(cellState[2][0] == 0)
                 return 2;
-            else if(cellState[3] == 0)
+            else if(cellState[3][0] == 0)
                 return 3;
             else
                 return -1;
@@ -134,31 +136,31 @@ public class Manager {
         }
         else if(c == 'P') // Paralelo
         {
-            if(cellState[0] == 0)
+            if(cellState[0][0] == 0)
                 return 0;
             else
                 return -1;
         }
         else if(c == 'S') // Serie
         {
-            if(cellState[1] == 0)
+            if(cellState[1][0] == 0)
                 return 1;
-            else if(cellState[2] == 0)
+            else if(cellState[2][0] == 0)
                 return 2;
-            else if(cellState[3] == 0)
+            else if(cellState[3][0] == 0)
                 return 3;
             else
                 return -1;
         }
         else if(c == 'A') // Ambos... dou prioridade a transformar nas série
         {
-            if(cellState[1] == 0)
+            if(cellState[1][0] == 0)
                 return 1;
-            else if(cellState[2] == 0)
+            else if(cellState[2][0] == 0)
                 return 2;
-            else if(cellState[3] == 0)
+            else if(cellState[3][0] == 0)
                 return 3;
-            else if(cellState[0] == 0)
+            else if(cellState[0][0] == 0)
                 return 0;
             else
                 return -1;

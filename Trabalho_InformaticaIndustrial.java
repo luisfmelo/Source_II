@@ -23,9 +23,11 @@ import java.util.logging.Logger;
  * @author David
  */
 public class Trabalho_InformaticaIndustrial {
+    public static final String ANSI_RED = "\u001B[31m";
+    
     public static Queue<Operation> listOps = new LinkedList<Operation>();
     public static Queue<Operation> waitingOps = new LinkedList<Operation>();
-    public static int[] cellState = new int[10];     //!< Estado das células
+    public static int[][] cellState = new int[10][2];     //!< Estado das células (a segunda dimensão indica o id da operação em execução)
     public static char[][] transformationMatrix = new char[][]
         {
             {'-','P','P','P','A','S','S','S','S'},
@@ -52,9 +54,11 @@ public class Trabalho_InformaticaIndustrial {
         
         theBeginningOfTimes = Calendar.getInstance();
         
-        for(int i = 0; i < 7; i++)
-            cellState[i]=0;
-         
+        for(int i = 0; i < 7; i++) {
+            cellState[i][0]=0; // Estado da célula           
+            cellState[i][1]=0; // Id da Operação em execução
+        }
+        
         SuperGui.setVisible(true);
         
         SuperGui.addWindowListener(new WindowAdapter() 
@@ -91,15 +95,19 @@ public class Trabalho_InformaticaIndustrial {
         
         //modbusCom.test();
         
-        //int result = modbusCom.sendOp(3, 1, 6);
+        int result = modbusCom.sendOp(3, 1, 6);
         //cellState[5] = 1;
         
         System.out.print("cellState:");
         for(int x=0; x<7; x++) {
-                System.out.print(cellState[x] + " ");
+                System.out.print(cellState[x][0] + " ");
         }
          System.out.println(";");
         
+        //modbusCom.test();
+        
+        
+         
         //System.out.println("Resultado do envio da Op:" + result);
         
         while(true) 
@@ -135,7 +143,7 @@ public class Trabalho_InformaticaIndustrial {
 
 //            if(modbusCom.isWarehouseFree() == 1)  //se o 1º tapete está livre (registo do codesys)            MUDAR!!!!!!
 //            {
-                SuperManager.doNextOperation(waitingOps, cellState); //recebe operação que é para enviar
+            SuperManager.doNextOperation(waitingOps, cellState, modbusCom); //recebe operação que é para enviar
 //            }
 
         }
