@@ -194,13 +194,16 @@ public class Trabalho_InformaticaIndustrial {
             switch(ordertype)
             {
                 case('T'):  System.out.println("Transformation");
+                            SuperGui.addNewTransformation(ordernumber, qty, originpkg, finalpkg);
                             return new Operation(ordertype, ordernumber, originpkg, finalpkg, qty);
                     
                 case('U'):  System.out.println("Unload");
+                            SuperGui.addNewUnload(ordernumber, qty, originpkg, finalpkg);
                             //return new Unload(ordernumber, originpkg, finalpkg, qty, cal);
                             return new Operation(ordertype, ordernumber, originpkg, finalpkg, qty);
 
                 case('M'):  System.out.println("Assembling");
+                            SuperGui.addNewAssemble(ordernumber, qty, originpkg, finalpkg);
                             return new Operation(ordertype, ordernumber, originpkg, finalpkg, qty);
                     
                 default:    System.out.println("Error!");
@@ -257,5 +260,25 @@ public class Trabalho_InformaticaIndustrial {
         System.out.println("Done!");
     }*/
     
+    }
+    
+    public static void updateOngoing(char type, int id)
+    {
+        if ( type == 'T')
+            SuperGui.oneTransformationGoing(id);
+        else if ( type == 'U')
+            SuperGui.oneUnloadGoing(id);
+        else if ( type == 'M')
+            SuperGui.oneAssembleGoing(id);
+    }
+    
+    public static void updateArrived(char type, int id)
+    {
+        if ( type == 'T')
+            SuperGui.oneTransformationArrived(id);
+        else if ( type == 'U')
+            SuperGui.oneUnloadArrived(id);
+        else if ( type == 'M')
+            SuperGui.oneAssembleArrived(id);
     }
 }

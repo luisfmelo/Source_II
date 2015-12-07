@@ -1231,7 +1231,7 @@ public class gui extends javax.swing.JFrame {
     public void addNewTransformation(int id, int qt_produ, int initPkg, int finalPkg) 
     {
         DefaultTableModel model = (DefaultTableModel) TransformTable.getModel();
-        model.addRow(new Object[]{id, qt_produ, 0, qt_produ, "P" + initPkg, "P" + finalPkg, Calendar.getInstance(), null, null, PENDING});
+        model.addRow(new Object[]{id, 0, 0, qt_produ, "P" + initPkg, "P" + finalPkg, Calendar.getInstance().getTime().toString(), null, null, PENDING});
     }
     
     public void oneTransformationGoing(int id) 
@@ -1248,10 +1248,13 @@ public class gui extends javax.swing.JFrame {
             }
         }
         
-        if (model.getValueAt(row, model.getColumnCount()-1) == PENDING) // é a 1ª peça de todas
+        // é a 1 peça de todas; esta pending...ongoing = 0; produced = 0
+        if (    (int) model.getValueAt(row, 1 ) == 0 && 
+                (int) model.getValueAt(row, 2 ) == 0 &&
+                model.getValueAt(row, model.getColumnCount()-1) == PENDING)  
         {
             model.setValueAt(ONGOING, row, model.getColumnCount()-1);
-            model.setValueAt(Calendar.getInstance(), row, 7); //atualiza start time
+            model.setValueAt(Calendar.getInstance().getTime().toString(), row, 7); //atualiza start time
         }
         
         model.setValueAt((int)model.getValueAt(row, 3)-1, row, 3);  //F5 nos pending packages (-1)
@@ -1271,14 +1274,16 @@ public class gui extends javax.swing.JFrame {
                 break;
             }
         }
-        
-        if (model.getValueAt(row, model.getColumnCount()-1) == ONGOING) // é a ultima peça de todas
+        // é a ultima peça de todas; esta ongoing...pending = 0 ongoing =1
+        if (    (int) model.getValueAt(row, 3 ) == 0 && 
+                (int) model.getValueAt(row, 2 ) == 1 &&
+                model.getValueAt(row, model.getColumnCount()-1) == ONGOING)  
         {
             model.setValueAt(FINISHED, row, model.getColumnCount()-1); //diz que acabou
-            model.setValueAt(Calendar.getInstance(), row, 7); //atualiza finish time time
+            model.setValueAt(Calendar.getInstance().getTime().toString(), row, 7); //atualiza finish time time
         }
         
-        model.setValueAt((int)model.getValueAt(row, 3)+1, row, 3);  //F5 nos pending packages (+1)
+        model.setValueAt((int)model.getValueAt(row, 1)+1, row, 1);  //F5 nos produced packages (+1)
         model.setValueAt((int)model.getValueAt(row, 2)-1, row, 2);  //F5 nos ongoing packages (-1)
     }
     

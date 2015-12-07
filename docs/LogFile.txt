@@ -1,0 +1,7 @@
+Factory Working since Wed Dec 02 17:23:08 GMT 2015.
+Transformations: GET DATA
+Factory close at Wed Dec 02 17:23:10 GMT 2015.
+
+Total Time Working: 2370.0 milisegundos.
+
+® David Sousa & Luís Melo

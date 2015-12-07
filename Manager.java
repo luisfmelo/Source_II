@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package trabalho_informaticaindustrial;
 
 import java.util.*;
@@ -11,6 +6,8 @@ import static trabalho_informaticaindustrial.Trabalho_InformaticaIndustrial.ANSI
 import static trabalho_informaticaindustrial.Trabalho_InformaticaIndustrial.ANSI_YELLOW;
 import static trabalho_informaticaindustrial.Trabalho_InformaticaIndustrial.cellState;
 import static trabalho_informaticaindustrial.Trabalho_InformaticaIndustrial.modbusCom;
+import static trabalho_informaticaindustrial.Trabalho_InformaticaIndustrial.updateArrived;
+import static trabalho_informaticaindustrial.Trabalho_InformaticaIndustrial.updateOngoing;
 
 interface Cells {
     public static final int Parallel = 0;
@@ -84,8 +81,9 @@ public class Manager {
                 }
                 
                 // Enviar a operação para o PLC
-                modbusCom.sendOp(item.getArg1(), item.getArg2(), cell);
+                modbusCom.sendOp(item.getArg1(), item.getArg2(), cell); //aqui é que vai acontecer toda a ação
                 item.incrementOngoingPackages();
+                updateOngoing('T', item.getId());
                 
                 // A célula passa a estar ocupada
                 cellState[cell-1][0] = 1;
@@ -103,6 +101,7 @@ public class Manager {
                     cellState[Cells.Unload1][0] = 1;
                     cellState[Cells.Unload1][1] = item.getId();
                     item.incrementOngoingPackages();
+                    updateOngoing('U', item.getId());
                     
                     System.out.println("Enviada peça para o Pusher 1");
                 }
@@ -113,6 +112,7 @@ public class Manager {
                     cellState[Cells.Unload2][0] = 1;
                     cellState[Cells.Unload2][1] = item.getId();
                     item.incrementOngoingPackages();
+                    updateOngoing('U', item.getId());
                     
                     System.out.println("Enviada peça para o Pusher 2");
                 }
@@ -124,6 +124,7 @@ public class Manager {
                 cellState[4][0] = 1;
                 cellState[4][1] = item.getId();
                 item.incrementOngoingPackages();
+                updateOngoing('U', item.getId());
             }
         }
     }
@@ -151,8 +152,9 @@ public class Manager {
                 int idx = waitingOps.indexOf(findOp(cellType, cellState[i][1], waitingOps));
                 
                 waitingOps.get(idx).incrementFinishedPackages();
-                waitingOps.get(idx).decrementOngoingPackages();
-
+                waitingOps.get(idx).decrementOngoingPackages(); 
+                updateArrived(cellType, idx);
+                
                 // Atualizar estado interno das células
                 cellState[i][0] = 0;
                 cellState[i][1] = 0;
@@ -168,7 +170,8 @@ public class Manager {
 
                     waitingOps.get(idx).incrementFinishedPackages();
                     waitingOps.get(idx).decrementOngoingPackages();
-
+                    updateArrived(cellType, idx);
+                    
                     // Atualizar estado interno das células
                     cellState[i][0] = 1;
                     cellState[i][1] = 0;
@@ -235,7 +238,7 @@ public class Manager {
         {
             System.out.println("A operação pode ser feita em ambos os tipos de células!");
             
-            if(cellState[0][0] == 0)
+            if(cellState[0][0] == 0)            //MUDEI ISTO POR CAUSA DA PRIORIDADE
                 return 1;
             else if(cellState[1][0] == 0)
                 return 2;
