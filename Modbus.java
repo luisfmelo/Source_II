@@ -101,7 +101,7 @@ public class Modbus {
         for(int i=0; i < 7; i++) {
                              
             // Ver se célula acabou processamento
-            if((readvalue[i+1].getValue() > 0 && (i+1) < 6) || (readvalue[i+1].getValue() > 1 && (i+1) >= 6)) {
+            if((readvalue[i+1].getValue() > 0 && ((i+1) < 6)) || (readvalue[i+1].getValue() > 1 && ((i+1) >= 6))) {
 
                 System.out.println("A célula " + i + " terminou o processamento!");
 

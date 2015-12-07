@@ -151,10 +151,11 @@ public class Trabalho_InformaticaIndustrial {
 
             
             SuperManager.updateCellState(waitingOps, cellState, modbusCom);
-//            if(modbusCom.isWarehouseFree() == 1)  //se o 1º tapete está livre (registo do codesys)            MUDAR!!!!!!
-//            {
-            SuperManager.doNextOperation(waitingOps, cellState, modbusCom); //recebe operação que é para enviar
-//            }
+            
+            if(modbusCom.isWarehouseFree() == 1)  //se o 1º tapete está livre (registo do codesys)            MUDAR!!!!!!
+            {
+                SuperManager.doNextOperation(waitingOps, cellState, modbusCom); //recebe operação que é para enviar
+            }
             
 
         }

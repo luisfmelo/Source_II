@@ -46,12 +46,15 @@ public class Manager {
             System.out.println("qty: " + item.getQuantity() + " finished:" + item.getFinishedPackages());
             
             // Se a ordem que ja foi completada é removida
-            if ( (item.getQuantity() - item.getFinishedPackages()) <= 0 ) {
-
-                System.out.format(ANSI_GREEN + "A operação %c%03d foi completada!", item.getType(), item.getId());
-                System.out.println("qty: " + item.getQuantity() + " finished:" + item.getFinishedPackages());
+            if ( (item.getQuantity() - item.getFinishedPackages() - item.getOngoingPackages()) <= 0 ) {
                 
-                i.remove();
+                if(item.getQuantity() - item.getFinishedPackages() <= 0) {
+                    System.out.format(ANSI_GREEN + "A operação %c%03d foi completada!", item.getType(), item.getId());
+                    System.out.println("qty: " + item.getQuantity() + " finished:" + item.getFinishedPackages());
+                
+                    i.remove();
+                }
+                
                 continue;
             }
             
@@ -136,7 +139,7 @@ public class Manager {
         for(int i=0; i < 8; i++) {
             
             // Se a célula terminou o processamento
-            if(cellStatePLC[i] > 1 && (i<5)) {
+            if(cellStatePLC[i] > 0 && (i<5)) {
                 
                 if((i+1) > 0 && (i+1) < 4)
                     cellType = 'T';
@@ -158,10 +161,7 @@ public class Manager {
                 
                 cellType = 'U';
                 
-                if(cellStatePLC[i] == 1) {
-                    cellState[i][0] = cellStatePLC[i];
-                }
-                else if(cellStatePLC[i] == 2) {
+                if(cellStatePLC[i] == 2) {
                     // Atualizar operação
                     System.out.println("Atualizar operação de descarga index: " + i);
                     int idx = waitingOps.indexOf(findOp(cellType, cellState[i][1], waitingOps));
@@ -172,6 +172,9 @@ public class Manager {
                     // Atualizar estado interno das células
                     cellState[i][0] = 1;
                     cellState[i][1] = 0;
+                } 
+                else if(cellStatePLC[i] == 1) {
+                    cellState[i][0] = cellStatePLC[i];
                 }
             }
         }
@@ -191,7 +194,7 @@ public class Manager {
     {
         char c = Trabalho_InformaticaIndustrial.transformationMatrix[startPkg-1][endPkg-1];
         
-        
+        System.out.println("cellDestination: " + c);
         
         if(c == '-') // nao e preciso transformação vai direto para o armazem pela 1ª celula serie livre
         {
@@ -230,6 +233,8 @@ public class Manager {
         }
         else if(c == 'A') // Ambos... dou prioridade a transformar nas série
         {
+            System.out.println("A operação pode ser feita em ambos os tipos de células!");
+            
             if(cellState[0][0] == 0)
                 return 1;
             else if(cellState[1][0] == 0)
