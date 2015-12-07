@@ -97,12 +97,13 @@ public class Modbus {
             System.out.println("Error readMultipleRegisters updateCellState");
         }
         
+        // Iteracção para cada célula
         for(int i=0; i < 7; i++) {
                              
-            // Ver se célula acabou processamneto
-            if(readvalue[i+1].getValue() > 0) {
+            // Ver se célula acabou processamento
+            if((readvalue[i+1].getValue() > 0 && (i+1) < 6) || (readvalue[i+1].getValue() > 1 && (i+1) >= 6)) {
 
-                System.out.println("A célula " + i + "terminou o processamento!");
+                System.out.println("A célula " + i + " terminou o processamento!");
 
                 // Dar o ack do acontecimento
                 try {
@@ -110,29 +111,37 @@ public class Modbus {
                 } catch(Exception multiplereaderror) {
                     System.out.println("Error readMultipleRegisters updateCellState");
                 }
-
+                
+                System.out.println("Acknoledge enviado para a célula " + i + ".");
+                
                 // Verificar que o ack foi recebido
-                try {
-                    readvalue = modbusTCPMaster.readInputRegisters(20, 10);
-                } catch(Exception multiplereaderror) {
-                    System.out.println("Error readMultipleRegisters updateCellState");
-                }
-
-                // O ack foi lido
-                if(readvalue[i+1].getValue() == 0) {
-
-                    // Limpar o ack
+                while((readvalue[i+1].getValue() != 0 && (i+1) < 6) || (readvalue[i+1].getValue() > 1 && (i+1) >= 6)) {
                     try {
-                        ack.setValue(0);
-                        modbusTCPMaster.writeSingleRegister(4+i, ack);
+                        readvalue = modbusTCPMaster.readInputRegisters(20, 10);
                     } catch(Exception multiplereaderror) {
                         System.out.println("Error readMultipleRegisters updateCellState");
                     }
-
-                    cellStatePLC[i] = 1; // A celula já está livre
+                }
+                
+                if((i+1) < 6) cellStatePLC[i] = 1;          // A célula já está livre
+                else if((i+1) >= 6) cellStatePLC[i] = 2;    // A célula de descarga está livre
+                    
+                System.out.println("O acknoledge foi recebido pela célula " + i + ".");
+                    
+                // Limpar o ack
+                try {
+                    ack.setValue(0);
+                    modbusTCPMaster.writeSingleRegister(4+i, ack);
+                } catch(Exception multiplereaderror) {
+                    System.out.println("Error readMultipleRegisters updateCellState");
                 }
             } else {
                 cellStatePLC[i] = 0;
+            }
+            
+            // Caso seja um pusher e esteja ocupado
+            if((readvalue[i+1].getValue() == 1 && (i+1) >= 6) && cellStatePLC[i] != 2) {
+                cellStatePLC[i] = 1;
             }
         }
         

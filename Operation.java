@@ -15,8 +15,8 @@ public class Operation {
     private int id;
     private OpState state;
     private int quantity;
-    private int ongoingPackages;
-    private int finishedPackages;
+    private int ongoingPackages = 0;
+    private int finishedPackages = 0;
     private Calendar checkInTime;
     private Calendar intialTime;
     private Calendar finalTime;
@@ -35,6 +35,7 @@ public class Operation {
         id = orderId;
         arg1 = orderStartPkg;
         arg2 = orderEndPkg;
+        quantity = orderQty;
     }
     
     public char getType() {

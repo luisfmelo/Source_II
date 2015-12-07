@@ -8,6 +8,7 @@ import java.net.*;
 import java.io.*;
 import java.util.*;
 import java.util.concurrent.*;
+import static trabalho_informaticaindustrial.Trabalho_InformaticaIndustrial.ANSI_RED;
 
 public class UDP implements Runnable
 {
@@ -93,7 +94,8 @@ public class UDP implements Runnable
         try {
             return orders.take();
         } catch(Exception someexception) {
-            return "NOP";
+            System.out.println(ANSI_RED + "Não foi possível retornar uma string!");
+            return null;
         }
     }
     
