@@ -6,6 +6,8 @@
 package trabalho_informaticaindustrial;
 
 import java.awt.event.WindowEvent;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import javax.swing.table.DefaultTableModel;
 import static trabalho_informaticaindustrial.OpState.FINISHED;
@@ -17,6 +19,8 @@ import static trabalho_informaticaindustrial.OpState.PENDING;
  * @author Luís Melo <luismelo7@gmail.com>
  */
 public class gui extends javax.swing.JFrame {
+        
+    public static DateFormat dateFormat = new SimpleDateFormat("hh:mm:ss dd MMM yyyy");
 
     /**
      * Creates new form gui
@@ -51,24 +55,24 @@ public class gui extends javax.swing.JFrame {
         jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
-        jTextField50 = new javax.swing.JTextField();
-        jTextField51 = new javax.swing.JTextField();
-        jTextField52 = new javax.swing.JTextField();
+        C1MaP6 = new javax.swing.JTextField();
+        C1MaP1 = new javax.swing.JTextField();
+        C1MaTime = new javax.swing.JTextField();
         jTextField53 = new javax.swing.JTextField();
         jTextField54 = new javax.swing.JTextField();
-        jTextField55 = new javax.swing.JTextField();
-        jTextField56 = new javax.swing.JTextField();
-        jTextField57 = new javax.swing.JTextField();
-        jTextField58 = new javax.swing.JTextField();
-        jTextField59 = new javax.swing.JTextField();
-        jTextField60 = new javax.swing.JTextField();
-        jTextField61 = new javax.swing.JTextField();
-        jTextField62 = new javax.swing.JTextField();
-        jTextField63 = new javax.swing.JTextField();
-        jTextField64 = new javax.swing.JTextField();
-        jTextField65 = new javax.swing.JTextField();
-        jTextField66 = new javax.swing.JTextField();
-        jTextField67 = new javax.swing.JTextField();
+        C2MaP1 = new javax.swing.JTextField();
+        C3MaP1 = new javax.swing.JTextField();
+        C4MaP1 = new javax.swing.JTextField();
+        C2MaP2 = new javax.swing.JTextField();
+        C1MaP2 = new javax.swing.JTextField();
+        C3MaP2 = new javax.swing.JTextField();
+        C4MaP2 = new javax.swing.JTextField();
+        C2MaP6 = new javax.swing.JTextField();
+        C4MaP6 = new javax.swing.JTextField();
+        C3MaP6 = new javax.swing.JTextField();
+        C2MaTime = new javax.swing.JTextField();
+        C3MaTime = new javax.swing.JTextField();
+        C4MaTime = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -76,35 +80,35 @@ public class gui extends javax.swing.JFrame {
         jLabel25 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
-        jTextField22 = new javax.swing.JTextField();
-        jTextField23 = new javax.swing.JTextField();
+        C2MbP5 = new javax.swing.JTextField();
+        C2MbTime = new javax.swing.JTextField();
         jTextField34 = new javax.swing.JTextField();
         jTextField38 = new javax.swing.JTextField();
-        jTextField24 = new javax.swing.JTextField();
-        jTextField25 = new javax.swing.JTextField();
-        jTextField40 = new javax.swing.JTextField();
-        jTextField41 = new javax.swing.JTextField();
-        jTextField42 = new javax.swing.JTextField();
-        jTextField47 = new javax.swing.JTextField();
-        jTextField48 = new javax.swing.JTextField();
+        C3MbP5 = new javax.swing.JTextField();
+        C4MbP5 = new javax.swing.JTextField();
+        C3MbP8 = new javax.swing.JTextField();
+        C2MbP8 = new javax.swing.JTextField();
+        C4MbP8 = new javax.swing.JTextField();
+        C3MbTime = new javax.swing.JTextField();
+        C4MbTime = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        jTextField14 = new javax.swing.JTextField();
-        jTextField15 = new javax.swing.JTextField();
-        jTextField16 = new javax.swing.JTextField();
+        C1McP8 = new javax.swing.JTextField();
+        C1McP1 = new javax.swing.JTextField();
+        C1McTime = new javax.swing.JTextField();
         jTextField27 = new javax.swing.JTextField();
         jTextField28 = new javax.swing.JTextField();
-        jTextField29 = new javax.swing.JTextField();
+        C1McP3 = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        textFieldPusher1 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        textFieldPusher2 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
@@ -208,35 +212,38 @@ public class gui extends javax.swing.JFrame {
         jLabel35.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
         jLabel35.setText("# P2");
 
-        jTextField50.setEditable(false);
-        jTextField50.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jTextField50.setAlignmentY(0.0F);
-        jTextField50.setMinimumSize(new java.awt.Dimension(78, 38));
-        jTextField50.addActionListener(new java.awt.event.ActionListener() {
+        C1MaP6.setEditable(false);
+        C1MaP6.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        C1MaP6.setText("0");
+        C1MaP6.setAlignmentY(0.0F);
+        C1MaP6.setMinimumSize(new java.awt.Dimension(78, 38));
+        C1MaP6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField50ActionPerformed(evt);
+                C1MaP6ActionPerformed(evt);
             }
         });
 
-        jTextField51.setEditable(false);
-        jTextField51.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jTextField51.setToolTipText("");
-        jTextField51.setAlignmentY(0.0F);
-        jTextField51.setFocusable(false);
-        jTextField51.setMinimumSize(new java.awt.Dimension(78, 38));
-        jTextField51.addActionListener(new java.awt.event.ActionListener() {
+        C1MaP1.setEditable(false);
+        C1MaP1.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        C1MaP1.setText("0");
+        C1MaP1.setToolTipText("");
+        C1MaP1.setAlignmentY(0.0F);
+        C1MaP1.setFocusable(false);
+        C1MaP1.setMinimumSize(new java.awt.Dimension(78, 38));
+        C1MaP1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField51ActionPerformed(evt);
+                C1MaP1ActionPerformed(evt);
             }
         });
 
-        jTextField52.setEditable(false);
-        jTextField52.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jTextField52.setAlignmentY(0.0F);
-        jTextField52.setMinimumSize(new java.awt.Dimension(78, 38));
-        jTextField52.addActionListener(new java.awt.event.ActionListener() {
+        C1MaTime.setEditable(false);
+        C1MaTime.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        C1MaTime.setText("0");
+        C1MaTime.setAlignmentY(0.0F);
+        C1MaTime.setMinimumSize(new java.awt.Dimension(78, 38));
+        C1MaTime.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField52ActionPerformed(evt);
+                C1MaTimeActionPerformed(evt);
             }
         });
 
@@ -258,121 +265,134 @@ public class gui extends javax.swing.JFrame {
             }
         });
 
-        jTextField55.setEditable(false);
-        jTextField55.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jTextField55.setMinimumSize(new java.awt.Dimension(78, 38));
-        jTextField55.addActionListener(new java.awt.event.ActionListener() {
+        C2MaP1.setEditable(false);
+        C2MaP1.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        C2MaP1.setText("0");
+        C2MaP1.setMinimumSize(new java.awt.Dimension(78, 38));
+        C2MaP1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField55ActionPerformed(evt);
+                C2MaP1ActionPerformed(evt);
             }
         });
 
-        jTextField56.setEditable(false);
-        jTextField56.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jTextField56.setMinimumSize(new java.awt.Dimension(78, 38));
-        jTextField56.addActionListener(new java.awt.event.ActionListener() {
+        C3MaP1.setEditable(false);
+        C3MaP1.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        C3MaP1.setText("0");
+        C3MaP1.setMinimumSize(new java.awt.Dimension(78, 38));
+        C3MaP1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField56ActionPerformed(evt);
+                C3MaP1ActionPerformed(evt);
             }
         });
 
-        jTextField57.setEditable(false);
-        jTextField57.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jTextField57.setMinimumSize(new java.awt.Dimension(78, 38));
-        jTextField57.addActionListener(new java.awt.event.ActionListener() {
+        C4MaP1.setEditable(false);
+        C4MaP1.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        C4MaP1.setText("0");
+        C4MaP1.setMinimumSize(new java.awt.Dimension(78, 38));
+        C4MaP1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField57ActionPerformed(evt);
+                C4MaP1ActionPerformed(evt);
             }
         });
 
-        jTextField58.setEditable(false);
-        jTextField58.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jTextField58.setMinimumSize(new java.awt.Dimension(78, 38));
-        jTextField58.addActionListener(new java.awt.event.ActionListener() {
+        C2MaP2.setEditable(false);
+        C2MaP2.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        C2MaP2.setText("0");
+        C2MaP2.setMinimumSize(new java.awt.Dimension(78, 38));
+        C2MaP2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField58ActionPerformed(evt);
+                C2MaP2ActionPerformed(evt);
             }
         });
 
-        jTextField59.setEditable(false);
-        jTextField59.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jTextField59.setAlignmentY(0.0F);
-        jTextField59.setMinimumSize(new java.awt.Dimension(78, 38));
-        jTextField59.addActionListener(new java.awt.event.ActionListener() {
+        C1MaP2.setEditable(false);
+        C1MaP2.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        C1MaP2.setText("0");
+        C1MaP2.setAlignmentY(0.0F);
+        C1MaP2.setMinimumSize(new java.awt.Dimension(78, 38));
+        C1MaP2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField59ActionPerformed(evt);
+                C1MaP2ActionPerformed(evt);
             }
         });
 
-        jTextField60.setEditable(false);
-        jTextField60.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jTextField60.setMinimumSize(new java.awt.Dimension(78, 38));
-        jTextField60.addActionListener(new java.awt.event.ActionListener() {
+        C3MaP2.setEditable(false);
+        C3MaP2.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        C3MaP2.setText("0");
+        C3MaP2.setMinimumSize(new java.awt.Dimension(78, 38));
+        C3MaP2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField60ActionPerformed(evt);
+                C3MaP2ActionPerformed(evt);
             }
         });
 
-        jTextField61.setEditable(false);
-        jTextField61.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jTextField61.setMinimumSize(new java.awt.Dimension(78, 38));
-        jTextField61.addActionListener(new java.awt.event.ActionListener() {
+        C4MaP2.setEditable(false);
+        C4MaP2.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        C4MaP2.setText("0");
+        C4MaP2.setMinimumSize(new java.awt.Dimension(78, 38));
+        C4MaP2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField61ActionPerformed(evt);
+                C4MaP2ActionPerformed(evt);
             }
         });
 
-        jTextField62.setEditable(false);
-        jTextField62.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jTextField62.setMinimumSize(new java.awt.Dimension(78, 38));
-        jTextField62.addActionListener(new java.awt.event.ActionListener() {
+        C2MaP6.setEditable(false);
+        C2MaP6.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        C2MaP6.setText("0");
+        C2MaP6.setMinimumSize(new java.awt.Dimension(78, 38));
+        C2MaP6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField62ActionPerformed(evt);
+                C2MaP6ActionPerformed(evt);
             }
         });
 
-        jTextField63.setEditable(false);
-        jTextField63.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jTextField63.setMinimumSize(new java.awt.Dimension(78, 38));
-        jTextField63.addActionListener(new java.awt.event.ActionListener() {
+        C4MaP6.setEditable(false);
+        C4MaP6.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        C4MaP6.setText("0");
+        C4MaP6.setMinimumSize(new java.awt.Dimension(78, 38));
+        C4MaP6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField63ActionPerformed(evt);
+                C4MaP6ActionPerformed(evt);
             }
         });
 
-        jTextField64.setEditable(false);
-        jTextField64.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jTextField64.setMinimumSize(new java.awt.Dimension(78, 38));
-        jTextField64.addActionListener(new java.awt.event.ActionListener() {
+        C3MaP6.setEditable(false);
+        C3MaP6.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        C3MaP6.setText("0");
+        C3MaP6.setMinimumSize(new java.awt.Dimension(78, 38));
+        C3MaP6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField64ActionPerformed(evt);
+                C3MaP6ActionPerformed(evt);
             }
         });
 
-        jTextField65.setEditable(false);
-        jTextField65.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jTextField65.setMinimumSize(new java.awt.Dimension(78, 38));
-        jTextField65.addActionListener(new java.awt.event.ActionListener() {
+        C2MaTime.setEditable(false);
+        C2MaTime.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        C2MaTime.setText("0");
+        C2MaTime.setMinimumSize(new java.awt.Dimension(78, 38));
+        C2MaTime.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField65ActionPerformed(evt);
+                C2MaTimeActionPerformed(evt);
             }
         });
 
-        jTextField66.setEditable(false);
-        jTextField66.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jTextField66.setMinimumSize(new java.awt.Dimension(78, 38));
-        jTextField66.addActionListener(new java.awt.event.ActionListener() {
+        C3MaTime.setEditable(false);
+        C3MaTime.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        C3MaTime.setText("0");
+        C3MaTime.setMinimumSize(new java.awt.Dimension(78, 38));
+        C3MaTime.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField66ActionPerformed(evt);
+                C3MaTimeActionPerformed(evt);
             }
         });
 
-        jTextField67.setEditable(false);
-        jTextField67.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jTextField67.setMinimumSize(new java.awt.Dimension(78, 38));
-        jTextField67.addActionListener(new java.awt.event.ActionListener() {
+        C4MaTime.setEditable(false);
+        C4MaTime.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        C4MaTime.setText("0");
+        C4MaTime.setMinimumSize(new java.awt.Dimension(78, 38));
+        C4MaTime.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField67ActionPerformed(evt);
+                C4MaTimeActionPerformed(evt);
             }
         });
 
@@ -394,9 +414,9 @@ public class gui extends javax.swing.JFrame {
                                 .addGap(42, 42, 42)
                                 .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(jTextField50, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(C1MaP6, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField52, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(C1MaTime, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -408,35 +428,35 @@ public class gui extends javax.swing.JFrame {
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField55, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField56, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField57, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(C2MaP1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(C3MaP1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(C4MaP1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(39, 39, 39)
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField59, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField61, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(C1MaP2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(C4MaP2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel6Layout.createSequentialGroup()
                                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextField60, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jTextField58, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(C3MaP2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(C2MaP2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(36, 36, 36)
                                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel6Layout.createSequentialGroup()
-                                                .addComponent(jTextField62, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(C2MaP6, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(jTextField65, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(C2MaTime, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(jPanel6Layout.createSequentialGroup()
                                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jTextField64, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jTextField63, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addComponent(C3MaP6, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(C4MaP6, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addGap(18, 18, 18)
                                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addGroup(jPanel6Layout.createSequentialGroup()
-                                                        .addComponent(jTextField67, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(C4MaTime, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addGap(16, 16, 16)
                                                         .addComponent(jTextField53, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addComponent(jTextField66, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                            .addComponent(jTextField51, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                    .addComponent(C3MaTime, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                            .addComponent(C1MaP1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jTextField54, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35))
@@ -452,33 +472,33 @@ public class gui extends javax.swing.JFrame {
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField51, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField50, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(C1MaP1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(C1MaP6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jLabel17)
-                    .addComponent(jTextField52, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField59, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(C1MaTime, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(C1MaP2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel33)
-                    .addComponent(jTextField55, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField58, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField62, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField65, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(C2MaP1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(C2MaP2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(C2MaP6, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(C2MaTime, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel31)
-                    .addComponent(jTextField56, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField60, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField64, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField66, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(C3MaP1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(C3MaP2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(C3MaP6, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(C3MaTime, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel32)
-                        .addComponent(jTextField57, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField61, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField63, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField67, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(C4MaP1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(C4MaP2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(C4MaP6, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(C4MaTime, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jTextField53, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField54, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6))
@@ -507,25 +527,27 @@ public class gui extends javax.swing.JFrame {
         jLabel29.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
         jLabel29.setText("# P8");
 
-        jTextField22.setEditable(false);
-        jTextField22.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jTextField22.setToolTipText("");
-        jTextField22.setAlignmentY(0.0F);
-        jTextField22.setFocusable(false);
-        jTextField22.setMinimumSize(new java.awt.Dimension(78, 38));
-        jTextField22.addActionListener(new java.awt.event.ActionListener() {
+        C2MbP5.setEditable(false);
+        C2MbP5.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        C2MbP5.setText("0");
+        C2MbP5.setToolTipText("");
+        C2MbP5.setAlignmentY(0.0F);
+        C2MbP5.setFocusable(false);
+        C2MbP5.setMinimumSize(new java.awt.Dimension(78, 38));
+        C2MbP5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField22ActionPerformed(evt);
+                C2MbP5ActionPerformed(evt);
             }
         });
 
-        jTextField23.setEditable(false);
-        jTextField23.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jTextField23.setAlignmentY(0.0F);
-        jTextField23.setMinimumSize(new java.awt.Dimension(78, 38));
-        jTextField23.addActionListener(new java.awt.event.ActionListener() {
+        C2MbTime.setEditable(false);
+        C2MbTime.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        C2MbTime.setText("0");
+        C2MbTime.setAlignmentY(0.0F);
+        C2MbTime.setMinimumSize(new java.awt.Dimension(78, 38));
+        C2MbTime.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField23ActionPerformed(evt);
+                C2MbTimeActionPerformed(evt);
             }
         });
 
@@ -547,67 +569,74 @@ public class gui extends javax.swing.JFrame {
             }
         });
 
-        jTextField24.setEditable(false);
-        jTextField24.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jTextField24.setMinimumSize(new java.awt.Dimension(78, 38));
-        jTextField24.addActionListener(new java.awt.event.ActionListener() {
+        C3MbP5.setEditable(false);
+        C3MbP5.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        C3MbP5.setText("0");
+        C3MbP5.setMinimumSize(new java.awt.Dimension(78, 38));
+        C3MbP5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField24ActionPerformed(evt);
+                C3MbP5ActionPerformed(evt);
             }
         });
 
-        jTextField25.setEditable(false);
-        jTextField25.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jTextField25.setMinimumSize(new java.awt.Dimension(78, 38));
-        jTextField25.addActionListener(new java.awt.event.ActionListener() {
+        C4MbP5.setEditable(false);
+        C4MbP5.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        C4MbP5.setText("0");
+        C4MbP5.setMinimumSize(new java.awt.Dimension(78, 38));
+        C4MbP5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField25ActionPerformed(evt);
+                C4MbP5ActionPerformed(evt);
             }
         });
 
-        jTextField40.setEditable(false);
-        jTextField40.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jTextField40.setMinimumSize(new java.awt.Dimension(78, 38));
-        jTextField40.addActionListener(new java.awt.event.ActionListener() {
+        C3MbP8.setEditable(false);
+        C3MbP8.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        C3MbP8.setText("0");
+        C3MbP8.setMinimumSize(new java.awt.Dimension(78, 38));
+        C3MbP8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField40ActionPerformed(evt);
+                C3MbP8ActionPerformed(evt);
             }
         });
 
-        jTextField41.setEditable(false);
-        jTextField41.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jTextField41.setAlignmentY(0.0F);
-        jTextField41.setMinimumSize(new java.awt.Dimension(78, 38));
-        jTextField41.addActionListener(new java.awt.event.ActionListener() {
+        C2MbP8.setEditable(false);
+        C2MbP8.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        C2MbP8.setText("0");
+        C2MbP8.setAlignmentY(0.0F);
+        C2MbP8.setMinimumSize(new java.awt.Dimension(78, 38));
+        C2MbP8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField41ActionPerformed(evt);
+                C2MbP8ActionPerformed(evt);
             }
         });
 
-        jTextField42.setEditable(false);
-        jTextField42.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jTextField42.setMinimumSize(new java.awt.Dimension(78, 38));
-        jTextField42.addActionListener(new java.awt.event.ActionListener() {
+        C4MbP8.setEditable(false);
+        C4MbP8.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        C4MbP8.setText("0");
+        C4MbP8.setMinimumSize(new java.awt.Dimension(78, 38));
+        C4MbP8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField42ActionPerformed(evt);
+                C4MbP8ActionPerformed(evt);
             }
         });
 
-        jTextField47.setEditable(false);
-        jTextField47.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jTextField47.setMinimumSize(new java.awt.Dimension(78, 38));
-        jTextField47.addActionListener(new java.awt.event.ActionListener() {
+        C3MbTime.setEditable(false);
+        C3MbTime.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        C3MbTime.setText("0");
+        C3MbTime.setMinimumSize(new java.awt.Dimension(78, 38));
+        C3MbTime.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField47ActionPerformed(evt);
+                C3MbTimeActionPerformed(evt);
             }
         });
 
-        jTextField48.setEditable(false);
-        jTextField48.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jTextField48.setMinimumSize(new java.awt.Dimension(78, 38));
-        jTextField48.addActionListener(new java.awt.event.ActionListener() {
+        C4MbTime.setEditable(false);
+        C4MbTime.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        C4MbTime.setText("0");
+        C4MbTime.setMinimumSize(new java.awt.Dimension(78, 38));
+        C4MbTime.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField48ActionPerformed(evt);
+                C4MbTimeActionPerformed(evt);
             }
         });
 
@@ -634,15 +663,15 @@ public class gui extends javax.swing.JFrame {
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField24, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField25, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(C3MbP5, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(C4MbP5, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(39, 39, 39)
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField41, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(C2MbP8, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel5Layout.createSequentialGroup()
                                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextField42, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jTextField40, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(C4MbP8, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(C3MbP8, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel5Layout.createSequentialGroup()
                                                 .addGap(205, 205, 205)
@@ -650,10 +679,10 @@ public class gui extends javax.swing.JFrame {
                                             .addGroup(jPanel5Layout.createSequentialGroup()
                                                 .addGap(36, 36, 36)
                                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jTextField47, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jTextField48, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jTextField23, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                            .addComponent(jTextField22, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                    .addComponent(C3MbTime, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(C4MbTime, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(C2MbTime, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                            .addComponent(C2MbP5, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jTextField38, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35))
@@ -668,22 +697,22 @@ public class gui extends javax.swing.JFrame {
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField22, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(C2MbP5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15)
-                    .addComponent(jTextField23, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField41, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(C2MbTime, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(C2MbP8, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel27)
-                    .addComponent(jTextField24, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField40, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField47, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(C3MbP5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(C3MbP8, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(C3MbTime, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel25)
-                    .addComponent(jTextField25, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField42, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField48, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(C4MbP5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(C4MbP8, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(C4MbTime, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField34, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -711,35 +740,38 @@ public class gui extends javax.swing.JFrame {
         jLabel23.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
         jLabel23.setText("# P3");
 
-        jTextField14.setEditable(false);
-        jTextField14.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jTextField14.setAlignmentY(0.0F);
-        jTextField14.setMinimumSize(new java.awt.Dimension(78, 38));
-        jTextField14.addActionListener(new java.awt.event.ActionListener() {
+        C1McP8.setEditable(false);
+        C1McP8.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        C1McP8.setText("0");
+        C1McP8.setAlignmentY(0.0F);
+        C1McP8.setMinimumSize(new java.awt.Dimension(78, 38));
+        C1McP8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField14ActionPerformed(evt);
+                C1McP8ActionPerformed(evt);
             }
         });
 
-        jTextField15.setEditable(false);
-        jTextField15.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jTextField15.setToolTipText("");
-        jTextField15.setAlignmentY(0.0F);
-        jTextField15.setFocusable(false);
-        jTextField15.setMinimumSize(new java.awt.Dimension(78, 38));
-        jTextField15.addActionListener(new java.awt.event.ActionListener() {
+        C1McP1.setEditable(false);
+        C1McP1.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        C1McP1.setText("0");
+        C1McP1.setToolTipText("");
+        C1McP1.setAlignmentY(0.0F);
+        C1McP1.setFocusable(false);
+        C1McP1.setMinimumSize(new java.awt.Dimension(78, 38));
+        C1McP1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField15ActionPerformed(evt);
+                C1McP1ActionPerformed(evt);
             }
         });
 
-        jTextField16.setEditable(false);
-        jTextField16.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jTextField16.setAlignmentY(0.0F);
-        jTextField16.setMinimumSize(new java.awt.Dimension(78, 38));
-        jTextField16.addActionListener(new java.awt.event.ActionListener() {
+        C1McTime.setEditable(false);
+        C1McTime.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        C1McTime.setText("0");
+        C1McTime.setAlignmentY(0.0F);
+        C1McTime.setMinimumSize(new java.awt.Dimension(78, 38));
+        C1McTime.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField16ActionPerformed(evt);
+                C1McTimeActionPerformed(evt);
             }
         });
 
@@ -761,13 +793,14 @@ public class gui extends javax.swing.JFrame {
             }
         });
 
-        jTextField29.setEditable(false);
-        jTextField29.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jTextField29.setAlignmentY(0.0F);
-        jTextField29.setMinimumSize(new java.awt.Dimension(78, 38));
-        jTextField29.addActionListener(new java.awt.event.ActionListener() {
+        C1McP3.setEditable(false);
+        C1McP3.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        C1McP3.setText("0");
+        C1McP3.setAlignmentY(0.0F);
+        C1McP3.setMinimumSize(new java.awt.Dimension(78, 38));
+        C1McP3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField29ActionPerformed(evt);
+                C1McP3ActionPerformed(evt);
             }
         });
 
@@ -789,9 +822,9 @@ public class gui extends javax.swing.JFrame {
                                 .addGap(42, 42, 42)
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(C1McP8, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(C1McTime, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -800,11 +833,11 @@ public class gui extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(82, 82, 82)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField29, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(C1McP3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(248, 248, 248)
                                         .addComponent(jTextField27, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(C1McP1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jTextField28, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35))
@@ -820,11 +853,11 @@ public class gui extends javax.swing.JFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(C1McP1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(C1McP8, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField29, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(C1McTime, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(C1McP3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField27, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -837,12 +870,13 @@ public class gui extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
         jLabel9.setText("Quantity");
 
-        jTextField5.setEditable(false);
-        jTextField5.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jTextField5.setMinimumSize(new java.awt.Dimension(78, 38));
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        textFieldPusher1.setEditable(false);
+        textFieldPusher1.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        textFieldPusher1.setText("0");
+        textFieldPusher1.setMinimumSize(new java.awt.Dimension(78, 38));
+        textFieldPusher1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                textFieldPusher1ActionPerformed(evt);
             }
         });
 
@@ -852,12 +886,13 @@ public class gui extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
         jLabel11.setText("Pusher 1");
 
-        jTextField6.setEditable(false);
-        jTextField6.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jTextField6.setMinimumSize(new java.awt.Dimension(78, 38));
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        textFieldPusher2.setEditable(false);
+        textFieldPusher2.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        textFieldPusher2.setText("0");
+        textFieldPusher2.setMinimumSize(new java.awt.Dimension(78, 38));
+        textFieldPusher2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                textFieldPusher2ActionPerformed(evt);
             }
         });
 
@@ -874,12 +909,12 @@ public class gui extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(textFieldPusher1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(742, Short.MAX_VALUE))
+                        .addComponent(textFieldPusher2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(922, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -889,19 +924,19 @@ public class gui extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textFieldPusher1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(textFieldPusher2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
-        jTextField5.getAccessibleContext().setAccessibleName("Pusher1Counter");
-        jTextField6.getAccessibleContext().setAccessibleName("Pusher2Counter");
+        textFieldPusher1.getAccessibleContext().setAccessibleName("Pusher1Counter");
+        textFieldPusher2.getAccessibleContext().setAccessibleName("Pusher2Counter");
 
         jTabbedPane3.addTab("Pushers", jPanel3);
 
@@ -937,45 +972,45 @@ public class gui extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        setSize(new java.awt.Dimension(1069, 338));
+        setSize(new java.awt.Dimension(1249, 338));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void textFieldPusher2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldPusher2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_textFieldPusher2ActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void textFieldPusher1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldPusher1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_textFieldPusher1ActionPerformed
 
-    private void jTextField48ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField48ActionPerformed
+    private void C4MbTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C4MbTimeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField48ActionPerformed
+    }//GEN-LAST:event_C4MbTimeActionPerformed
 
-    private void jTextField47ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField47ActionPerformed
+    private void C3MbTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C3MbTimeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField47ActionPerformed
+    }//GEN-LAST:event_C3MbTimeActionPerformed
 
-    private void jTextField42ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField42ActionPerformed
+    private void C4MbP8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C4MbP8ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField42ActionPerformed
+    }//GEN-LAST:event_C4MbP8ActionPerformed
 
-    private void jTextField41ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField41ActionPerformed
+    private void C2MbP8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C2MbP8ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField41ActionPerformed
+    }//GEN-LAST:event_C2MbP8ActionPerformed
 
-    private void jTextField40ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField40ActionPerformed
+    private void C3MbP8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C3MbP8ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField40ActionPerformed
+    }//GEN-LAST:event_C3MbP8ActionPerformed
 
-    private void jTextField25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField25ActionPerformed
+    private void C4MbP5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C4MbP5ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField25ActionPerformed
+    }//GEN-LAST:event_C4MbP5ActionPerformed
 
-    private void jTextField24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField24ActionPerformed
+    private void C3MbP5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C3MbP5ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField24ActionPerformed
+    }//GEN-LAST:event_C3MbP5ActionPerformed
 
     private void jTextField38ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField38ActionPerformed
         // TODO add your handling code here:
@@ -985,65 +1020,65 @@ public class gui extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField34ActionPerformed
 
-    private void jTextField23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField23ActionPerformed
+    private void C2MbTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C2MbTimeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField23ActionPerformed
+    }//GEN-LAST:event_C2MbTimeActionPerformed
 
-    private void jTextField22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField22ActionPerformed
+    private void C2MbP5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C2MbP5ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField22ActionPerformed
+    }//GEN-LAST:event_C2MbP5ActionPerformed
 
-    private void jTextField67ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField67ActionPerformed
+    private void C4MaTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C4MaTimeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField67ActionPerformed
+    }//GEN-LAST:event_C4MaTimeActionPerformed
 
-    private void jTextField66ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField66ActionPerformed
+    private void C3MaTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C3MaTimeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField66ActionPerformed
+    }//GEN-LAST:event_C3MaTimeActionPerformed
 
-    private void jTextField65ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField65ActionPerformed
+    private void C2MaTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C2MaTimeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField65ActionPerformed
+    }//GEN-LAST:event_C2MaTimeActionPerformed
 
-    private void jTextField64ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField64ActionPerformed
+    private void C3MaP6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C3MaP6ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField64ActionPerformed
+    }//GEN-LAST:event_C3MaP6ActionPerformed
 
-    private void jTextField63ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField63ActionPerformed
+    private void C4MaP6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C4MaP6ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField63ActionPerformed
+    }//GEN-LAST:event_C4MaP6ActionPerformed
 
-    private void jTextField62ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField62ActionPerformed
+    private void C2MaP6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C2MaP6ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField62ActionPerformed
+    }//GEN-LAST:event_C2MaP6ActionPerformed
 
-    private void jTextField61ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField61ActionPerformed
+    private void C4MaP2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C4MaP2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField61ActionPerformed
+    }//GEN-LAST:event_C4MaP2ActionPerformed
 
-    private void jTextField60ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField60ActionPerformed
+    private void C3MaP2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C3MaP2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField60ActionPerformed
+    }//GEN-LAST:event_C3MaP2ActionPerformed
 
-    private void jTextField59ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField59ActionPerformed
+    private void C1MaP2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C1MaP2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField59ActionPerformed
+    }//GEN-LAST:event_C1MaP2ActionPerformed
 
-    private void jTextField58ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField58ActionPerformed
+    private void C2MaP2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C2MaP2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField58ActionPerformed
+    }//GEN-LAST:event_C2MaP2ActionPerformed
 
-    private void jTextField57ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField57ActionPerformed
+    private void C4MaP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C4MaP1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField57ActionPerformed
+    }//GEN-LAST:event_C4MaP1ActionPerformed
 
-    private void jTextField56ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField56ActionPerformed
+    private void C3MaP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C3MaP1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField56ActionPerformed
+    }//GEN-LAST:event_C3MaP1ActionPerformed
 
-    private void jTextField55ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField55ActionPerformed
+    private void C2MaP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C2MaP1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField55ActionPerformed
+    }//GEN-LAST:event_C2MaP1ActionPerformed
 
     private void jTextField54ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField54ActionPerformed
         // TODO add your handling code here:
@@ -1053,21 +1088,21 @@ public class gui extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField53ActionPerformed
 
-    private void jTextField52ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField52ActionPerformed
+    private void C1MaTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C1MaTimeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField52ActionPerformed
+    }//GEN-LAST:event_C1MaTimeActionPerformed
 
-    private void jTextField51ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField51ActionPerformed
+    private void C1MaP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C1MaP1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField51ActionPerformed
+    }//GEN-LAST:event_C1MaP1ActionPerformed
 
-    private void jTextField50ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField50ActionPerformed
+    private void C1MaP6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C1MaP6ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField50ActionPerformed
+    }//GEN-LAST:event_C1MaP6ActionPerformed
 
-    private void jTextField29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField29ActionPerformed
+    private void C1McP3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C1McP3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField29ActionPerformed
+    }//GEN-LAST:event_C1McP3ActionPerformed
 
     private void jTextField28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField28ActionPerformed
         // TODO add your handling code here:
@@ -1077,17 +1112,17 @@ public class gui extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField27ActionPerformed
 
-    private void jTextField16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField16ActionPerformed
+    private void C1McTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C1McTimeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField16ActionPerformed
+    }//GEN-LAST:event_C1McTimeActionPerformed
 
-    private void jTextField15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField15ActionPerformed
+    private void C1McP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C1McP1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField15ActionPerformed
+    }//GEN-LAST:event_C1McP1ActionPerformed
 
-    private void jTextField14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField14ActionPerformed
+    private void C1McP8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C1McP8ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField14ActionPerformed
+    }//GEN-LAST:event_C1McP8ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1126,6 +1161,35 @@ public class gui extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable AssembleTable;
+    private javax.swing.JTextField C1MaP1;
+    private javax.swing.JTextField C1MaP2;
+    private javax.swing.JTextField C1MaP6;
+    private javax.swing.JTextField C1MaTime;
+    private javax.swing.JTextField C1McP1;
+    private javax.swing.JTextField C1McP3;
+    private javax.swing.JTextField C1McP8;
+    private javax.swing.JTextField C1McTime;
+    private javax.swing.JTextField C2MaP1;
+    private javax.swing.JTextField C2MaP2;
+    private javax.swing.JTextField C2MaP6;
+    private javax.swing.JTextField C2MaTime;
+    private javax.swing.JTextField C2MbP5;
+    private javax.swing.JTextField C2MbP8;
+    private javax.swing.JTextField C2MbTime;
+    private javax.swing.JTextField C3MaP1;
+    private javax.swing.JTextField C3MaP2;
+    private javax.swing.JTextField C3MaP6;
+    private javax.swing.JTextField C3MaTime;
+    private javax.swing.JTextField C3MbP5;
+    private javax.swing.JTextField C3MbP8;
+    private javax.swing.JTextField C3MbTime;
+    private javax.swing.JTextField C4MaP1;
+    private javax.swing.JTextField C4MaP2;
+    private javax.swing.JTextField C4MaP6;
+    private javax.swing.JTextField C4MaTime;
+    private javax.swing.JTextField C4MbP5;
+    private javax.swing.JTextField C4MbP8;
+    private javax.swing.JTextField C4MbTime;
     private javax.swing.JTable TransformTable;
     private javax.swing.JTable UnloadTable;
     private javax.swing.JLabel jLabel1;
@@ -1161,43 +1225,14 @@ public class gui extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane3;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField16;
-    private javax.swing.JTextField jTextField22;
-    private javax.swing.JTextField jTextField23;
-    private javax.swing.JTextField jTextField24;
-    private javax.swing.JTextField jTextField25;
     private javax.swing.JTextField jTextField27;
     private javax.swing.JTextField jTextField28;
-    private javax.swing.JTextField jTextField29;
     private javax.swing.JTextField jTextField34;
     private javax.swing.JTextField jTextField38;
-    private javax.swing.JTextField jTextField40;
-    private javax.swing.JTextField jTextField41;
-    private javax.swing.JTextField jTextField42;
-    private javax.swing.JTextField jTextField47;
-    private javax.swing.JTextField jTextField48;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField50;
-    private javax.swing.JTextField jTextField51;
-    private javax.swing.JTextField jTextField52;
     private javax.swing.JTextField jTextField53;
     private javax.swing.JTextField jTextField54;
-    private javax.swing.JTextField jTextField55;
-    private javax.swing.JTextField jTextField56;
-    private javax.swing.JTextField jTextField57;
-    private javax.swing.JTextField jTextField58;
-    private javax.swing.JTextField jTextField59;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField60;
-    private javax.swing.JTextField jTextField61;
-    private javax.swing.JTextField jTextField62;
-    private javax.swing.JTextField jTextField63;
-    private javax.swing.JTextField jTextField64;
-    private javax.swing.JTextField jTextField65;
-    private javax.swing.JTextField jTextField66;
-    private javax.swing.JTextField jTextField67;
+    private javax.swing.JTextField textFieldPusher1;
+    private javax.swing.JTextField textFieldPusher2;
     // End of variables declaration//GEN-END:variables
     
     
@@ -1231,7 +1266,7 @@ public class gui extends javax.swing.JFrame {
     public void addNewTransformation(int id, int qt_produ, int initPkg, int finalPkg) 
     {
         DefaultTableModel model = (DefaultTableModel) TransformTable.getModel();
-        model.addRow(new Object[]{id, 0, 0, qt_produ, "P" + initPkg, "P" + finalPkg, Calendar.getInstance().getTime().toString(), null, null, PENDING});
+        model.addRow(new Object[]{id, 0, 0, qt_produ, "P" + initPkg, "P" + finalPkg, dateFormat.format(Calendar.getInstance().getTime()).toString(), null, null, PENDING});
     }
     
     public void oneTransformationGoing(int id) 
@@ -1254,7 +1289,7 @@ public class gui extends javax.swing.JFrame {
                 model.getValueAt(row, model.getColumnCount()-1) == PENDING)  
         {
             model.setValueAt(ONGOING, row, model.getColumnCount()-1);
-            model.setValueAt(Calendar.getInstance().getTime().toString(), row, 7); //atualiza start time
+            model.setValueAt(dateFormat.format(Calendar.getInstance().getTime()).toString(), row, 7); //atualiza start time
         }
         
         model.setValueAt((int)model.getValueAt(row, 3)-1, row, 3);  //F5 nos pending packages (-1)
@@ -1280,7 +1315,7 @@ public class gui extends javax.swing.JFrame {
                 model.getValueAt(row, model.getColumnCount()-1) == ONGOING)  
         {
             model.setValueAt(FINISHED, row, model.getColumnCount()-1); //diz que acabou
-            model.setValueAt(Calendar.getInstance().getTime().toString(), row, 7); //atualiza finish time time
+            model.setValueAt(dateFormat.format(Calendar.getInstance().getTime()).toString(), row, 7); //atualiza finish time time
         }
         
         model.setValueAt((int)model.getValueAt(row, 1)+1, row, 1);  //F5 nos produced packages (+1)
@@ -1301,7 +1336,7 @@ public class gui extends javax.swing.JFrame {
     public void addNewAssemble(int id, int qt_produ, int bottomPkg, int topPkg)
     {
         DefaultTableModel model = (DefaultTableModel) AssembleTable.getModel();
-        model.addRow(new Object[]{id, qt_produ, 0, qt_produ, "P" + bottomPkg, "P" + topPkg, Calendar.getInstance(), null, null, PENDING});
+        model.addRow(new Object[]{id, 0, 0, qt_produ, "P" + bottomPkg, "P" + topPkg, dateFormat.format(Calendar.getInstance().getTime()).toString(), null, null, PENDING});
     }
     
     public void oneAssembleGoing(int id) 
@@ -1318,10 +1353,13 @@ public class gui extends javax.swing.JFrame {
             }
         }
         
-        if (model.getValueAt(row, model.getColumnCount()-1) == PENDING) // é a 1ª peça de todas
+        // é a 1 peça de todas; esta pending...ongoing = 0; produced = 0
+        if (    (int) model.getValueAt(row, 1 ) == 0 && 
+                (int) model.getValueAt(row, 2 ) == 0 &&
+                model.getValueAt(row, model.getColumnCount()-1) == PENDING)  
         {
             model.setValueAt(ONGOING, row, model.getColumnCount()-1);
-            model.setValueAt(Calendar.getInstance(), row, 7); //atualiza start time
+            model.setValueAt(dateFormat.format(Calendar.getInstance().getTime()).toString(), row, 7); //atualiza start time
         }
         
         model.setValueAt((int)model.getValueAt(row, 3)-1, row, 3);  //F5 nos pending packages (-1)
@@ -1342,13 +1380,16 @@ public class gui extends javax.swing.JFrame {
             }
         }
         
-        if (model.getValueAt(row, model.getColumnCount()-1) == ONGOING) // é a ultima peça de todas
+        // é a ultima peça de todas; esta ongoing...pending = 0 ongoing =1
+        if (    (int) model.getValueAt(row, 3 ) == 0 && 
+                (int) model.getValueAt(row, 2 ) == 1 &&
+                model.getValueAt(row, model.getColumnCount()-1) == ONGOING)  
         {
             model.setValueAt(FINISHED, row, model.getColumnCount()-1); //diz que acabou
-            model.setValueAt(Calendar.getInstance(), row, 7); //atualiza finish time time
+            model.setValueAt(dateFormat.format(Calendar.getInstance().getTime()).toString(), row, 7); //atualiza finish time time
         }
         
-        model.setValueAt((int)model.getValueAt(row, 3)+1, row, 3);  //F5 nos pending packages (+1)
+        model.setValueAt((int)model.getValueAt(row, 1)+1, row, 1);  //F5 nos produced packages (+1)
         model.setValueAt((int)model.getValueAt(row, 2)-1, row, 2);  //F5 nos ongoing packages (-1)
     }
     
@@ -1365,7 +1406,7 @@ public class gui extends javax.swing.JFrame {
     public void addNewUnload(int id, int qt_produ, int Pkg, int numPusher)
     {
         DefaultTableModel model = (DefaultTableModel) UnloadTable.getModel();
-        model.addRow(new Object[]{id, qt_produ, 0, qt_produ, "P" + Pkg, numPusher, Calendar.getInstance(), null, null, PENDING});
+        model.addRow(new Object[]{id, 0, 0, qt_produ, "P" + Pkg, numPusher, dateFormat.format(Calendar.getInstance().getTime()).toString(), null, null, PENDING});
     }
     
     public void oneUnloadGoing(int id) 
@@ -1382,10 +1423,13 @@ public class gui extends javax.swing.JFrame {
             }
         }
         
-        if (model.getValueAt(row, model.getColumnCount()-1) == PENDING) // é a 1ª peça de todas
+        // é a 1 peça de todas; esta pending...ongoing = 0; produced = 0
+        if (    (int) model.getValueAt(row, 1 ) == 0 && 
+                (int) model.getValueAt(row, 2 ) == 0 &&
+                model.getValueAt(row, model.getColumnCount()-1) == PENDING)  
         {
             model.setValueAt(ONGOING, row, model.getColumnCount()-1);
-            model.setValueAt(Calendar.getInstance(), row, 7); //atualiza start time
+            model.setValueAt(dateFormat.format(Calendar.getInstance().getTime()).toString(), row, 7); //atualiza start time
         }
         
         model.setValueAt((int)model.getValueAt(row, 3)-1, row, 3);  //F5 nos pending packages (-1)
@@ -1406,15 +1450,117 @@ public class gui extends javax.swing.JFrame {
             }
         }
         
-        if (model.getValueAt(row, model.getColumnCount()-1) == ONGOING) // é a ultima peça de todas
+        // é a ultima peça de todas; esta ongoing...pending = 0 ongoing =1
+        if (    (int) model.getValueAt(row, 3 ) == 0 && 
+                (int) model.getValueAt(row, 2 ) == 1 &&
+                model.getValueAt(row, model.getColumnCount()-1) == ONGOING)  
         {
             model.setValueAt(FINISHED, row, model.getColumnCount()-1); //diz que acabou
-            model.setValueAt(Calendar.getInstance(), row, 7); //atualiza finish time time
+            model.setValueAt(dateFormat.format(Calendar.getInstance().getTime()).toString(), row, 7); //atualiza finish time time
         }
         
-        model.setValueAt((int)model.getValueAt(row, 3)+1, row, 3);  //F5 nos pending packages (+1)
+        model.setValueAt((int)model.getValueAt(row, 1)+1, row, 1);  //F5 nos produced packages (+1)
         model.setValueAt((int)model.getValueAt(row, 2)-1, row, 2);  //F5 nos ongoing packages (-1)
     }
+    
+    /*
+    *   cell
+    *
+    */
+    public void addOneToMachines(int cell, char machine, int pkg)
+    {
+        machine = Character.toUpperCase(machine);
+        
+        switch(machine)
+        {
+            case 'a':
+                switch(cell)
+                {
+                    case 1:
+                        switch(pkg)
+                        {
+                            case 1: C1MaP1.setText(C1MaP1.getText()+1); C1MaTime.setText(C1MaTime.getText()+1); break;          //MUDAR TEMPO
+                            case 2: C1MaP2.setText(C1MaP2.getText()+1); C1MaTime.setText(C1MaTime.getText()+1);break;           //MUDAR TEMPO
+                            case 6: C1MaP6.setText(C1MaP6.getText()+1); C1MaTime.setText(C1MaTime.getText()+1);break;           //MUDAR TEMPO                                    
+                        }
+                    case 2:
+                        switch(pkg)
+                        {
+                            case 1: C2MaP1.setText(C2MaP1.getText()+1); C2MaTime.setText(C2MaTime.getText()+1); break;          //MUDAR TEMPO
+                            case 2: C2MaP2.setText(C2MaP2.getText()+1); C2MaTime.setText(C2MaTime.getText()+1);break;           //MUDAR TEMPO
+                            case 6: C2MaP6.setText(C2MaP6.getText()+1); C2MaTime.setText(C2MaTime.getText()+1);break;           //MUDAR TEMPO                                    
+                        }
+                    case 3:
+                        switch(pkg)
+                        {
+                            case 1: C3MaP1.setText(C3MaP1.getText()+1); C3MaTime.setText(C3MaTime.getText()+1); break;          //MUDAR TEMPO
+                            case 2: C3MaP2.setText(C3MaP2.getText()+1); C3MaTime.setText(C3MaTime.getText()+1);break;           //MUDAR TEMPO
+                            case 6: C3MaP6.setText(C3MaP6.getText()+1); C3MaTime.setText(C3MaTime.getText()+1);break;           //MUDAR TEMPO                                    
+                        }
+                    case 4:
+                        switch(pkg)
+                        {
+                            case 1: C4MaP1.setText(C4MaP1.getText()+1); C4MaTime.setText(C4MaTime.getText()+1); break;          //MUDAR TEMPO
+                            case 2: C4MaP2.setText(C4MaP2.getText()+1); C4MaTime.setText(C4MaTime.getText()+1);break;           //MUDAR TEMPO
+                            case 6: C4MaP6.setText(C4MaP6.getText()+1); C4MaTime.setText(C4MaTime.getText()+1);break;           //MUDAR TEMPO                                    
+                        }
+                    default:
+                }
+            
+            case 'b':
+                switch(cell)
+                {
+                    case 2:
+                        switch(pkg)
+                        {
+                            case 5: C2MbP5.setText(C2MbP5.getText()+1); C2MbTime.setText(C2MbTime.getText()+1); break;          //MUDAR TEMPO
+                            case 8: C2MbP8.setText(C2MbP8.getText()+1); C2MbTime.setText(C2MbTime.getText()+1);break;           //MUDAR TEMPO
+                        }
+                    case 3:
+                        switch(pkg)
+                        {
+                            case 5: C3MbP5.setText(C3MbP5.getText()+1); C3MbTime.setText(C3MbTime.getText()+1); break;          //MUDAR TEMPO
+                            case 8: C3MbP8.setText(C3MbP8.getText()+1); C3MbTime.setText(C3MbTime.getText()+1);break;           //MUDAR TEMPO    
+                        }
+                    case 4:
+                        switch(pkg)
+                        {
+                            case 5: C4MbP5.setText(C4MbP5.getText()+1); C4MbTime.setText(C4MbTime.getText()+1); break;          //MUDAR TEMPO
+                            case 8: C4MbP8.setText(C4MbP8.getText()+1); C4MbTime.setText(C4MbTime.getText()+1);break;           //MUDAR TEMPO      
+                        }
+                    default:
+                }
+            
+            case 'c':
+                switch(cell)
+                {
+                    case 1:
+                        switch(pkg)
+                        {
+                            case 1: C1McP1.setText(C1McP1.getText()+1); C1McTime.setText(C1McTime.getText()+1); break;          //MUDAR TEMPO
+                            case 3: C1McP3.setText(C1McP3.getText()+1); C1McTime.setText(C1McTime.getText()+1);break;           //MUDAR TEMPO
+                            case 8: C1McP8.setText(C1McP8.getText()+1); C1McTime.setText(C1McTime.getText()+1);break;           //MUDAR TEMPO                                    
+                        }
+                }
+            default: 
+                System.out.println("Error!! gui.java addOneToMachines");
+        }        
+    }       
+        
+    /**
+     *
+     * @param num
+     */
+    public  void addOneToPusher(int num)
+    {
+        if ( num == 1 )
+            textFieldPusher1.setText(textFieldPusher1.getText()+1);
+        else if ( num == 2 )
+            textFieldPusher2.setText(textFieldPusher2.getText()+1);
+        else
+            System.out.println("Error!! gui.java addOneToPusher");
+    }     
+    
     /*
     Minha estrategia (para cada tipo):
     -> oneTransformationGoing:

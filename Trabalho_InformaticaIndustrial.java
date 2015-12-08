@@ -281,4 +281,15 @@ public class Trabalho_InformaticaIndustrial {
         else if ( type == 'M')
             SuperGui.oneAssembleArrived(id);
     }
+    
+    public static void updateMachines(int cell, char machine, int pkg)
+    {
+        SuperGui.addOneToMachines(cell, machine, pkg);
+    }
+    
+    public static void updatePushers(int n)
+    {
+        SuperGui.addOneToPusher(n);
+    }
+    
 }
