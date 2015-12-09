@@ -229,7 +229,7 @@ public class Trabalho_InformaticaIndustrial {
             //Get DATA
             content += "*STATISTICS*\r\n\tTransformations: \r\n";
                 //transformations Ma
-                content += "\t\t"
+                content += "\t\t";
             
             //Finalize
             content += "Factory close at " + theEndOfTimes.getTime() + ".\r\n\r\n";
