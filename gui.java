@@ -941,7 +941,7 @@ public class gui extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Manu");
+        jLabel3.setText("Manufacturing Execution System");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1309,7 +1309,7 @@ public class gui extends javax.swing.JFrame {
                 model.getValueAt(row, model.getColumnCount()-1) == ONGOING)  
         {
             model.setValueAt(FINISHED, row, model.getColumnCount()-1); //diz que acabou
-            model.setValueAt(dateFormat.format(Calendar.getInstance().getTime()).toString(), row, 7); //atualiza finish time time
+            model.setValueAt(dateFormat.format(Calendar.getInstance().getTime()).toString(), row, 8); //atualiza finish time time
         }
         
         model.setValueAt((int)model.getValueAt(row, 1)+1, row, 1);  //F5 nos produced packages (+1)
@@ -1576,26 +1576,7 @@ public class gui extends javax.swing.JFrame {
             content += "\t\tPusher 1: " + textFieldPusher1.getText() + "\r\n";
             content += "\t\tPusher 2: " + textFieldPusher2.getText() + "\r\n";
             
-            
-            
         return content;
     }
-    
-    /*
-    Minha estrategia (para cada tipo):
-    -> oneTransformationGoing:
-        se state = pending.... passar para: ongoing                             OK
-        pending packages: -1
-        on going packages: +1
-    -> oneTransformationArrived:
-        se state = ongoing && ongoing packages = 1.... passar para: finished
-        ongoing packages: -1
-        produced packages: +1
-    -> cuidado com ID's repetivos
-    -> atenção... meter os tempos calendar
-    -> atençao... talvez seja melhor atualizar estes tempos tambem nos arrays do tipo Operation
-    
-    
-     */
 }
 

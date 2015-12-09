@@ -227,12 +227,10 @@ public class Trabalho_InformaticaIndustrial {
             String content = "Factory Working since " + dateFormat.format(theBeginningOfTimes.getTime()).toString() + ".\r\n";
             
             //Get DATA
-            content += "*STATISTICS*\r\n\tTransformations: \r\n";
-                //transformations Ma
-                content += "\t\t"
+            content += SuperGui.getStatistics();
             
             //Finalize
-            content += "Factory close at " + theEndOfTimes.getTime() + ".\r\n\r\n";
+            content += "Factory closed since " + dateFormat.format(theEndOfTimes.getTime()).toString() + ".\r\n\r\n";
             double totalTime = theEndOfTimes.getTimeInMillis() - theBeginningOfTimes.getTimeInMillis();
             int sec  = (int)(totalTime/ 1000) % 60 ;
             int min  = (int)((totalTime/ (1000*60)) % 60);
