@@ -1584,9 +1584,10 @@ public class gui extends javax.swing.JFrame {
                                 time += 10;
                                 C1McP3.setText("" + val); C1McTime.setText("" + time);break;           
                         }
+                    break;
                 }
             default: 
-                System.out.println("Error!! gui.java addOneToMachines");
+                System.out.println("Error!! gui.java addOneToMachines: " + machine);
         }      
     }       
         
