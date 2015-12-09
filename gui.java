@@ -1463,11 +1463,11 @@ public class gui extends javax.swing.JFrame {
     */
     public void addOneToMachines(int cell, char machine, int pkg)
     {
-        machine = Character.toUpperCase(machine);
+        /*machine = Character.toUpperCase(machine);
         
         switch(machine)
         {
-            case 'a':
+            case 'A':
                 switch(cell)
                 {
                     case 1:
@@ -1496,7 +1496,7 @@ public class gui extends javax.swing.JFrame {
                     default:
                 }
             
-            case 'b':
+            case 'B':
                 switch(cell)
                 {
                     case 2:
@@ -1520,7 +1520,7 @@ public class gui extends javax.swing.JFrame {
                     default:
                 }
             
-            case 'c':
+            case 'C':
                 switch(cell)
                 {
                     case 1:
@@ -1532,7 +1532,7 @@ public class gui extends javax.swing.JFrame {
                 }
             default: 
                 System.out.println("Error!! gui.java addOneToMachines");
-        }        
+        } */       
     }       
         
     /**
