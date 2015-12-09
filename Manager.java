@@ -98,8 +98,12 @@ public class Manager {
                 {
                     cell = Cells.Unload1;
                     modbusCom.sendOp(item.getArg1(), item.getArg2(), cell+1); //envia operação
+//<<<<<<< HEAD
                     
-                    cellState[Cells.Unload1][0] = 1;
+                    //cellState[Cells.Unload1][0] = 1;
+//=======
+                    cellState[Cells.Unload1][0] = 2;
+//>>>>>>> origin/master
                     cellState[Cells.Unload1][1] = item.getId();
                     item.incrementOngoingPackages();
                     updateOngoing('U', item.getId());
