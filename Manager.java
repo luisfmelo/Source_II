@@ -114,13 +114,15 @@ public class Manager {
                 {
                     cell = Cells.Unload1;
                     modbusCom.sendOp(item.getArg1(), item.getArg2(), cell+1); //envia operação
-                    cellState[Cells.Unload2][0] = 1;
+                    cellState[Cells.Unload2][0] = 2;
                     cellState[Cells.Unload2][1] = item.getId();
                     item.incrementOngoingPackages();
                     updateOngoing('U', item.getId());
                     
                     System.out.println("Enviada peça para o Pusher 2");
                 }
+                
+                System.out.println("Célula de descraga ocupada: " + cellState[Cells.Unload1][0] + " | " + cellState[Cells.Unload2][0]);
             }
             
             else if ( item.getType() == 'M' && cellState[4][0] == 0 ) //se for montagem e se o robot 3D estiver livre
@@ -147,7 +149,7 @@ public class Manager {
             // Se a célula terminou o processamento
             if(cellStatePLC[i] > 0 && (i<5)) {
                 
-                if((i+1) > 0 && (i+1) < 4)
+                if((i+1) > 0 && (i+1) <= 4)
                     cellType = 'T';
                 else if((i+1) == 5)
                     cellType = 'M';
@@ -164,7 +166,7 @@ public class Manager {
                 cellState[i][0] = 0;
                 cellState[i][1] = 0;
             }
-            else if(cellStatePLC[i] > 1 && (i>=5)) {
+            else if(cellStatePLC[i] > 1 && (i>=5) && (cellState[i][0] == 2)) {
                 
                 cellType = 'U';
                 
@@ -184,6 +186,9 @@ public class Manager {
                 else if(cellStatePLC[i] == 1) {
                     cellState[i][0] = cellStatePLC[i];
                 }
+            }
+            else if(cellStatePLC[i] == 0 && (i>=5) && (cellState[i][0] != 2)) {
+                cellState[i][0] = 0;
             }
         }
     }

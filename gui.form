@@ -36,8 +36,7 @@
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jLabel3" min="-2" pref="391" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <Component id="jLabel3" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -1554,7 +1553,7 @@
           <Font name="Consolas" size="24" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="MES"/>
+        <Property name="text" type="java.lang.String" value="Manu"/>
       </Properties>
     </Component>
   </SubComponents>

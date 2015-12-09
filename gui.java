@@ -946,7 +946,7 @@ public class gui extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("MES");
+        jLabel3.setText("Manu");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -958,8 +958,7 @@ public class gui extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1479,30 +1478,25 @@ public class gui extends javax.swing.JFrame {
                     case 1:
                         switch(pkg)
                         {
-                            case 1: C1MaP1.setText(C1MaP1.getText()+1); C1MaTime.setText(C1MaTime.getText()+1); break;          //MUDAR TEMPO
-                            case 2: C1MaP2.setText(C1MaP2.getText()+1); C1MaTime.setText(C1MaTime.getText()+1);break;           //MUDAR TEMPO
-                            case 6: C1MaP6.setText(C1MaP6.getText()+1); C1MaTime.setText(C1MaTime.getText()+1);break;           //MUDAR TEMPO                                    
+                            case 2: C1MaP2.setText(C1MaP2.getText()+1); C1MaTime.setText(C1MaTime.getText()+20);break;         
                         }
                     case 2:
                         switch(pkg)
                         {
-                            case 1: C2MaP1.setText(C2MaP1.getText()+1); C2MaTime.setText(C2MaTime.getText()+1); break;          //MUDAR TEMPO
-                            case 2: C2MaP2.setText(C2MaP2.getText()+1); C2MaTime.setText(C2MaTime.getText()+1);break;           //MUDAR TEMPO
-                            case 6: C2MaP6.setText(C2MaP6.getText()+1); C2MaTime.setText(C2MaTime.getText()+1);break;           //MUDAR TEMPO                                    
+                            case 1: C2MaP1.setText(C2MaP1.getText()+1); C2MaTime.setText(C2MaTime.getText()+25); break;          
+                            case 6: C2MaP6.setText(C2MaP6.getText()+1); C2MaTime.setText(C2MaTime.getText()+25);break;                                               
                         }
                     case 3:
                         switch(pkg)
                         {
-                            case 1: C3MaP1.setText(C3MaP1.getText()+1); C3MaTime.setText(C3MaTime.getText()+1); break;          //MUDAR TEMPO
-                            case 2: C3MaP2.setText(C3MaP2.getText()+1); C3MaTime.setText(C3MaTime.getText()+1);break;           //MUDAR TEMPO
-                            case 6: C3MaP6.setText(C3MaP6.getText()+1); C3MaTime.setText(C3MaTime.getText()+1);break;           //MUDAR TEMPO                                    
+                            case 1: C3MaP1.setText(C3MaP1.getText()+1); C3MaTime.setText(C3MaTime.getText()+25); break;          
+                            case 6: C3MaP6.setText(C3MaP6.getText()+1); C3MaTime.setText(C3MaTime.getText()+25);break;                                               
                         }
                     case 4:
                         switch(pkg)
                         {
-                            case 1: C4MaP1.setText(C4MaP1.getText()+1); C4MaTime.setText(C4MaTime.getText()+1); break;          //MUDAR TEMPO
-                            case 2: C4MaP2.setText(C4MaP2.getText()+1); C4MaTime.setText(C4MaTime.getText()+1);break;           //MUDAR TEMPO
-                            case 6: C4MaP6.setText(C4MaP6.getText()+1); C4MaTime.setText(C4MaTime.getText()+1);break;           //MUDAR TEMPO                                    
+                            case 1: C4MaP1.setText(C4MaP1.getText()+1); C4MaTime.setText(C4MaTime.getText()+25); break;          
+                            case 6: C4MaP6.setText(C4MaP6.getText()+1); C4MaTime.setText(C4MaTime.getText()+25);break;                                               
                         }
                     default:
                 }
@@ -1513,20 +1507,20 @@ public class gui extends javax.swing.JFrame {
                     case 2:
                         switch(pkg)
                         {
-                            case 5: C2MbP5.setText(C2MbP5.getText()+1); C2MbTime.setText(C2MbTime.getText()+1); break;          //MUDAR TEMPO
-                            case 8: C2MbP8.setText(C2MbP8.getText()+1); C2MbTime.setText(C2MbTime.getText()+1);break;           //MUDAR TEMPO
+                            case 5: C2MbP5.setText(C2MbP5.getText()+1); C2MbTime.setText(C2MbTime.getText()+25); break;          
+                            case 8: C2MbP8.setText(C2MbP8.getText()+1); C2MbTime.setText(C2MbTime.getText()+20);break;           
                         }
                     case 3:
                         switch(pkg)
                         {
-                            case 5: C3MbP5.setText(C3MbP5.getText()+1); C3MbTime.setText(C3MbTime.getText()+1); break;          //MUDAR TEMPO
-                            case 8: C3MbP8.setText(C3MbP8.getText()+1); C3MbTime.setText(C3MbTime.getText()+1);break;           //MUDAR TEMPO    
+                            case 5: C3MbP5.setText(C3MbP5.getText()+1); C3MbTime.setText(C3MbTime.getText()+25); break;          
+                            case 8: C3MbP8.setText(C3MbP8.getText()+1); C3MbTime.setText(C3MbTime.getText()+20);break;               
                         }
                     case 4:
                         switch(pkg)
                         {
-                            case 5: C4MbP5.setText(C4MbP5.getText()+1); C4MbTime.setText(C4MbTime.getText()+1); break;          //MUDAR TEMPO
-                            case 8: C4MbP8.setText(C4MbP8.getText()+1); C4MbTime.setText(C4MbTime.getText()+1);break;           //MUDAR TEMPO      
+                            case 5: C4MbP5.setText(C4MbP5.getText()+1); C4MbTime.setText(C4MbTime.getText()+25); break;          
+                            case 8: C4MbP8.setText(C4MbP8.getText()+1); C4MbTime.setText(C4MbTime.getText()+20);break;                
                         }
                     default:
                 }
@@ -1537,9 +1531,8 @@ public class gui extends javax.swing.JFrame {
                     case 1:
                         switch(pkg)
                         {
-                            case 1: C1McP1.setText(C1McP1.getText()+1); C1McTime.setText(C1McTime.getText()+1); break;          //MUDAR TEMPO
-                            case 3: C1McP3.setText(C1McP3.getText()+1); C1McTime.setText(C1McTime.getText()+1);break;           //MUDAR TEMPO
-                            case 8: C1McP8.setText(C1McP8.getText()+1); C1McTime.setText(C1McTime.getText()+1);break;           //MUDAR TEMPO                                    
+                            case 1: C1McP1.setText(C1McP1.getText()+1); C1McTime.setText(C1McTime.getText()+25); break;          
+                            case 3: C1McP3.setText(C1McP3.getText()+1); C1McTime.setText(C1McTime.getText()+10);break;           
                         }
                 }
             default: 

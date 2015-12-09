@@ -282,9 +282,82 @@ public class Trabalho_InformaticaIndustrial {
             SuperGui.oneAssembleArrived(id);
     }
     
-    public static void updateMachines(int cell, char machine, int pkg)
+    public static void updateMachines(int cell, int pkgInit, int pkgFinal)
     {
-        SuperGui.addOneToMachines(cell, machine, pkg);
+        /*switch (pkgInit)
+        {
+            case 1:
+                switch (pkgFinal)
+                {
+                    case 2:
+                    case 3:
+                    case 4:
+                    case 5:
+                    
+                }
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 8:
+                break;
+        }
+        */
+        
+        if ( pkgInit != pkgFinal)
+        {
+            if (cell == 1 ) //falemos da maquina paralela
+            {
+                if (pkgInit == 1 || pkgInit == 3 )
+                {
+                    SuperGui.addOneToMachines(cell, 'a', pkgInit);
+                    pkgInit ++;
+                    updateMachines(cell, pkgInit, pkgFinal);
+                }
+                else if ( pkgInit == 8)
+                {
+                    SuperGui.addOneToMachines(cell, 'c', pkgInit);
+                    pkgInit --; //so pode ir para a 7
+                    updateMachines(cell, pkgInit, pkgFinal);
+                }  
+                else
+                {
+                    SuperGui.addOneToMachines(cell, 'c', pkgInit);
+                    pkgInit ++;
+                    updateMachines(cell, pkgInit, pkgFinal);
+                }
+            }
+            else //falemos agora das maquina série
+            {
+                if (pkgInit == 1 || pkgInit == 6 )
+                {
+                    SuperGui.addOneToMachines(cell, 'a', pkgInit);
+                    pkgInit ++;
+                    updateMachines(cell, pkgInit, pkgFinal);
+                }
+                else if ( pkgInit == 5 && pkgFinal == 8)
+                {
+                    SuperGui.addOneToMachines(cell, 'b', pkgInit);
+                    pkgInit = 8;
+                    updateMachines(cell, pkgInit, pkgFinal);
+                }
+                else if ( pkgInit == 5 || pkgInit == 8)
+                {
+                    SuperGui.addOneToMachines(cell, 'b', pkgInit);
+                    pkgInit ++;
+                    updateMachines(cell, pkgInit, pkgFinal);
+                }
+                
+            }
+        }
+        
+        
+        //SuperGui.addOneToMachines(cell, machine, pkg);
     }
     
     public static void updatePushers(int n)
