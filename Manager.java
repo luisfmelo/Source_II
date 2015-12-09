@@ -9,6 +9,7 @@ import static trabalho_informaticaindustrial.Trabalho_InformaticaIndustrial.modb
 import static trabalho_informaticaindustrial.Trabalho_InformaticaIndustrial.updateArrived;
 import static trabalho_informaticaindustrial.Trabalho_InformaticaIndustrial.updateMachines;
 import static trabalho_informaticaindustrial.Trabalho_InformaticaIndustrial.updateOngoing;
+import static trabalho_informaticaindustrial.Trabalho_InformaticaIndustrial.updatePushers;
 
 interface Cells {
     public static final int Parallel = 0;
@@ -101,7 +102,8 @@ public class Manager {
                 {
                     cell = Cells.Unload1;
                     modbusCom.sendOp(item.getArg1(), item.getArg2(), cell+1); //envia operação
-                    addOneToPusher(cell+1);  //para a GUI
+                    //addOneToPusher(cell+1);  //para a GUI
+                    updatePushers(cell+1);
 //<<<<<<< HEAD
                     
                     //cellState[Cells.Unload1][0] = 1;
@@ -122,7 +124,8 @@ public class Manager {
                     cellState[Cells.Unload2][1] = item.getId();
                     item.incrementOngoingPackages();
                     updateOngoing('U', item.getId());
-                    addOneToPusher(cell+1);                                 //para a GUI
+                    //addOneToPusher(cell+1);  //para a GUI
+                    updatePushers(cell+1);                               //para a GUI
                     System.out.println("Enviada peça para o Pusher 2");
                 }
                 
