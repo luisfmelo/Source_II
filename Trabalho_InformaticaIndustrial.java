@@ -227,6 +227,7 @@ public class Trabalho_InformaticaIndustrial {
             String content = "Factory Working since " + dateFormat.format(theBeginningOfTimes.getTime()).toString() + ".\r\n";
             
             //Get DATA
+
             content += SuperGui.getStatistics();
             
             //Finalize
@@ -294,31 +295,6 @@ public class Trabalho_InformaticaIndustrial {
     
     public static void updateMachines(int cell, int pkgInit, int pkgFinal)
     {
-        /*switch (pkgInit)
-        {
-            case 1:
-                switch (pkgFinal)
-                {
-                    case 2:
-                    case 3:
-                    case 4:
-                    case 5:
-                    
-                }
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 5:
-                break;
-            case 6:
-                break;
-            case 8:
-                break;
-        }
-        */
-        
         if ( pkgInit != pkgFinal)
         {
             if (cell == 1 ) //falemos da maquina paralela
@@ -362,7 +338,6 @@ public class Trabalho_InformaticaIndustrial {
                     pkgInit ++;
                     updateMachines(cell, pkgInit, pkgFinal);
                 }
-                
             }
         }
         

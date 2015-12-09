@@ -184,7 +184,9 @@ public class Manager {
 
                     waitingOps.get(idx).incrementFinishedPackages();
                     waitingOps.get(idx).decrementOngoingPackages();
-                    updateArrived(cellType, idx);
+                    
+                    // Atualizar GUI
+                    updateArrived(cellType,  cellState[i][1]);
                     
                     // Atualizar estado interno das células
                     cellState[i][0] = 1;
