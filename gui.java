@@ -455,7 +455,7 @@ public class gui extends javax.swing.JFrame {
                                                         .addComponent(jTextField53, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                     .addComponent(C3MaTime, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                             .addComponent(C1MaP1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 689, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 751, Short.MAX_VALUE)
                 .addComponent(jTextField54, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35))
         );
@@ -680,7 +680,7 @@ public class gui extends javax.swing.JFrame {
                                                     .addComponent(C2MbTime, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                             .addComponent(C2MbP5, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 689, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 751, Short.MAX_VALUE)
                 .addComponent(jTextField38, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35))
         );
@@ -833,7 +833,7 @@ public class gui extends javax.swing.JFrame {
                                         .addGap(248, 248, 248)
                                         .addComponent(jTextField27, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(C1McP1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 689, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 751, Short.MAX_VALUE)
                 .addComponent(jTextField28, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35))
         );
@@ -909,7 +909,7 @@ public class gui extends javax.swing.JFrame {
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(textFieldPusher2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(922, Short.MAX_VALUE))
+                .addContainerGap(984, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -947,7 +947,7 @@ public class gui extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1295, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jLabel1)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -966,7 +966,7 @@ public class gui extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        setSize(new java.awt.Dimension(1249, 338));
+        setSize(new java.awt.Dimension(1311, 338));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1380,7 +1380,7 @@ public class gui extends javax.swing.JFrame {
                 model.getValueAt(row, model.getColumnCount()-1) == ONGOING)  
         {
             model.setValueAt(FINISHED, row, model.getColumnCount()-1); //diz que acabou
-            model.setValueAt(dateFormat.format(Calendar.getInstance().getTime()).toString(), row, 7); //atualiza finish time time
+            model.setValueAt(dateFormat.format(Calendar.getInstance().getTime()).toString(), row, 8); //atualiza finish time time
         }
         
         model.setValueAt((int)model.getValueAt(row, 1)+1, row, 1);  //F5 nos produced packages (+1)
@@ -1450,7 +1450,7 @@ public class gui extends javax.swing.JFrame {
                 model.getValueAt(row, model.getColumnCount()-1) == ONGOING)  
         {
             model.setValueAt(FINISHED, row, model.getColumnCount()-1); //diz que acabou
-            model.setValueAt(dateFormat.format(Calendar.getInstance().getTime()).toString(), row, 7); //atualiza finish time time
+            model.setValueAt(dateFormat.format(Calendar.getInstance().getTime()).toString(), row, 8); //atualiza finish time time
         }
         
         model.setValueAt((int)model.getValueAt(row, 1)+1, row, 1);  //F5 nos produced packages (+1)
