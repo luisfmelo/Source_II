@@ -383,16 +383,13 @@
                                   <Component id="jLabel35" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel34" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                                          <Component id="jLabel16" min="-2" pref="55" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="C1MaP6" min="-2" pref="45" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="C1MaTime" min="-2" pref="90" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="C1MaP6" alignment="0" min="-2" pref="45" max="-2" attributes="0"/>
+                                      <Component id="jLabel34" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jLabel16" max="32767" attributes="0"/>
+                                      <Component id="C1MaTime" pref="90" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -450,7 +447,7 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="689" max="32767" attributes="0"/>
                           <Component id="jTextField54" min="-2" pref="67" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       </Group>
@@ -513,7 +510,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Consolas" size="18" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Time"/>
+                    <Property name="text" type="java.lang.String" value="Time (s)"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel17">
@@ -872,8 +869,6 @@
                                   <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                                   <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
-                                  <Component id="jLabel5" min="-2" pref="55" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
@@ -908,6 +903,7 @@
                                                               <Component id="C3MbTime" min="-2" pref="90" max="-2" attributes="0"/>
                                                               <Component id="C4MbTime" min="-2" pref="90" max="-2" attributes="0"/>
                                                               <Component id="C2MbTime" alignment="0" min="-2" pref="90" max="-2" attributes="0"/>
+                                                              <Component id="jLabel5" alignment="0" min="-2" pref="90" max="-2" attributes="0"/>
                                                           </Group>
                                                       </Group>
                                                   </Group>
@@ -918,7 +914,7 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="689" max="32767" attributes="0"/>
                           <Component id="jTextField38" min="-2" pref="67" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       </Group>
@@ -970,7 +966,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Consolas" size="18" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Time"/>
+                    <Property name="text" type="java.lang.String" value="Time (s)"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel15">
@@ -1209,16 +1205,13 @@
                                   <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                                          <Component id="jLabel2" min="-2" pref="55" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="C1McP8" min="-2" pref="45" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="C1McTime" min="-2" pref="90" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="C1McP8" alignment="0" min="-2" pref="45" max="-2" attributes="0"/>
+                                      <Component id="jLabel22" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="C1McTime" pref="90" max="32767" attributes="0"/>
+                                      <Component id="jLabel2" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -1240,7 +1233,7 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="689" max="32767" attributes="0"/>
                           <Component id="jTextField28" min="-2" pref="67" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       </Group>
@@ -1280,7 +1273,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Consolas" size="18" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Time"/>
+                    <Property name="text" type="java.lang.String" value="Time (s)"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel6">

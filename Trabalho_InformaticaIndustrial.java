@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Iterator;
@@ -32,6 +33,7 @@ public class Trabalho_InformaticaIndustrial {
     public static final String ANSI_PURPLE = "\u001B[35m";
     public static final String ANSI_CYAN = "\u001B[36m";
     public static final String ANSI_WHITE = "\u001B[37m";
+    public static DateFormat dateFormat = new SimpleDateFormat("hh:mm:ss dd MMM yyyy");
     
     public static LinkedList<Operation> listOps = new LinkedList<Operation>();
     public static LinkedList<Operation> waitingOps = new LinkedList<Operation>();
@@ -221,11 +223,21 @@ public class Trabalho_InformaticaIndustrial {
         {
             
             Calendar theEndOfTimes = Calendar.getInstance();
-            String content = "Factory Working since " + theBeginningOfTimes.getTime() + ".\r\n";
-            content += "Transformations: GET DATA\r\n";
+            //Initialize
+            String content = "Factory Working since " + dateFormat.format(theBeginningOfTimes.getTime()).toString() + ".\r\n";
+            
+            //Get DATA
+            content += "*STATISTICS*\r\n\tTransformations: \r\n";
+                //transformations Ma
+                content += "\t\t"
+            
+            //Finalize
             content += "Factory close at " + theEndOfTimes.getTime() + ".\r\n\r\n";
             double totalTime = theEndOfTimes.getTimeInMillis() - theBeginningOfTimes.getTimeInMillis();
-            content += "Total Time Working: " + totalTime + " milisegundos.\r\n\r\n";
+            int sec  = (int)(totalTime/ 1000) % 60 ;
+            int min  = (int)((totalTime/ (1000*60)) % 60);
+            int hr   = (int)((totalTime/ (1000*60*60)) % 24);
+            content += "Total Time Working: " + hr + "h " + min+ "m " + sec + "s.\r\n\r\n";
             content += "® David Sousa & Luís Melo";// e-mail: <" + SuperGui.getEmail() + ">\r\n\r\n";
             
             File file = new File("LogFile.txt");

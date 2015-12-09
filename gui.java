@@ -186,7 +186,7 @@ public class gui extends javax.swing.JFrame {
         jTabbedPane1.addTab("Unload List", jScrollPane3);
 
         jLabel16.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jLabel16.setText("Time");
+        jLabel16.setText("Time (s)");
 
         jLabel17.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
         jLabel17.setText("C1");
@@ -409,14 +409,12 @@ public class gui extends javax.swing.JFrame {
                         .addComponent(jLabel35)
                         .addGap(41, 41, 41)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(jLabel34)
-                                .addGap(42, 42, 42)
-                                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(C1MaP6, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(C1MaTime, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(C1MaP6, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel34))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(C1MaTime, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -457,7 +455,7 @@ public class gui extends javax.swing.JFrame {
                                                         .addComponent(jTextField53, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                     .addComponent(C3MaTime, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                             .addComponent(C1MaP1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 689, Short.MAX_VALUE)
                 .addComponent(jTextField54, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35))
         );
@@ -507,7 +505,7 @@ public class gui extends javax.swing.JFrame {
         jTabbedPane3.addTab("Machine A", jPanel6);
 
         jLabel5.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jLabel5.setText("Time");
+        jLabel5.setText("Time (s)");
 
         jLabel15.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
         jLabel15.setText("C2");
@@ -650,9 +648,7 @@ public class gui extends javax.swing.JFrame {
                         .addGap(60, 60, 60)
                         .addComponent(jLabel24)
                         .addGap(37, 37, 37)
-                        .addComponent(jLabel29)
-                        .addGap(59, 59, 59)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel29))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -681,9 +677,10 @@ public class gui extends javax.swing.JFrame {
                                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(C3MbTime, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(C4MbTime, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(C2MbTime, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                                    .addComponent(C2MbTime, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                             .addComponent(C2MbP5, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 689, Short.MAX_VALUE)
                 .addComponent(jTextField38, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35))
         );
@@ -723,7 +720,7 @@ public class gui extends javax.swing.JFrame {
         jTabbedPane3.addTab("Machine B", jPanel5);
 
         jLabel2.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jLabel2.setText("Time");
+        jLabel2.setText("Time (s)");
 
         jLabel6.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
         jLabel6.setText("C1");
@@ -817,14 +814,12 @@ public class gui extends javax.swing.JFrame {
                         .addComponent(jLabel23)
                         .addGap(41, 41, 41)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel22)
-                                .addGap(42, 42, 42)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(C1McP8, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(C1McTime, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(C1McP8, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel22))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(C1McTime, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -838,7 +833,7 @@ public class gui extends javax.swing.JFrame {
                                         .addGap(248, 248, 248)
                                         .addComponent(jTextField27, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(C1McP1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 689, Short.MAX_VALUE)
                 .addComponent(jTextField28, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35))
         );
@@ -1553,6 +1548,38 @@ public class gui extends javax.swing.JFrame {
         else
             System.out.println("Error!! gui.java addOneToPusher");
     }     
+    
+    public String getStatistics()
+    {
+        String content;
+        content = "*STATISTICS*\r\n\tTransformations: \r\n";
+                
+        //transformations Ma
+            content += "\t\t" + "\t"   + "#P1\t" + "#P2\t" + "#P6\t" + "Time(s)";
+            content += "\t\t" + "C1\t" + C1MaP1.getText() + "\t" + C1MaP2.getText() + "\t" + C1MaP6.getText() + "\t" + C1MaTime.getText() + "\r\n";
+            content += "\t\t" + "C2\t" + C2MaP1.getText() + "\t" + C2MaP2.getText() + "\t" + C2MaP6.getText() + "\t" + C2MaTime.getText() + "\r\n";
+            content += "\t\t" + "C3\t" + C3MaP1.getText() + "\t" + C3MaP2.getText() + "\t" + C3MaP6.getText() + "\t" + C3MaTime.getText() + "\r\n";
+            content += "\t\t" + "C4\t" + C4MaP1.getText() + "\t" + C4MaP2.getText() + "\t" + C4MaP6.getText() + "\t" + C4MaTime.getText() + "\r\n\r\n";
+
+        //transformations Mb
+            content += "\t\t" + "\t"   + "#P5\t" + "#P8\t" + "Time(s)";
+            content += "\t\t" + "C2\t" + C2MbP5.getText() + "\t" + C2MbP8.getText() + "\t" + "\t" + C2MbTime.getText() + "\r\n";
+            content += "\t\t" + "C3\t" + C3MbP5.getText() + "\t" + C3MbP8.getText() + "\t" + "\t" + C3MbTime.getText() + "\r\n";
+            content += "\t\t" + "C4\t" + C4MbP5.getText() + "\t" + C4MbP8.getText() + "\t" + "\t" + C4MbTime.getText() + "\r\n\r\n";
+        
+        //transformations Mc
+            content += "\t\t" + "\t"   + "#P1\t" + "#P3\t" + "#P8\t" + "Time(s)";
+            content += "\t\t" + "C1\t" + C1McP1.getText() + "\t" + C1McP3.getText() + "\t" + C1McP8.getText() + "\t" + C1McTime.getText() + "\r\n\r\n\r\n";
+            
+        //pushers
+            content += "\tPushers: \r\n";
+            content += "\t\tPusher 1: " + textFieldPusher1.getText() + "\r\n";
+            content += "\t\tPusher 2: " + textFieldPusher2.getText() + "\r\n";
+            
+            
+            
+        return content;
+    }
     
     /*
     Minha estrategia (para cada tipo):

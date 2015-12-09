@@ -7,6 +7,7 @@ import static trabalho_informaticaindustrial.Trabalho_InformaticaIndustrial.ANSI
 import static trabalho_informaticaindustrial.Trabalho_InformaticaIndustrial.cellState;
 import static trabalho_informaticaindustrial.Trabalho_InformaticaIndustrial.modbusCom;
 import static trabalho_informaticaindustrial.Trabalho_InformaticaIndustrial.updateArrived;
+import static trabalho_informaticaindustrial.Trabalho_InformaticaIndustrial.updateMachines;
 import static trabalho_informaticaindustrial.Trabalho_InformaticaIndustrial.updateOngoing;
 
 interface Cells {
@@ -82,6 +83,8 @@ public class Manager {
                 
                 // Enviar a operação para o PLC
                 modbusCom.sendOp(item.getArg1(), item.getArg2(), cell); //aqui é que vai acontecer toda a ação
+                updateMachines(cell, item.getArg1(), item.getArg2());
+                
                 item.incrementOngoingPackages();
                 updateOngoing('T', item.getId());
                 
@@ -98,6 +101,7 @@ public class Manager {
                 {
                     cell = Cells.Unload1;
                     modbusCom.sendOp(item.getArg1(), item.getArg2(), cell+1); //envia operação
+                    addOneToPusher(cell+1);  //para a GUI
 //<<<<<<< HEAD
                     
                     //cellState[Cells.Unload1][0] = 1;
@@ -118,7 +122,7 @@ public class Manager {
                     cellState[Cells.Unload2][1] = item.getId();
                     item.incrementOngoingPackages();
                     updateOngoing('U', item.getId());
-                    
+                    addOneToPusher(cell+1);                                 //para a GUI
                     System.out.println("Enviada peça para o Pusher 2");
                 }
                 
@@ -281,5 +285,9 @@ public class Manager {
         System.out.println(ANSI_RED + "Erro Manager: não foi possível localizar a operação desejada.");
         
         return null;
+    }
+
+    private void addOneToPusher(int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
