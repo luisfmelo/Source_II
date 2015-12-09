@@ -1444,6 +1444,8 @@ public class gui extends javax.swing.JFrame {
             }
         }
         
+        addOneToPusher((int)model.getValueAt(row, 5 ));
+        
         // é a ultima peça de todas; esta ongoing...pending = 0 ongoing =1
         if (    (int) model.getValueAt(row, 3 ) == 0 && 
                 (int) model.getValueAt(row, 2 ) == 1 &&
@@ -1546,7 +1548,7 @@ public class gui extends javax.swing.JFrame {
         else if ( num == 2 )
             textFieldPusher2.setText(textFieldPusher2.getText()+1);
         else
-            System.out.println("Error!! gui.java addOneToPusher");
+            System.out.println("Error!! gui.java addOneToPusher: " + num);
     }     
     
     public String getStatistics()
