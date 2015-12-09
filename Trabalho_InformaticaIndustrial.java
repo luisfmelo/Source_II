@@ -227,13 +227,7 @@ public class Trabalho_InformaticaIndustrial {
             String content = "Factory Working since " + dateFormat.format(theBeginningOfTimes.getTime()).toString() + ".\r\n";
             
             //Get DATA
-<<<<<<< HEAD
-            content += "*STATISTICS*\r\n\tTransformations: \r\n";
-                //transformations Ma
-                content += "\t\t";
-=======
             content += SuperGui.getStatistics();
->>>>>>> c3f5e160690fc9b5d05746f284a2f310a878055b
             
             //Finalize
             content += "Factory closed since " + dateFormat.format(theEndOfTimes.getTime()).toString() + ".\r\n\r\n";
