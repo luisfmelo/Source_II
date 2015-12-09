@@ -227,7 +227,6 @@ public class Trabalho_InformaticaIndustrial {
             String content = "Factory Working since " + dateFormat.format(theBeginningOfTimes.getTime()).toString() + ".\r\n";
             
             //Get DATA
-
             content += SuperGui.getStatistics();
             
             //Finalize
@@ -320,10 +319,16 @@ public class Trabalho_InformaticaIndustrial {
             }
             else //falemos agora das maquina série
             {
-                if (pkgInit == 1 || pkgInit == 6 )
+                if (pkgInit == 6 )
                 {
                     SuperGui.addOneToMachines(cell, 'a', pkgInit);
                     pkgInit ++;
+                    updateMachines(cell, pkgInit, pkgFinal);
+                }
+                else if (pkgInit == 1 )
+                {
+                    SuperGui.addOneToMachines(cell, 'a', pkgInit);
+                    pkgInit = 5;
                     updateMachines(cell, pkgInit, pkgFinal);
                 }
                 else if ( pkgInit == 5 && pkgFinal == 8)

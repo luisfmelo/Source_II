@@ -1544,27 +1544,6 @@ public class gui extends javax.swing.JFrame {
                 }
                 else if ( pkg == 8 )
                 {
-<<<<<<< HEAD
-                    case 1:
-                        time = Integer.valueOf(C1McTime.getText());
-                        switch(pkg)
-                        {
-                            case 1:    
-                                val = Integer.valueOf(C1McP1.getText()) + 1;
-                                time += 25;
-                                C1McP1.setText("" + val); C1McTime.setText("" + time); break;          
-                            case 3:    
-                                val = Integer.valueOf(C1McP3.getText()) + 1;
-                                time += 10;
-                                C1McP3.setText("" + val); C1McTime.setText("" + time);break;           
-                        }
-                    break;
-                }
-            default: 
-                System.out.println("Error!! gui.java addOneToMachines: " + machine);
-        }      
-    }       
-=======
                     val = Integer.valueOf(C2MbP8.getText()) + 1;
                     time += 20;
                     C2MbP8.setText("" + val); C2MbTime.setText("" + time);      
@@ -1626,8 +1605,7 @@ public class gui extends javax.swing.JFrame {
         else 
             System.out.println("Error!! gui.java addOneToMachines");
             
-    }      
->>>>>>> 4ad60db3251944f2e48c5e98d5bbf7ed346454cc
+    }   
         
     /**
      *
