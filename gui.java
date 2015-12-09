@@ -1555,26 +1555,26 @@ public class gui extends javax.swing.JFrame {
         content = "*STATISTICS*\r\n\tTransformations: \r\n";
                 
         //transformations Ma
-            content += "\t\t" + "\t"   + "#P1\t" + "#P2\t" + "#P6\t" + "Time(s)";
+            content += "\t\t" + "\t"   + "#P1\t" + "#P2\t" + "#P6\t" + "Time(s)\r\n";
             content += "\t\t" + "C1\t" + C1MaP1.getText() + "\t" + C1MaP2.getText() + "\t" + C1MaP6.getText() + "\t" + C1MaTime.getText() + "\r\n";
             content += "\t\t" + "C2\t" + C2MaP1.getText() + "\t" + C2MaP2.getText() + "\t" + C2MaP6.getText() + "\t" + C2MaTime.getText() + "\r\n";
             content += "\t\t" + "C3\t" + C3MaP1.getText() + "\t" + C3MaP2.getText() + "\t" + C3MaP6.getText() + "\t" + C3MaTime.getText() + "\r\n";
             content += "\t\t" + "C4\t" + C4MaP1.getText() + "\t" + C4MaP2.getText() + "\t" + C4MaP6.getText() + "\t" + C4MaTime.getText() + "\r\n\r\n";
 
         //transformations Mb
-            content += "\t\t" + "\t"   + "#P5\t" + "#P8\t" + "Time(s)";
+            content += "\t\t" + "\t"   + "#P5\t" + "#P8\t" + "Time(s)\r\n";
             content += "\t\t" + "C2\t" + C2MbP5.getText() + "\t" + C2MbP8.getText() + "\t" + "\t" + C2MbTime.getText() + "\r\n";
             content += "\t\t" + "C3\t" + C3MbP5.getText() + "\t" + C3MbP8.getText() + "\t" + "\t" + C3MbTime.getText() + "\r\n";
             content += "\t\t" + "C4\t" + C4MbP5.getText() + "\t" + C4MbP8.getText() + "\t" + "\t" + C4MbTime.getText() + "\r\n\r\n";
         
         //transformations Mc
-            content += "\t\t" + "\t"   + "#P1\t" + "#P3\t" + "#P8\t" + "Time(s)";
+            content += "\t\t" + "\t"   + "#P1\t" + "#P3\t" + "#P8\t" + "Time(s)\r\n";
             content += "\t\t" + "C1\t" + C1McP1.getText() + "\t" + C1McP3.getText() + "\t" + C1McP8.getText() + "\t" + C1McTime.getText() + "\r\n\r\n\r\n";
             
         //pushers
             content += "\tPushers: \r\n";
             content += "\t\tPusher 1: " + textFieldPusher1.getText() + "\r\n";
-            content += "\t\tPusher 2: " + textFieldPusher2.getText() + "\r\n";
+            content += "\t\tPusher 2: " + textFieldPusher2.getText() + "\r\n\r\n\r\n";
             
         return content;
     }
