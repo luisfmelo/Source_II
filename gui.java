@@ -1465,35 +1465,60 @@ public class gui extends javax.swing.JFrame {
     */
     public void addOneToMachines(int cell, char machine, int pkg)
     {
-        /*machine = Character.toUpperCase(machine);
-        
+        machine = Character.toUpperCase(machine);
+        int time, val;
         switch(machine)
         {
             case 'A':
                 switch(cell)
                 {
                     case 1:
+                        time = Integer.valueOf(C1MaTime.getText());
                         switch(pkg)
                         {
-                            case 2: C1MaP2.setText(C1MaP2.getText()+1); C1MaTime.setText(C1MaTime.getText()+20);break;         
+                            case 2: 
+                                val = Integer.valueOf(C1MaP2.getText()) + 1;
+                                time += 20; 
+                                C1MaP2.setText("" + val); C1MaTime.setText("" + time); break;         
                         }
                     case 2:
+                        time = Integer.valueOf(C2MaTime.getText());
                         switch(pkg)
                         {
-                            case 1: C2MaP1.setText(C2MaP1.getText()+1); C2MaTime.setText(C2MaTime.getText()+25); break;          
-                            case 6: C2MaP6.setText(C2MaP6.getText()+1); C2MaTime.setText(C2MaTime.getText()+25);break;                                               
+                            case 1: 
+                                val = Integer.valueOf(C2MaP1.getText()) + 1;
+                                time += 25;
+                                C2MaP1.setText("" + time); C2MaTime.setText("" + time); break;          
+                            case 6: 
+                                val = Integer.valueOf(C2MaP6.getText()) + 1;
+                                time += 25;
+                                C2MaP6.setText("" + val); C2MaTime.setText("" + time); break;                                               
                         }
                     case 3:
+                        time = Integer.valueOf(C3MaTime.getText());
                         switch(pkg)
                         {
-                            case 1: C3MaP1.setText(C3MaP1.getText()+1); C3MaTime.setText(C3MaTime.getText()+25); break;          
-                            case 6: C3MaP6.setText(C3MaP6.getText()+1); C3MaTime.setText(C3MaTime.getText()+25);break;                                               
+                            case 1: 
+                                val = Integer.valueOf(C3MaP1.getText()) + 1;
+                                time += 25;
+                                C3MaP1.setText("" + val); C3MaTime.setText("" + time); break;          
+                            case 6:  
+                                val = Integer.valueOf(C3MaP6.getText()) + 1;
+                                time += 25;
+                                C3MaP6.setText("" + val); C3MaTime.setText("" + time);break;                                               
                         }
                     case 4:
+                        time = Integer.valueOf(C4MaTime.getText());
                         switch(pkg)
                         {
-                            case 1: C4MaP1.setText(C4MaP1.getText()+1); C4MaTime.setText(C4MaTime.getText()+25); break;          
-                            case 6: C4MaP6.setText(C4MaP6.getText()+1); C4MaTime.setText(C4MaTime.getText()+25);break;                                               
+                            case 1:   
+                                val = Integer.valueOf(C4MaP1.getText()) + 1;
+                                time += 25;
+                                C4MaP1.setText("" + val); C4MaTime.setText("" + time); break;          
+                            case 6:   
+                                val = Integer.valueOf(C4MaP6.getText()) + 1;
+                                time += 25;
+                                C4MaP6.setText("" + val); C4MaTime.setText("" + time);break;                                               
                         }
                     default:
                 }
@@ -1502,22 +1527,43 @@ public class gui extends javax.swing.JFrame {
                 switch(cell)
                 {
                     case 2:
+                        time = Integer.valueOf(C2MbTime.getText());
                         switch(pkg)
                         {
-                            case 5: C2MbP5.setText(C2MbP5.getText()+1); C2MbTime.setText(C2MbTime.getText()+25); break;          
-                            case 8: C2MbP8.setText(C2MbP8.getText()+1); C2MbTime.setText(C2MbTime.getText()+20);break;           
+                            case 5:   
+                                val = Integer.valueOf(C2MbP5.getText()) + 1;
+                                time += 25;
+                                C2MbP5.setText("" + val); C2MbTime.setText("" + time); break;          
+                            case 8:   
+                                val = Integer.valueOf(C2MbP8.getText()) + 1;
+                                time += 20;
+                                C2MbP8.setText("" + val); C2MbTime.setText("" + time);break;           
                         }
                     case 3:
+                        time = Integer.valueOf(C3MbTime.getText());
                         switch(pkg)
                         {
-                            case 5: C3MbP5.setText(C3MbP5.getText()+1); C3MbTime.setText(C3MbTime.getText()+25); break;          
-                            case 8: C3MbP8.setText(C3MbP8.getText()+1); C3MbTime.setText(C3MbTime.getText()+20);break;               
+                            case 5:   
+                                val = Integer.valueOf(C3MbP5.getText()) + 1;
+                                time += 25;
+                                C3MbP5.setText("" + val); C3MbTime.setText("" + time); break;          
+                            case 8:   
+                                val = Integer.valueOf(C3MbP8.getText()) + 1;
+                                time += 20;
+                                C3MbP8.setText("" + val); C3MbTime.setText("" + time);break;               
                         }
                     case 4:
+                        time = Integer.valueOf(C4MbTime.getText());
                         switch(pkg)
                         {
-                            case 5: C4MbP5.setText(C4MbP5.getText()+1); C4MbTime.setText(C4MbTime.getText()+25); break;          
-                            case 8: C4MbP8.setText(C4MbP8.getText()+1); C4MbTime.setText(C4MbTime.getText()+20);break;                
+                            case 5:    
+                                val = Integer.valueOf(C4MbP5.getText()) + 1;
+                                time += 25;
+                                C4MbP5.setText("" + val); C4MbTime.setText("" + time); break;          
+                            case 8:    
+                                val = Integer.valueOf(C4MbP8.getText()) + 1;
+                                time += 25;
+                                C4MbP8.setText("" + val); C4MbTime.setText("" + time);break;                
                         }
                     default:
                 }
@@ -1526,15 +1572,22 @@ public class gui extends javax.swing.JFrame {
                 switch(cell)
                 {
                     case 1:
+                        time = Integer.valueOf(C1McTime.getText());
                         switch(pkg)
                         {
-                            case 1: C1McP1.setText(C1McP1.getText()+1); C1McTime.setText(C1McTime.getText()+25); break;          
-                            case 3: C1McP3.setText(C1McP3.getText()+1); C1McTime.setText(C1McTime.getText()+10);break;           
+                            case 1:    
+                                val = Integer.valueOf(C1McP1.getText()) + 1;
+                                time += 25;
+                                C1McP1.setText("" + val); C1McTime.setText("" + time); break;          
+                            case 3:    
+                                val = Integer.valueOf(C1McP3.getText()) + 1;
+                                time += 10;
+                                C1McP3.setText("" + val); C1McTime.setText("" + time);break;           
                         }
                 }
             default: 
                 System.out.println("Error!! gui.java addOneToMachines");
-        } */       
+        }      
     }       
         
     /**
