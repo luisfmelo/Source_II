@@ -1487,7 +1487,7 @@ public class gui extends javax.swing.JFrame {
                     {
                         val = Integer.valueOf(C2MaP1.getText()) + 1;
                         time += 25;
-                        C2MaP1.setText("" + time); C2MaTime.setText("" + time); 
+                        C2MaP1.setText("" + val); C2MaTime.setText("" + time); 
                     }
                 else if ( pkg == 6 )
                 {
@@ -1613,10 +1613,17 @@ public class gui extends javax.swing.JFrame {
      */
     public  void addOneToPusher(int num)
     {
+        int val;
         if ( num == 1 )
-            textFieldPusher1.setText(textFieldPusher1.getText()+1);
+        {
+            val = Integer.valueOf(textFieldPusher1.getText()) + 1;
+            textFieldPusher1.setText("" + val);
+        }
         else if ( num == 2 )
-            textFieldPusher2.setText(textFieldPusher2.getText()+1);
+        {
+            val = Integer.valueOf(textFieldPusher2.getText()) + 1;
+            textFieldPusher2.setText("" + val);
+        }
         else
             System.out.println("Error!! gui.java addOneToPusher: " + num);
     }     

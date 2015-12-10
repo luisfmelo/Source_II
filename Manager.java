@@ -167,8 +167,8 @@ public class Manager {
                 
                 waitingOps.get(idx).incrementFinishedPackages();
                 waitingOps.get(idx).decrementOngoingPackages(); 
-                updateArrived(cellType, idx);
-                
+                //updateArrived(cellType, idx);
+                updateArrived(cellType, cellState[i][1]);
                 // Atualizar estado interno das células
                 cellState[i][0] = 0;
                 cellState[i][1] = 0;
