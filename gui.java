@@ -1464,7 +1464,7 @@ public class gui extends javax.swing.JFrame {
     *
     */
     public void addOneToMachines(int cell, char machine, int pkg)
-    {
+    {       
         machine = Character.toUpperCase(machine);
         int time, val;
         

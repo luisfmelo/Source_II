@@ -300,7 +300,7 @@ public class Trabalho_InformaticaIndustrial {
             {
                 if (pkgInit == 1 || pkgInit == 3 )
                 {
-                    SuperGui.addOneToMachines(cell, 'a', pkgInit);
+                    SuperGui.addOneToMachines(cell, 'c', pkgInit);
                     pkgInit ++;
                     updateMachines(cell, pkgInit, pkgFinal);
                 }
@@ -312,7 +312,7 @@ public class Trabalho_InformaticaIndustrial {
                 }  
                 else
                 {
-                    SuperGui.addOneToMachines(cell, 'c', pkgInit);
+                    SuperGui.addOneToMachines(cell, 'a', pkgInit);
                     pkgInit ++;
                     updateMachines(cell, pkgInit, pkgFinal);
                 }
