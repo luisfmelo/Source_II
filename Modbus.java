@@ -9,6 +9,7 @@ import net.wimpi.modbus.procimg.*;
 import net.wimpi.modbus.facade.ModbusTCPMaster;
 import net.wimpi.modbus.*;
 import static trabalho_informaticaindustrial.Trabalho_InformaticaIndustrial.ANSI_RED;
+import static trabalho_informaticaindustrial.Trabalho_InformaticaIndustrial.ANSI_YELLOW;
 
 public class Modbus {
     private ModbusTCPMaster modbusTCPMaster;
@@ -84,7 +85,7 @@ public class Modbus {
      * 
      * @return 
      */
-    public int[] getCellState() {
+    public int[] getCellState() throws InterruptedException {
         int[] cellStatePLC = new int[8];
         
         InputRegister[] readvalue = null;
@@ -105,27 +106,38 @@ public class Modbus {
 
                 System.out.println("A célula " + i + " terminou o processamento!");
 
-                // Dar o ack do acontecimento
-                try {
-                    modbusTCPMaster.writeSingleRegister(4+i, ack);
-                } catch(Exception multiplereaderror) {
-                    System.out.println("Error readMultipleRegisters updateCellState");
-                }
+                // O ack às vezes não chega ao PLC por isso tentamos 10 vezes
+                for(int attempt = 0; attempt < 10; attempt++) {
                 
-                System.out.println("Acknoledge enviado para a célula " + i + ".");
-                
-                // Verificar que o ack foi recebido
-                while((readvalue[i+1].getValue() != 0 && (i+1) < 6) || (readvalue[i+1].getValue() > 1 && (i+1) >= 6)) {
+                    // Dar o ack do acontecimento
+                    try {
+                        modbusTCPMaster.writeSingleRegister(4+i, ack);
+                    } catch(Exception multiplereaderror) {
+                        System.out.println("Error readMultipleRegisters updateCellState");
+                    }
+
+                    System.out.println("Acknoledge enviado para a célula " + i + ".");
+
+                    // Verificar que o ack foi recebido
                     try {
                         readvalue = modbusTCPMaster.readInputRegisters(20, 10);
                     } catch(Exception multiplereaderror) {
                         System.out.println("Error readMultipleRegisters updateCellState");
                     }
+
+                    // Se foi recebido continua
+                    if((readvalue[i+1].getValue() == 0 && (i+1) < 6) || (readvalue[i+1].getValue() < 2 && (i+1) >= 6))
+                        break;
+                    
+                    // Esperar 500 ms entre tentativas
+                    Thread.sleep(500);
+                    
+                    System.out.println(ANSI_YELLOW + "Não foi possível confirmar que o PLC recebeu o acknowledge.");
                 }
-                
+                              
                 if((i+1) < 6) cellStatePLC[i] = 1;          // A célula já está livre
                 else if((i+1) >= 6) cellStatePLC[i] = 2;    // A célula de descarga está livre
-                    
+                
                 System.out.println("O acknoledge foi recebido pela célula " + i + ".");
                     
                 // Limpar o ack

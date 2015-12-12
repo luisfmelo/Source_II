@@ -104,12 +104,9 @@ public class Manager {
                     modbusCom.sendOp(item.getArg1(), item.getArg2(), cell+1); //envia operação
                     //addOneToPusher(cell+1);  //para a GUI
                     updatePushers(cell+1);
-//<<<<<<< HEAD
-                    
-                    //cellState[Cells.Unload1][0] = 1;
-//=======
+
                     cellState[Cells.Unload1][0] = 2;
-//>>>>>>> origin/master
+
                     cellState[Cells.Unload1][1] = item.getId();
                     item.incrementOngoingPackages();
                     updateOngoing('U', item.getId());
@@ -143,7 +140,7 @@ public class Manager {
         }
     }
     
-    public void updateCellState(LinkedList<Operation> waitingOps, int[][] cellState, Modbus modbusCom)
+    public void updateCellState(LinkedList<Operation> waitingOps, int[][] cellState, Modbus modbusCom) throws InterruptedException
     {
         int[] cellStatePLC;
         char cellType = 'N';
@@ -196,8 +193,8 @@ public class Manager {
                     cellState[i][0] = cellStatePLC[i];
                 }
             }
-            else if(cellStatePLC[i] == 0 && (i>=5) && (cellState[i][0] != 2)) {
-                cellState[i][0] = 0;
+            else if((i>=5) && (cellState[i][0] != 2)) {
+                cellState[i][0] = cellStatePLC[i];
             }
         }
     }
