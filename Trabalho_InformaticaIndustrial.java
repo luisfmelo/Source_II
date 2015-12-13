@@ -190,8 +190,6 @@ public class Trabalho_InformaticaIndustrial {
             System.out.println("tipo:" + ordertype + "  numb:" + ordernumber + "  inicial:" + originpkg + " final:" + finalpkg + " quant:" + qty);
             
             Calendar cal = Calendar.getInstance();
-    
-            //Unload op1 = new Unload(69, 666, 6, 9, cal);
             
             switch(ordertype)
             {

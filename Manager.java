@@ -19,6 +19,7 @@ interface Cells {
     public static final int Assembly = 4;
     public static final int Unload1  = 5;
     public static final int Unload2  = 6;
+    public static final int CT3  = 7;
 }
 
 /**
@@ -94,9 +95,36 @@ public class Manager {
                 cellState[cell-1][1] = item.getId();
                 
                 System.out.println("Enviada operação Transformação para a célula: " + cell);
+            }     
+            else if( item.getType() == 'M' ) //se for montagem
+            {
+                // Verificar se o tapete CT3 está livre
+                if( cellState[Cells.CT3][0] == 1) {
+                    System.out.println(ANSI_YELLOW + "Debug: tapete CT3 ocupado.");
+                    continue;
+                }
+                
+                // Verificar se a célula de montagem está livre
+                if( cellState[Cells.Assembly][0] == 1) {
+                    System.out.println(ANSI_YELLOW + "Debug: célula de montagem ocupada.");
+                    continue;
+                }
+                
+                // A célula passa a estar ocupada
+                cellState[Cells.Assembly][0] = 1;
+                cellState[Cells.Assembly][1] = item.getId();
+                item.incrementOngoingPackages();
+                updateOngoing('M', item.getId());
+                
+                // Mandar peça de cima
+                modbusCom.sendOp(item.getArg2(), 0, Cells.Assembly+1); //envia operação
+                
+                // Mandar peça de baixo
+                modbusCom.sendOp(item.getArg1(), 0, Cells.Assembly+1); //envia operação
+                
+                System.out.println("Enviadas duas peças para a Célula de Montagem");
             }
-            
-            else if ( item.getType() == 'U' ) //se for descarga
+            else if( item.getType() == 'U' ) //se for descarga
             {
                 if ( cellState[Cells.Unload1][0] == 0 && item.getArg2() == 1) //pusher 1 livre e eu quero enviar para o pusher 1
                 {
@@ -127,15 +155,6 @@ public class Manager {
                 }
                 
                 System.out.println("Célula de descraga ocupada: " + cellState[Cells.Unload1][0] + " | " + cellState[Cells.Unload2][0]);
-            }
-            
-            else if ( item.getType() == 'M' && cellState[4][0] == 0 ) //se for montagem e se o robot 3D estiver livre
-            {
-                modbusCom.sendOp(item.getArg1(), item.getArg2(), 4); //envia operação para o robot 3D (4)
-                cellState[4][0] = 1;
-                cellState[4][1] = item.getId();
-                item.incrementOngoingPackages();
-                updateOngoing('U', item.getId());
             }
         }
     }
@@ -170,7 +189,7 @@ public class Manager {
                 cellState[i][0] = 0;
                 cellState[i][1] = 0;
             }
-            else if(cellStatePLC[i] > 1 && (i>=5) && (cellState[i][0] == 2)) {
+            else if(cellStatePLC[i] > 1 && (i==5 || i==6) && (cellState[i][0] == 2)) {
                 
                 cellType = 'U';
                 
@@ -193,7 +212,12 @@ public class Manager {
                     cellState[i][0] = cellStatePLC[i];
                 }
             }
-            else if((i>=5) && (cellState[i][0] != 2)) {
+            // Estado dos pushers
+            else if((i==5 || i==6) && (cellState[i][0] != 2)) {
+                cellState[i][0] = cellStatePLC[i];
+            }
+            // Estado do tapete CT3
+            else if(i==7) {
                 cellState[i][0] = cellStatePLC[i];
             }
         }

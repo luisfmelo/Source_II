@@ -44,9 +44,8 @@ public class Modbus {
     public int sendOp(int arg1, int arg2, int cellDestination) {
         Register[] valores = new Register[4];
         
-        // Verifica se o primeiro tapete está livre
-        if(isWarehouseFree() == 0)
-            return 1;
+        // Espera enquanto o armazem fica livre
+        while(isWarehouseFree() != 1);
         
         valores[0] = new SimpleRegister(arg1);
         valores[1] = new SimpleRegister(arg2);
@@ -86,7 +85,7 @@ public class Modbus {
      * @return 
      */
     public int[] getCellState() throws InterruptedException {
-        int[] cellStatePLC = new int[8];
+        int[] cellStatePLC = new int[9];
         
         InputRegister[] readvalue = null;
         Register ack = new SimpleRegister(1);
@@ -99,10 +98,10 @@ public class Modbus {
         }
         
         // Iteracção para cada célula
-        for(int i=0; i < 7; i++) {
+        for(int i=0; i < 8; i++) {
                              
-            // Ver se célula acabou processamento
-            if((readvalue[i+1].getValue() > 0 && ((i+1) < 6)) || (readvalue[i+1].getValue() > 1 && ((i+1) >= 6))) {
+            // Ver se célula terminou
+            if((readvalue[i+1].getValue() > 0 && ((i+1) < 6)) || (readvalue[i+1].getValue() > 1 && ((i+1) == 6 || (i+1) == 7))) {
 
                 System.out.println("A célula " + i + " terminou o processamento!");
 
@@ -126,7 +125,7 @@ public class Modbus {
                     }
 
                     // Se foi recebido continua
-                    if((readvalue[i+1].getValue() == 0 && (i+1) < 6) || (readvalue[i+1].getValue() < 2 && (i+1) >= 6))
+                    if((readvalue[i+1].getValue() == 0 && (i+1) < 6) || (readvalue[i+1].getValue() < 2 && (i+1) == 6 || (i+1) == 7))
                         break;
                     
                     // Esperar 500 ms entre tentativas
@@ -136,7 +135,7 @@ public class Modbus {
                 }
                               
                 if((i+1) < 6) cellStatePLC[i] = 1;          // A célula já está livre
-                else if((i+1) >= 6) cellStatePLC[i] = 2;    // A célula de descarga está livre
+                else if((i+1) == 6 || (i+1) == 7) cellStatePLC[i] = 2;    // A célula de descarga está livre
                 
                 System.out.println("O acknoledge foi recebido pela célula " + i + ".");
                     
@@ -152,7 +151,12 @@ public class Modbus {
             }
             
             // Caso seja um pusher e esteja ocupado
-            if((readvalue[i+1].getValue() == 1 && (i+1) >= 6) && cellStatePLC[i] != 2) {
+            if((readvalue[i+1].getValue() == 1 && ((i+1) == 6 || (i+1) == 7)) && cellStatePLC[i] != 2) {
+                cellStatePLC[i] = 1;
+            }
+            
+            // Célula CT3
+            if((readvalue[i+1].getValue() == 1 && (i+1) == 8)) {
                 cellStatePLC[i] = 1;
             }
         }
