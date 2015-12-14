@@ -53,14 +53,11 @@ public class Trabalho_InformaticaIndustrial {
     public static Calendar theBeginningOfTimes;
     public static Modbus modbusCom = new Modbus();
     public static gui SuperGui = new gui();
+    
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws InterruptedException {
-        
-        //MachineStatistics lol = new MachineStatistics();
-        
-        //lol.addTransformation(1-1, 4-1, 1);
+    public static void main(String[] args) throws InterruptedException, Exception {
         
         theBeginningOfTimes = Calendar.getInstance();
         
@@ -99,31 +96,10 @@ public class Trabalho_InformaticaIndustrial {
         Manager SuperManager = new Manager();
         
         SimpleDateFormat horadechegada = new SimpleDateFormat("HH:mm:ss|dd.MM.yyyy");
-        System.out.println(horadechegada.format(theBeginningOfTimes.getTime()));
-        
-        //System.out.println("id: " + HeadOp.getId());
-        
-        //modbusCom.test();
-        
-        //int result = modbusCom.sendOp(3, 1, 6);
-        //cellState[5] = 1;
-        
-        System.out.print("cellState:");
-        for(int x=0; x<7; x++) {
-                System.out.print(cellState[x][0] + " ");
-        }
-         System.out.println(";");
-        
-        //modbusCom.test();
-        
-        
-         
-        //System.out.println("Resultado do envio da Op:" + result);
-        
+        System.out.println("Hora de início: " + horadechegada.format(theBeginningOfTimes.getTime()));
+           
         while(true) 
         {
-            //modbusCom.updateCellState(cellState);
-            
             if(UdpThread.ordersSize() > 0) 
             {
                 String received = UdpThread.getUdpOrder();
@@ -144,40 +120,23 @@ public class Trabalho_InformaticaIndustrial {
                 }                
                 
                 System.out.println("Ordem lida no MES:" + (listOps.element()).getId());
-                
-                /*modbusCom.sendOp( (listOps.peek()).getStartPkg(), 
-                                  (listOps.peek()).getEndPkg(), 
-                                  operationToCell((listOps.peek()).getType()));
-                */
             }
 
-            
             SuperManager.updateCellState(waitingOps, cellState, modbusCom);
             
-            if(modbusCom.isWarehouseFree() == 1)  //se o 1º tapete está livre (registo do codesys)            MUDAR!!!!!!
+            if(modbusCom.isWarehouseFree() == 1)  // Se o 1º tapete está livre
             {
                 SuperManager.doNextOperation(waitingOps, cellState, modbusCom); //recebe operação que é para enviar
             }
-            
-
         }
     }
     
-    public static int operationToCell(char ordertype) {
-        
-        switch(ordertype)
-        {
-            case('T'):  return 1;
-
-            case('U'):  return 6;
-
-            case('M'):  return 5;
-
-            default:    return 0;
-
-        }
-    }
-    
+    /**
+     * Faz o parsing da string e returna um objecto do tipo Operation
+     * 
+     * @param order
+     * @return Operação
+     */
     public static Operation stringToOperation(String order) {
         
         //if(order != null) {

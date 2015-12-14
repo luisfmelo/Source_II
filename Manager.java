@@ -166,6 +166,9 @@ public class Manager {
         
         // Vê se alguma célula terminou o processamento
         cellStatePLC = modbusCom.getCellState();
+
+        if(cellStatePLC == null)
+            return;
         
         for(int i=0; i < 8; i++) {
             

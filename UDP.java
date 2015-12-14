@@ -35,13 +35,11 @@ public class UDP implements Runnable
             DatagramPacket receivePacket = 
                     new DatagramPacket(receiveData, receiveData.length);
             
-            try 
-            {
+            try {
                 serverSocket.receive(receivePacket);
-            }
-            catch(IOException e) 
-            {
-               System.out.println(e);
+            } catch(IOException e) {
+                System.out.println("O socket UDP já se encontra em uso. Por favor feche a outra instância da aplicação...\n" + e);
+                System.exit(0);
             }
 
             String sentence = new String(receivePacket.getData(), receivePacket.getOffset(), receivePacket.getLength());

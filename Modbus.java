@@ -5,6 +5,7 @@
  */
 package trabalho_informaticaindustrial;
 
+import java.net.ConnectException;
 import net.wimpi.modbus.procimg.*;
 import net.wimpi.modbus.facade.ModbusTCPMaster;
 import net.wimpi.modbus.*;
@@ -12,6 +13,7 @@ import static trabalho_informaticaindustrial.Trabalho_InformaticaIndustrial.ANSI
 import static trabalho_informaticaindustrial.Trabalho_InformaticaIndustrial.ANSI_YELLOW;
 
 public class Modbus {
+    
     private ModbusTCPMaster modbusTCPMaster;
     
     /**
@@ -20,15 +22,16 @@ public class Modbus {
      * @param ip
      * @param port 
      */
-    public void start(String ip, int port) {
+    public void start(String ip, int port) throws Exception {
         modbusTCPMaster = new ModbusTCPMaster(ip, port);
         
         try {
             modbusTCPMaster.connect();
-        } catch(Exception notconnected) {
-            System.out.println("Error connecting to PLC! " + notconnected);
+        } catch(ConnectException notconnected) {
+            System.out.println("Error connecting to PLC! Please start remote client first...\n" + notconnected);
+            System.exit(0);
         }
-        
+                
         System.out.println("Connected to PLC!");
     }
     
@@ -95,13 +98,14 @@ public class Modbus {
             readvalue = modbusTCPMaster.readInputRegisters(20, 10);
         } catch(Exception multiplereaderror) {
             System.out.println("Error readMultipleRegisters updateCellState");
+            return null;
         }
         
         // Iteracção para cada célula
         for(int i=0; i < 8; i++) {
                              
             // Ver se célula terminou
-            if((readvalue[i+1].getValue() > 0 && ((i+1) < 6)) || (readvalue[i+1].getValue() > 1 && ((i+1) == 6 || (i+1) == 7))) {
+            if((readvalue[i+1].getValue() > 0 && ((i+1) <= 5)) || (readvalue[i+1].getValue() > 1 && ((i+1) == 6 || (i+1) == 7))) {
 
                 System.out.println("A célula " + i + " terminou o processamento!");
 
@@ -174,8 +178,13 @@ public class Modbus {
             System.out.println("Error readMultipleRegisters");
         }
       
-        for(int i = 0; i < 10; i++)
+        System.out.print("Cells State:");
+        
+        for(int i = 0; i < 10; i++) {
             intvalues[i] = readvalues[i].getValue();
+        
+            System.out.print(" " + intvalues[i]);
+        }
         
         return intvalues;
     }
