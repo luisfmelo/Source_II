@@ -43,7 +43,7 @@ public class Manager {
         {
             Operation item = i.next();
             
-            System.out.println("qty: " + item.getQuantity() + " finished:" + item.getFinishedPackages());
+            System.out.println(item.getType()+ "(" + item.getId() + ") qty: " + item.getQuantity() + " finished:" + item.getFinishedPackages());
             
             // Se a ordem que ja foi completada é removida
             if ( (item.getQuantity() - item.getFinishedPackages() - item.getOngoingPackages()) <= 0 ) {
@@ -62,6 +62,13 @@ public class Manager {
             {
                 if(cellDestination(item.getArg1(), item.getArg2(), cellState) == -1) {// Caso estejam todas a ser usadas
                     System.out.println(ANSI_YELLOW + "Debug: células ocupadas.");
+                    
+                    System.out.print("cellState:");
+                    for(int x=0; x<7; x++) {
+                            System.out.print(cellState[x][0] + " ");
+                    }
+                    System.out.println(";");
+
                     continue;
                 }
                 else if(cellDestination(item.getArg1(), item.getArg2(), cellState) == -2) // Caso a transfromação seja para a própria peça
@@ -153,8 +160,6 @@ public class Manager {
                     updatePushers(cell+1);                               //para a GUI
                     System.out.println("Enviada peça para o Pusher 2");
                 }
-                
-                System.out.println("Célula de descraga ocupada: " + cellState[Cells.Unload1][0] + " | " + cellState[Cells.Unload2][0]);
             }
         }
     }
@@ -190,7 +195,7 @@ public class Manager {
                 updateArrived(cellType, cellState[i][1]);
                 // Atualizar estado interno das células
                 cellState[i][0] = 0;
-                cellState[i][1] = 0;
+                cellState[i][1] = -1;
             }
             else if(cellStatePLC[i] > 1 && (i==5 || i==6) && (cellState[i][0] == 2)) {
                 

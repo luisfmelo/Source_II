@@ -110,10 +110,11 @@ public class Modbus {
                 System.out.println("A célula " + i + " terminou o processamento!");
 
                 // O ack às vezes não chega ao PLC por isso tentamos 10 vezes
-                for(int attempt = 0; attempt < 10; attempt++) {
+                for(int attempt = 0; attempt < 99999; attempt++) {
                 
                     // Dar o ack do acontecimento
                     try {
+                        ack.setValue(1);
                         modbusTCPMaster.writeSingleRegister(4+i, ack);
                     } catch(Exception multiplereaderror) {
                         System.out.println("Error readMultipleRegisters updateCellState");

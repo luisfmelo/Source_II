@@ -63,7 +63,7 @@ public class Trabalho_InformaticaIndustrial {
         
         for(int i = 0; i < 7; i++) {
             cellState[i][0]=0; // Estado da célula           
-            cellState[i][1]=0; // Id da Operação em execução
+            cellState[i][1]=-1; // Id da Operação em execução
         }
         
         SuperGui.setVisible(true);
