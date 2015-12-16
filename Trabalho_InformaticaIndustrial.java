@@ -241,7 +241,20 @@ public class Trabalho_InformaticaIndustrial {
         {
             if (cell == 1 ) //falemos da maquina paralela
             {
-                if (pkgInit == 3 )
+                if ( pkgInit == 1 && pkgFinal == 5 )
+                {
+                    SuperGui.addOneToMachines(cell, 'a', pkgInit);
+                    pkgInit = 5;
+                    updateMachines(cell, pkgInit, pkgFinal);
+                }
+                else if ( pkgInit == 1 && pkgFinal != 5 )
+                {
+                    SuperGui.addOneToMachines(cell, 'c', pkgInit);
+                    pkgInit ++;
+                    updateMachines(cell, pkgInit, pkgFinal);
+                }  
+                
+                else if (pkgInit == 3 )
                 {
                     SuperGui.addOneToMachines(cell, 'c', pkgInit);
                     pkgInit ++;
@@ -253,13 +266,8 @@ public class Trabalho_InformaticaIndustrial {
                     pkgInit --; //so pode ir para a 7
                     updateMachines(cell, pkgInit, pkgFinal);
                 }  
-                else if ( pkgInit == 1)
-                {
-                    SuperGui.addOneToMachines(cell, 'a', pkgInit);
-                    pkgInit = 5;
-                    updateMachines(cell, pkgInit, pkgFinal);
-                }  
-                else
+                
+                else // package 2 e 6
                 {
                     SuperGui.addOneToMachines(cell, 'a', pkgInit);
                     pkgInit ++;
@@ -269,30 +277,37 @@ public class Trabalho_InformaticaIndustrial {
             
             else if (cell == 2 || cell == 3 || cell == 4 )//falemos agora das maquina série
             {
-                if (pkgInit == 6 )
-                {
-                    SuperGui.addOneToMachines(cell, 'a', pkgInit);
-                    pkgInit ++;
-                    updateMachines(cell, pkgInit, pkgFinal);
-                }
-                else if (pkgInit == 1 )
+                if (pkgInit == 1 )
                 {
                     SuperGui.addOneToMachines(cell, 'a', pkgInit);
                     pkgInit = 5;
                     updateMachines(cell, pkgInit, pkgFinal);
                 }
-                else if ( pkgInit == 5 && pkgFinal == 8)
+                else if ( pkgInit == 5 && ( pkgFinal == 8  || pkgFinal == 9 ) )
                 {
                     SuperGui.addOneToMachines(cell, 'b', pkgInit);
                     pkgInit = 8;
                     updateMachines(cell, pkgInit, pkgFinal);
                 }
-                else if ( pkgInit == 5 || pkgInit == 8)
+                else if ( pkgInit == 5 || pkgInit != 8) // package final: 6 ou 7
                 {
                     SuperGui.addOneToMachines(cell, 'b', pkgInit);
+                    pkgInit ++; // passa para 6
+                    updateMachines(cell, pkgInit, pkgFinal);
+                }
+                else if (pkgInit == 6 )
+                {
+                    SuperGui.addOneToMachines(cell, 'a', pkgInit);
                     pkgInit ++;
                     updateMachines(cell, pkgInit, pkgFinal);
                 }
+                else if (pkgInit == 8 )
+                {
+                    SuperGui.addOneToMachines(cell, 'a', pkgInit);
+                    pkgInit ++;
+                    updateMachines(cell, pkgInit, pkgFinal);
+                }
+                
             }
         }
     }

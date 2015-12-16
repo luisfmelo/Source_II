@@ -283,11 +283,11 @@ public class Manager {
         else if(c == 'S') // Serie
         {
             if(cellState[3][0] == 0)
-                return 3;
+                return 4;
             else if(cellState[2][0] == 0)
-                return 2;
+                return 3;
             else if(cellState[1][0] == 0)
-                return 1;
+                return 2;
             else
                 return -1;
         }

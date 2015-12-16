@@ -1467,7 +1467,7 @@ public class gui extends javax.swing.JFrame {
     {       
         machine = Character.toUpperCase(machine);
         int time, val;
-        System.out.println("GuiStatistics--->cell:" + cell + "|machine:" + machine + "|package:" + pkg);
+ //       System.out.println("GuiStatistics--->cell:" + cell + "|machine:" + machine + "|package:" + pkg);
         if ( machine == 'A')
         {
             if ( cell == 1 )
