@@ -249,14 +249,14 @@ public class Manager {
         
         if(c == '-') // nao e preciso transformação vai direto para o armazem pela 1ª celula serie livre
         {
-            if(cellState[0][0] == 0)
-                return 1;
-            else if(cellState[1][0] == 0)
-                return 2;
+            if(cellState[3][0] == 0)
+                return 4;
             else if(cellState[2][0] == 0)
                 return 3;
-            else if(cellState[3][0] == 0)
-                return 4;
+            else if(cellState[1][0] == 0)
+                return 2;
+            else if(cellState[0][0] == 0)
+                return 1;
             else
                 return -1;
         }
@@ -273,12 +273,12 @@ public class Manager {
         }
         else if(c == 'S') // Serie
         {
-            if(cellState[1][0] == 0)
-                return 1;
+            if(cellState[3][0] == 0)
+                return 3;
             else if(cellState[2][0] == 0)
                 return 2;
-            else if(cellState[3][0] == 0)
-                return 3;
+            else if(cellState[1][0] == 0)
+                return 1;
             else
                 return -1;
         }
@@ -286,18 +286,17 @@ public class Manager {
         {
             System.out.println("A operação pode ser feita em ambos os tipos de células!");
             
-            if(cellState[0][0] == 0)            //MUDEI ISTO POR CAUSA DA PRIORIDADE
-                return 1;
-            else if(cellState[1][0] == 0)
-                return 2;
+            if(cellState[3][0] == 0)            //MUDEI ISTO POR CAUSA DA PRIORIDADE
+                return 4;
             else if(cellState[2][0] == 0)
                 return 3;
-            else if(cellState[3][0] == 0)
-                return 4;
+            else if(cellState[1][0] == 0)
+                return 2;
+            else if(cellState[0][0] == 0)
+                return 1;
             else
                 return -1;
         }
-
         return -1;
     }
     
@@ -320,8 +319,9 @@ public class Manager {
         
         return null;
     }
-
+/*
     private void addOneToPusher(int i) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    */
 }
