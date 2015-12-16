@@ -116,7 +116,7 @@ public class Trabalho_InformaticaIndustrial {
                 Iterator<Operation> i = waitingOps.iterator();
                 while(i.hasNext()) {
                     Operation item = i.next();
-                    System.out.println(item.getType()+ "(" + item.getId() + "): " + item.getArg1() + " -> " + item.getArg2());
+                    //System.out.println(item.getType()+ "(" + item.getId() + "): " + item.getArg1() + " -> " + item.getArg2());
                 }                
                 
                 System.out.println("Ordem lida no MES:" + (listOps.element()).getId());
@@ -146,7 +146,7 @@ public class Trabalho_InformaticaIndustrial {
             int finalpkg    = Integer.parseInt(order.substring(5, 6));
             int qty         = Integer.parseInt(order.substring(6, 8));
             
-            System.out.println("tipo:" + ordertype + "  numb:" + ordernumber + "  inicial:" + originpkg + " final:" + finalpkg + " quant:" + qty);
+            //System.out.println("tipo:" + ordertype + "  numb:" + ordernumber + "  inicial:" + originpkg + " final:" + finalpkg + " quant:" + qty);
             
             Calendar cal = Calendar.getInstance();
             
@@ -207,26 +207,12 @@ public class Trabalho_InformaticaIndustrial {
                 bw.write(content);
                 bw.close();
             }
-
             System.out.println("Finally!!!!!");
-
         } 
         catch (IOException e) 
         {
                 e.printStackTrace();
-        }
-       
-      /*  File myFile = new File("Statistics.txt");
-        if(!myFile.exists()) 
-        {
-            myFile.createNewFile();
-        } 
-
-        FileOutputStream oFile = new FileOutputStream(myFile, false); 
-        oFile.write("dataToWrite");
-        System.out.println("Done!");
-    }*/
-    
+        }    
     }
     
     public static void updateOngoing(char type, int id)
@@ -255,7 +241,7 @@ public class Trabalho_InformaticaIndustrial {
         {
             if (cell == 1 ) //falemos da maquina paralela
             {
-                if (pkgInit == 1 || pkgInit == 3 )
+                if (pkgInit == 3 )
                 {
                     SuperGui.addOneToMachines(cell, 'c', pkgInit);
                     pkgInit ++;
@@ -267,6 +253,12 @@ public class Trabalho_InformaticaIndustrial {
                     pkgInit --; //so pode ir para a 7
                     updateMachines(cell, pkgInit, pkgFinal);
                 }  
+                else if ( pkgInit == 1)
+                {
+                    SuperGui.addOneToMachines(cell, 'a', pkgInit);
+                    pkgInit = 5;
+                    updateMachines(cell, pkgInit, pkgFinal);
+                }  
                 else
                 {
                     SuperGui.addOneToMachines(cell, 'a', pkgInit);
@@ -274,7 +266,8 @@ public class Trabalho_InformaticaIndustrial {
                     updateMachines(cell, pkgInit, pkgFinal);
                 }
             }
-            else //falemos agora das maquina série
+            
+            else if (cell == 2 || cell == 3 || cell == 4 )//falemos agora das maquina série
             {
                 if (pkgInit == 6 )
                 {
@@ -302,9 +295,6 @@ public class Trabalho_InformaticaIndustrial {
                 }
             }
         }
-        
-        
-        //SuperGui.addOneToMachines(cell, machine, pkg);
     }
     
     public static void updatePushers(int n)

@@ -1467,7 +1467,7 @@ public class gui extends javax.swing.JFrame {
     {       
         machine = Character.toUpperCase(machine);
         int time, val;
-        
+        System.out.println("GuiStatistics--->cell:" + cell + "|machine:" + machine + "|package:" + pkg);
         if ( machine == 'A')
         {
             if ( cell == 1 )
@@ -1478,6 +1478,18 @@ public class gui extends javax.swing.JFrame {
                     val = Integer.valueOf(C1MaP2.getText()) + 1;
                     time += 20; 
                     C1MaP2.setText("" + val); C1MaTime.setText("" + time);         
+                }
+                else if ( pkg == 1 )
+                {
+                    val = Integer.valueOf(C1MaP1.getText()) + 1;
+                    time += 25; 
+                    C1MaP1.setText("" + val); C1MaTime.setText("" + time);         
+                }
+                else if ( pkg == 6 )
+                {
+                    val = Integer.valueOf(C1MaP6.getText()) + 1;
+                    time += 25; 
+                    C1MaP6.setText("" + val); C1MaTime.setText("" + time);         
                 }
             }
             else if ( cell == 2 )

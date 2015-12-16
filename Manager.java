@@ -43,14 +43,14 @@ public class Manager {
         {
             Operation item = i.next();
             
-            System.out.println(item.getType()+ "(" + item.getId() + ") qty: " + item.getQuantity() + " finished:" + item.getFinishedPackages());
+            // System.out.println(item.getType()+ "(" + item.getId() + ") qty: " + item.getQuantity() + " finished:" + item.getFinishedPackages());
             
             // Se a ordem que ja foi completada é removida
             if ( (item.getQuantity() - item.getFinishedPackages() - item.getOngoingPackages()) <= 0 ) {
                 
                 if(item.getQuantity() - item.getFinishedPackages() <= 0) {
                     System.out.format(ANSI_GREEN + "A operação %c%03d foi completada!", item.getType(), item.getId());
-                    System.out.println("qty: " + item.getQuantity() + " finished:" + item.getFinishedPackages());
+                    //System.out.println("qty: " + item.getQuantity() + " finished:" + item.getFinishedPackages());
                 
                     i.remove();
                 }
@@ -92,7 +92,8 @@ public class Manager {
                 
                 // Enviar a operação para o PLC
                 modbusCom.sendOp(item.getArg1(), item.getArg2(), cell); //aqui é que vai acontecer toda a ação
-                updateMachines(cell, item.getArg1(), item.getArg2());
+                
+                //updateMachines(cell, item.getArg1(), item.getArg2());
                 
                 item.incrementOngoingPackages();
                 updateOngoing('T', item.getId());
@@ -156,7 +157,9 @@ public class Manager {
                     cellState[Cells.Unload2][1] = item.getId();
                     item.incrementOngoingPackages();
                     updateOngoing('U', item.getId());
+                    
                     //addOneToPusher(cell+1);  //para a GUI
+                    
                     updatePushers(cell+1);                               //para a GUI
                     System.out.println("Enviada peça para o Pusher 2");
                 }
@@ -178,7 +181,7 @@ public class Manager {
         for(int i=0; i < 8; i++) {
             
             // Se a célula terminou o processamento
-            if(cellStatePLC[i] > 0 && (i<5)) {
+            if(cellStatePLC[i] > 0 && (i < 5)) {
                 
                 if((i+1) > 0 && (i+1) <= 4)
                     cellType = 'T';
@@ -191,9 +194,11 @@ public class Manager {
                 
                 waitingOps.get(idx).incrementFinishedPackages();
                 waitingOps.get(idx).decrementOngoingPackages(); 
-                //updateArrived(cellType, idx);
+                
+                //aqui é que vai acontecer toda a ação
+                updateMachines(i+1, (waitingOps.get(idx)).getArg1(), (waitingOps.get(idx)).getArg2());
+                
                 updateArrived(cellType, cellState[i][1]);
-                // Atualizar estado interno das células
                 cellState[i][0] = 0;
                 cellState[i][1] = -1;
             }
@@ -208,6 +213,10 @@ public class Manager {
 
                     waitingOps.get(idx).incrementFinishedPackages();
                     waitingOps.get(idx).decrementOngoingPackages();
+                    
+                    //aqui é que vai acontecer toda a ação
+                    updateMachines(i+1, waitingOps.get(idx).getArg1(), waitingOps.get(idx).getArg1());
+                
                     
                     // Atualizar GUI
                     updateArrived(cellType,  cellState[i][1]);
