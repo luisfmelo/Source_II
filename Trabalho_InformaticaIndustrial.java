@@ -289,7 +289,7 @@ public class Trabalho_InformaticaIndustrial {
                     pkgInit = 8;
                     updateMachines(cell, pkgInit, pkgFinal);
                 }
-                else if ( pkgInit == 5 || pkgInit != 8) // package final: 6 ou 7
+                else if ( pkgInit == 5 || pkgFinal != 8) // package final: 6 ou 7
                 {
                     SuperGui.addOneToMachines(cell, 'b', pkgInit);
                     pkgInit ++; // passa para 6
